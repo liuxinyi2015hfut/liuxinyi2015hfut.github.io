@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小米商城-小米6、红米Note X4、小米Max 2、小米笔记本官方网站</title>
+    <link rel="shortcut icon" href="img/favicon.ico" media="screen">
+    <link rel="stylesheet" href="CSS/reset.css" type="text/css">
+    <link rel="stylesheet" href="CSS/swiper.min.css">
+    <link rel="stylesheet/less" href="CSS/index.less">
+    <script type="text/javascript">
+		var less = {
+			env: "development",
+			poll: 1000
+		}
+    </script>
+    <script type="text/javascript" src="JS/less.min.js"></script>
+
+    <script type="text/javascript">
+		// 开启less的监听模式
+		less.watch();
+    </script>
+
+    <script type="text/javascript" src="JS/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="JS/swiper.min.js"></script>
+    <script type="text/javascript" src="JS/ejs.min.js"></script>
+</head>
+<body>
+<!--head begin-->
+<div class="headerBg">
+    <div class="header clearfix">
+        <div class="headLeft">
+            <a href="index.html">小米商城</a>
+            <span>|</span>
+            <a href="http://www.miui.com/" target="_blank">MIUI</a>
+            <span>|</span>
+            <a href="http://www.miliao.com/" target="_blank">米聊</a>
+            <span>|</span>
+            <a href="http://game.xiaomi.com/hy/index.html" target="_blank">游戏</a>
+            <span>|</span>
+            <a href="http://www.duokan.com/" target="_blank">多看阅读</a>
+            <span>|</span>
+            <a href="https://i.mi.com/" target="_blank">云服务</a>
+            <span>|</span>
+            <a href="https://jr.mi.com/pub?nologin=true&from=micom#!/" target="_blank">金融</a>
+            <span>|</span>
+            <a href="https://www.mi.com/appdownload/" target="_blank">小米商城移动版</a>
+            <span>|</span>
+            <a href="https://static.mi.com/feedback/" target="_blank">问题反馈</a>
+            <span>|</span>
+            <a class="selectR">Select Region</a>
+            <div class="srBackground"></div>
+            <div id="selectRegion">
+                <div class="srHead">
+                    <span>Select Region</span>
+                    <a href="###" class="close icon_"></a>
+                </div>
+                <div class="srBody">
+                    <h3>Welcome to Mi.com</h3>
+                    <p>Please select your country or region</p>
+                    <div>
+                        <a href="https://www.mi.com/index.html">Mainland China</a>
+                        <a href="http://www.mi.com/hk/">Hong Kong</a>
+                        <a href="http://www.mi.com/tw/">Taiwan</a>
+                        <a href="http://www.mi.com/sg/">Singapore</a>
+                        <a href="http://www.mi.com/my/">Malaysia</a>
+                        <a href="http://www.mi.com/ph/">Philippines</a>
+                        <a href="http://www.mi.com/in/">India</a>
+                        <a href="http://www.mi.com/id/">Indonesia</a>
+                        <a href="http://www.mi.com/en/">Global Home</a>
+                        <a href="http://www.mi.com/mena/">MENA</a>
+                        <a href="http://www.mi.com/pl/">Poland</a>
+                        <a href="http://www.mi.com/ua/">Ukraine</a>
+                        <a href="http://www.mi.com/ru/">Russia</a>
+                        <a href="http://www.mi.com/vn/">Vietnam</a>
+                        <a href="http://www.mi.com/mx/">Mexico</a>
+                        <a href="http://www.mi.com/kr/">Korea</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="headRight clearfix">
+            <a href="https://account.xiaomi.com/pass/serviceLogin?callback=https%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252Findex.html%26sign%3DMjM0MWU0NjBlOTU1YzY4NGQzOTc3MDk4N2M2MjQ5Y2ZiZTMxNTFlZQ%2C%2C&sid=mi_eshop&_bannerBiz=mistore&_qrsize=180"
+               class="userInfo">登录</a>
+            <span class="spa">|</span>
+            <a href="https://account.xiaomi.com/pass/register" class="userInfo">注册</a>
+            <span class="spa">|</span>
+            <a href="https://account.xiaomi.com/pass/serviceLogin?callback=https%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Forder.mi.com%252Fmessage%252Flist%26sign%3DMjEyY2NkOTg5NjAzZmMyNWUyMDBhNzE2MDczNWJkYzFkMTg1Yjc0MQ%2C%2C&sid=mi_eshop&_bannerBiz=mistore&_qrsize=180"
+               class="userInfo">消息通知</a>
+            <div class="cart">
+                <a href="https://static.mi.com/cart/" class="cartIcon">
+                    <i></i>
+                    <span>购物车</span>
+                    <span>（0）</span>
+                </a>
+                <div class="shopCart">
+                    <div class="shopCartLoad">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <p class="shopCartEmpty">购物车中没有商品，赶紧选购吧！</p>
+                    <div class="shopCartSettle clearfix">
+                        <ul>
+                        </ul>
+                        <div>
+                            <p class="shopCartNum">共<span>1</span> 件商品</p>
+                            <p class="shopCartRMB"><span>699.00</span>元</p>
+                        </div>
+                        <a>去购物车结算</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--head end-->
+
+<!--Navigation begin-->
+<div class="navBg">
+    <div class="nav clearfix">
+        <a class="logo" href="index.html" alt="小米官网"></a>
+        <a class="navAd" href="https://1.hd.mi.com/" target="_blank"></a>
+        <div class="navMenu">
+            <a href="#navXM">小米手机</a>
+            <a href="#navHM">红米</a>
+            <a href="#navMiPad">平板 · 笔记本</a>
+            <a href="#navTV">电视</a>
+            <a href="#navBox">盒子 · 影音</a>
+            <a href="#navRT">路由器</a>
+            <a href="#navZN">智能硬件</a>
+            <div class="navHide"></div>
+        </div>
+        <a class="navA" href="https://www.mi.com/service/" target="_blank">服务</a>
+        <a class="navA" href="http://www.xiaomi.cn/" target="_blank">社区</a>
+        <div class="navSearch">
+            <form class="clearfix" action="http://search.mi.com/search" method="post">
+                <label for="search" class="hide">站内搜索</label>
+                <input type="search" name="keyword" id="search" class="searchText" autocomplete="off"
+                       data-search-config>
+                <input type="submit" class="searchButton">
+                <div class="hotWords">
+
+                </div>
+                <div class="keywordList">
+                    <ul class="defaultWords"></ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--Navigation end-->
+
+<!--banner begin-->
+<div class="bannerBg">
+    <div class="banner">
+        <!--bannerContainer begin-->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="###">
+                        <img data-src="img/banner/xmad_14871298875787_CEOdW.jpg" class="swiper-lazy">
+                        <div class="swiper-lazy-preloader"></div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="###">
+                        <img data-src="img/banner/xmad_14890540335855_wTxbY.jpg" class="swiper-lazy">
+                        <div class="swiper-lazy-preloader"></div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="###">
+                        <img data-src="img/banner/xmad_14954204563199_hUckQ.jpg" class="swiper-lazy">
+                        <div class="swiper-lazy-preloader"></div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="###">
+                        <img data-src="img/banner/xmad_14978568617273_WTnwg.jpg" class="swiper-lazy">
+                        <div class="swiper-lazy-preloader"></div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="###">
+                        <img data-src="img/banner/xmad_14992220383574_axNUK.jpg" class="swiper-lazy">
+                        <div class="swiper-lazy-preloader"></div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="###">
+                        <img data-src="img/banner/xmad_14993069322703_eyJnl.jpg" class="swiper-lazy">
+                        <div class="swiper-lazy-preloader"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev icon_"></div>
+            <div class="swiper-button-next icon_"></div>
+        </div>
+        <!--bannerContainer end-->
+
+        <!--aside begin-->
+        <div class="aside">
+            <ul class="asideList"></ul>
+            <div class="asideBg"></div>
+        </div>
+        <!--aside end-->
+    </div>
+</div>
+<!--banner end-->
+
+<!--bannerSub begin-->
+<div class="bannerSubBg">
+    <div class="bannerSub clearfix">
+        <ul class="subLeft clearfix">
+            <li class="sub1"><a href="https://www.mi.com/compare/" class="icon_"><span>选购手机</span></a></li>
+            <li class="sub2"><a href="http://qiye.mi.com/" class="icon_"><span>企业团购</span></a></li>
+            <li class="sub3"><a href="https://1.hd.mi.com/" class="icon_"><span>一元活动</span></a></li>
+            <li class="sub4"><a href="https://www.mi.com/mimobile/" class="icon_"><span>小米移动</span></a></li>
+            <li class="sub5"><a href="https://huanxin.mi.com/" class="icon_"><span>以旧换新</span></a></li>
+            <li class="sub6"><a href="http://recharge.10046.mi.com/" class="icon_"><span>话费充值</span></a></li>
+        </ul>
+        <div class="subRight">
+            <a href="https://item.mi.com/1171800021.html"><img src="img/sub/xmad_14993367479701_kbMcI.jpg" alt=""></a>
+            <a href="https://item.mi.com/product/10000030.html"><img src="img/sub/xmad_14993366456781_FlzhI.jpg" alt=""></a>
+            <a href="https://a.union.mi.com/mua?c=17705.0001"><img src="img/sub/xmad_14996691020798_PKidY.jpg"
+                                                                   alt=""></a>
+        </div>
+    </div>
+</div>
+<!--bannerSub end-->
+
+<!--star begin-->
+<div class="starbg">
+    <div class="star">
+        <h2>小米明星单品</h2>
+        <div class="swiper-container">
+            <ul class="swiper-wrapper">
+            </ul>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!--star end-->
+
+<div class="contentbg">
+    <!--main begin-->
+    <div class="mainbg"></div>
+    <!--main end-->
+
+    <!--forYou begin-->
+    <div class="forYoubg">
+        <div class="forYou">
+            <h2>为你推荐</h2>
+            <div class="swiper-container forYouContent"></div>
+            <div class="swiper-pagination">
+                <span class="left icon_ bullet"></span>
+                <span class="right icon_ bullet"></span>
+            </div>
+        </div>
+    </div>
+    <!--forYou end-->
+
+    <!--hotReview begin-->
+    <div class="hotReviewbg">
+        <div class="hotReview">
+            <h2>热评产品</h2>
+            <ul class="hotReviewContent clearfix">
+
+            </ul>
+        </div>
+    </div>
+    <!--hotReview end-->
+
+    <!--content begin-->
+    <div class="conbg">
+        <div class="content">
+            <h2>热评产品</h2>
+            <ul class="contentMain">
+            </ul>
+        </div>
+    </div>
+    <!--content end-->
+
+    <!--video begin-->
+    <div class="videobg">
+        <div class="video">
+            <h2>视频</h2>
+            <ul class="videoMain clearfix">
+
+            </ul>
+            <div class="videoBackground"></div>
+            <div class="videoWin">
+                <h3><span></span><a href="###" class="close icon_"></a></h3>
+                <iframe width="880px" height="536px" allowfullscreen src="http://hd.mi.com/f/zt/hd/miplayer2/index.html"
+                        frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+    <!--video end-->
+</div>
+
+<!--siteFooter begin-->
+<div class="siteFooterbg">
+    <div class="siteFooter">
+        <ul class="footerService clearfix">
+            <li>
+                <a><i class="service1 icon_"></i>预约维修服务</a>
+            </li>
+            <li>
+                <a><i class="service2 icon_"></i>7天无理由退货</a>
+            </li>
+            <li>
+                <a><i class="service3 icon_"></i>15天免费换货</a>
+            </li>
+            <li>
+                <a><i class="service4 icon_"></i>满150元包邮</a>
+            </li>
+            <li class="serviceLast">
+                <a><i class="service5 icon_"></i>520余家售后网点</a>
+            </li>
+        </ul>
+        <div class="footerLinks clearfix">
+            <div class="linksLeft clearfix">
+                <dl>
+                    <dt>帮助中心</dt>
+                    <dd><a href="https://www.mi.com/service/account/register/">账户管理</a></dd>
+                    <dd><a href="https://www.mi.com/service/buy/buytime/">购物指南</a></dd>
+                    <dd><a href="https://www.mi.com/service/order/sendprogress/">订单操作</a></dd>
+                </dl>
+                <dl>
+                    <dt>帮助中心</dt>
+                    <dd><a href="https://www.mi.com/service/account/register/">账户管理</a></dd>
+                    <dd><a href="https://www.mi.com/service/buy/buytime/">购物指南</a></dd>
+                    <dd><a href="https://www.mi.com/service/order/sendprogress/">订单操作</a></dd>
+                </dl>
+                <dl>
+                    <dt>帮助中心</dt>
+                    <dd><a href="https://www.mi.com/service/account/register/">账户管理</a></dd>
+                    <dd><a href="https://www.mi.com/service/buy/buytime/">购物指南</a></dd>
+                    <dd><a href="https://www.mi.com/service/order/sendprogress/">订单操作</a></dd>
+                </dl>
+                <dl>
+                    <dt>帮助中心</dt>
+                    <dd><a href="https://www.mi.com/service/account/register/">账户管理</a></dd>
+                    <dd><a href="https://www.mi.com/service/buy/buytime/">购物指南</a></dd>
+                    <dd><a href="https://www.mi.com/service/order/sendprogress/">订单操作</a></dd>
+                </dl>
+                <dl>
+                    <dt>帮助中心</dt>
+                    <dd><a href="https://www.mi.com/service/account/register/">账户管理</a></dd>
+                    <dd><a href="https://www.mi.com/service/buy/buytime/">购物指南</a></dd>
+                    <dd><a href="https://www.mi.com/service/order/sendprogress/">订单操作</a></dd>
+                </dl>
+                <dl>
+                    <dt>帮助中心</dt>
+                    <dd><a href="https://www.mi.com/service/account/register/">账户管理</a></dd>
+                    <dd><a href="https://www.mi.com/service/buy/buytime/">购物指南</a></dd>
+                    <dd><a href="https://www.mi.com/service/order/sendprogress/">订单操作</a></dd>
+                </dl>
+            </div>
+            <div class="linksRight">
+                <p>400-100-5678</p>
+                <p class="tel">周一至周日 8:00-18:00<br/>（仅收市话费）</p>
+                <a href="https://www.mi.com/service/contact/">24小时在线客服</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--siteFooter end-->
+
+<!--info begin-->
+<div class="infobg">
+    <div class="info clearfix">
+        <div class="infoLeft">
+            <a class="logo" href="index.html" alt="小米官网"></a>
+            <p class="infoMiddle">
+                <a href="index.html">小米商城</a>
+                <span>|</span>
+                <a href="http://www.miui.com/" target="_blank">MIUI</a>
+                <span>|</span>
+                <a href="http://www.miliao.com/" target="_blank">米聊</a>
+                <span>|</span>
+                <a href="http://www.duokan.com/" target="_blank">多看书城</a>
+                <span>|</span>
+                <a href="http://www.miwifi.com/" target="_blank">小米路由器</a>
+                <span>|</span>
+                <a href="http://call.mi.com/" target="_blank">视频电话</a>
+                <span>|</span>
+                <a href="http://xiaomi.tmall.com/" target="_blank">小米天猫店</a>
+                <span>|</span>
+                <a href="http://shop115048570.taobao.com/" target="_blank">小米淘宝直营店</a>
+                <span>|</span>
+                <a href="http://union.mi.com/" target="_blank">小米网盟</a>
+                <span>|</span>
+                <a href="https://www.mi.com/mimobile/" target="_blank">小米移动</a>
+                <span>|</span>
+                <a href="http://www.miui.com/res/doc/privacy/cn.html" target="_blank">隐私政策</a>
+                <span>|</span>
+                <a href="##" class="selectR">Select Region</a>
+            </p>
+            <p>
+                <a href="https://www.mi.com/">©mi.com </a>
+                <span>京ICP证110507号</span>
+                <a href="http://www.miitbeian.gov.cn/">京ICP备10046444号</a>
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020134">京公网安备11010802020134号</a>
+                <a href="https://c1.mifile.cn/f/i/2013/cn/jingwangwen.jpg">京网文[2014]0059-0009号</a>
+            </p>
+            <p>违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</p>
+        </div>
+        <div class="infoRight">
+            <a href="https://privacy.truste.com/privacy-seal/validation?rid=4fc28a8c-6822-4980-9c4b-9fdc69b94eb8&lang=zh-cn"><img
+                    src="https://i1.mifile.cn/f/i/17/site/truste.png" alt=""></a>
+            <a href="https://search.szfw.org/cert/l/CX20120926001783002010"><img
+                    src="https://s01.mifile.cn/i/v-logo-2.png" alt=""></a>
+            <a href="https://ss.knet.cn/verifyseal.dll?sn=e12033011010015771301369&ct=df&pa=461082"><img
+                    src="https://s01.mifile.cn/i/v-logo-1.png" alt=""></a>
+            <a href="http://www.315online.com.cn/member/315140007.html"><img src="https://s01.mifile.cn/i/v-logo-3.png"
+                                                                             alt=""></a>
+        </div>
+    </div>
+</div>
+<!--info end-->
+
+<div class="sloganbg">
+    <div class="slogan"></div>
+</div>
+
+<script type="text/template" id="navTemplate">
+    <%$.each(navHideData,function(index,item){%>
+    <ul id="<%=item.id%>">
+        <%$.each(item.goods,function(ind,ite){%>
+        <li
+        <%if(ind===item.goods.length-1){%>class="lastChild"<%}%>>
+        <div><%if(ite.tag){%><span><%=ite.tag%></span><%}%></div>
+        <a href="<%=ite.link%>">
+            <img src="img/nav/placeholder-110x110.png" alt="" setsrc="<%=ite.image%>">
+            <span>
+                    <%if(typeof ite.name==="string"){%>
+                    <%=ite.name%>
+                    <%}else{%>
+                    <%=ite.name[0]%><br><%=ite.name[1]%>
+                    <%}%>
+                </span>
+        </a>
+        <%if(ite.price){%>
+        <p><%=ite.price%></p>
+        <%}%>
+        </li>
+        <%})%>
+    </ul>
+    <%})%>
+</script>
+<script type="text/template" id="asideTemplate">
+    <%$.each(asideData,function(index,item){%>
+    <%var goodsList={ul1:[],ul2:[],ul3:[],ul4:[]};%>
+    <%var goodsNum=null;%>
+    <%$.each(item.goods,function(ind,ite){%>
+    <%if(ind<6){%>
+    <%goodsList.ul1[goodsList.ul1.length]=ite;%>
+    <%}else if(ind>5&&ind<12){%>
+    <%goodsList.ul2[goodsList.ul2.length]=ite;%>
+    <%}else if(ind>11&&ind<18){%>
+    <%goodsList.ul3[goodsList.ul3.length]=ite;%>
+    <%}else if(ind>17&&ind<24){%>
+    <%goodsList.ul4[goodsList.ul4.length]=ite;%>
+    <%}%>
+    <%});%>
+    <li>
+        <a href="<%=item.href%>" class="asideKind icon_"><%=item.title%></a>
+        <div class="clearfix">
+            <%$.each(goodsList,function(a,b){%>
+            <%if(b.length>0){%>
+            <ul>
+                <%$.each(b,function(i,em){%>
+                <li>
+                    <a href="<%=em.href%>" class="asideGoods">
+                        <img src="img/aside/placeholder-40.png" setsrc="<%=em.image%>" alt="">
+                        <span><%=em.name%></span>
+                    </a>
+                    <%if(em.choose){%>
+                    <a href="<%=em.choose[1]%>" class="asideChoose"><%=em.choose[0]%></a>
+                    <%}%>
+                </li>
+                <%});%>
+            </ul>
+            <%}%>
+            <%});%>
+        </div>
+    </li>
+    <%})%>
+</script>
+<script type="text/template" id="starTemplate">
+    <%var ary=["#ffac13","#83c44e","#2196f3","#e53935","#00c0a5"];%>
+    <%$.each(starData,function (index,item) {%>
+    <li class="swiper-slide" style="border-top-color:<%=ary[index%5]%>;">
+        <a href="<%=item.link%>">
+            <img src="img/nav/placeholder-110x110.png" data-src="<%=item.image%>"
+                 class="swiper-lazy">
+            <p><%=item.name%></p>
+        </a>
+        <p><%=item.detail%></p>
+        <p class="starPrice"><%=item.price%></p>
+    </li>
+    <%})%>
+</script>
+<script type="text/template" id="mainTemplate">
+    <%$.each(mainData,function(index,item){%>
+    <div class="main">
+        <div class="mainTitle clearfix">
+            <h2><%=item.title%></h2>
+            <ul class="mainClassify clearfix">
+                <%$.each(item.classify,function(a,b){%>
+                <li><%=b.title%></li>
+                <%})%>
+            </ul>
+        </div>
+        <div class="mainBody clearfix">
+            <div class="mainLeft">
+                <%$.each(item.images,function (c,d){%>
+                <%if(item.images.length<2){%>
+                <a href="<%=d.url%>" style="height: 614px;">
+                    <%}else{%>
+                    <a href="<%=d.url%>">
+                        <%}%>
+                        <img src="img/nav/placeholder-110x110.png" setsrc="<%=d.image%>" alt="">
+                    </a>
+                    <%})%>
+            </div>
+            <div class="mainRight">
+                <%$.each(item.classify,function(e,f){%>
+                <ul class="clearfix">
+                    <%$.each(f.goods,function(g,h){%>
+                    <%if(g<7){%>
+                    <li>
+                        <%if(h.activity){%>
+                        <%var color=null;%>
+                        <%if(h.activity==="有赠品"){%>
+                        <%color="#2196f3";%>
+                        <%}else if(h.activity==="免邮费"){%>
+                        <%color="#ffac13";%>
+                        <%}else{%>
+                        <%color="#e53935";%>
+                        <%}%>
+                        <span class="mainActivity" style="background-color:<%=color%>;"><%=h.activity%></span>
+                        <%}%>
+                        <a href="<%=h.href%>">
+                            <img src="img/nav/placeholder-110x110.png" setsrc="<%=h.image%>" alt="">
+                            <h4><%=h.name%></h4>
+                            <%if(h.assessment){%>
+                            <div class="mainAssessment">
+                                <p><%=h.assessment[0]%></p>
+                                <p class="mainOrigin"><%=h.assessment[1]%></p>
+                            </div>
+                            <%}%>
+                        </a>
+                        <%if(h.ad){%>
+                        <p><%=h.ad%></p>
+                        <%}%>
+                        <p class="mainPrice">
+                            <span><%=h.price[0]%></span>
+                            <%if(h.price.length>1){%>
+                            <span class="primePrice"><%=h.price[1]%></span>
+                            <%}%>
+                        </p>
+                        <%if(h.assNum){%>
+                        <p><%=h.assNum%></p>
+                        <%}%>
+                    </li>
+                    <%}else if(g===7){%>
+                    <li class="mainLast">
+                        <a href="<%=h.href%>" class="clearfix">
+                            <h4><%=h.name%></h4>
+                            <img src="img/nav/placeholder-110x110.png" setsrc="<%=h.image%>" alt="">
+
+                        </a>
+                        <span><%=h.price[0]%></span>
+                    </li>
+                    <%}%>
+                    <%})%>
+                    <li class="mainLast">
+                        <a href="<%=f.href%>" class="clearfix">
+                            <div class="mainMore">
+                                <p>浏览更多</p>
+                                <p class="mainHot"><%=f.title%></p>
+                            </div>
+                            <div class="mainicon_"></div>
+                        </a>
+                    </li>
+                </ul>
+                <%})%>
+            </div>
+        </div>
+    </div>
+    <%})%>
+</script>
+<script type="text/template" id="forYouTemplate">
+    <ul class="clearfix swiper-wrapper">
+        <%$.each(forYouData,function(g,h){%>
+        <li class="swiper-slide">
+            <%if(h.activity){%>
+            <%var color=null;%>
+            <%if(h.activity==="有赠品"){%>
+            <%color="#2196f3";%>
+            <%}else if(h.activity==="免邮费"){%>
+            <%color="#ffac13";%>
+            <%}else{%>
+            <%color="#e53935";%>
+            <%}%>
+            <span class="mainActivity" style="background-color:<%=color%>;"><%=h.activity%></span>
+            <%}%>
+            <a href="<%=h.href%>">
+                <img src="img/nav/placeholder-110x110.png" setsrc="<%=h.image%>" alt="">
+                <h4><%=h.name%></h4>
+                <%if(h.assessment){%>
+                <div class="mainAssessment">
+                    <p><%=h.assessment[0]%></p>
+                    <p class="mainOrigin"><%=h.assessment[1]%></p>
+                </div>
+                <%}%>
+            </a>
+            <%if(h.ad){%>
+            <p><%=h.ad%></p>
+            <%}%>
+            <p class="mainPrice">
+                <span><%=h.price[0]%></span>
+                <%if(h.price.length>1){%>
+                <span class="primePrice"><%=h.price[1]%></span>
+                <%}%>
+            </p>
+            <%if(h.assNum){%>
+            <p><%=h.assNum%></p>
+            <%}%>
+        </li>
+        <%})%>
+    </ul>
+</script>
+<script type="text/template" id="hotReviewTemplate">
+    <%$.each(hotReviewData,function(index,item){%>
+    <li>
+        <a href="<%=item.link%>"><img
+                src="img/nav/placeholder-110x110.png" setsrc="<%=item.image%>" alt=""></a>
+        <div>
+            <p class="HRAssess"><a href="<%=item.assess[1]%>"><%=item.assess[0]%></a>
+            </p>
+            <p class="from"><%=item.from%></p>
+            <p class="name"><a href="<%=item.link%>"><%=item.name%></a><span><%=item.price%></span></p>
+        </div>
+    </li>
+    <%})%>
+</script>
+<script type="text/template" id="contentTemplate">
+    <%var ary=["#ffac13","#83c44e","#e53935","#2196f3"];%>
+    <%$.each(contentData,function(index,item){%>
+    <li class="swiper-container contentItem" style="border-top-color: <%=ary[index]%>;">
+        <h2 style="color:<%=ary[index]%>;"><%=item.type%></h2>
+        <ul class="swiper-wrapper content-wrapper">
+            <%$.each(item.goods,function(ind,ite){%>
+            <li class="swiper-slide content-slide">
+                <div>
+                    <h4><a href="<%=ite.link%>"><%=ite.title%></a></h4>
+                    <p><a href="<%=ite.link%>"><%=ite.detail%></a></p>
+                    <p class="content-price"><%=ite.price%></p>
+                </div>
+                <a href="<%=ite.link%>">
+                    <img src="img/nav/placeholder-110x110.png" setsrc="<%=ite.image%>" alt="">
+                </a>
+            </li>
+            <%})%>
+            <li class="swiper-slide content-slide">
+                <div>
+                    <p class="content-detail"><%=item.detail[0]%></p>
+                    <p class="content-detail"><%=item.detail[1]%></p>
+                    <a class="content-more" href="<%=item.link[0]%>"
+                       style="color:<%=ary[index]%>;border-color:<%=ary[index]%>;"><%=item.link[1]%></a>
+                </div>
+                <a href="##">
+                    <img src="img/nav/placeholder-110x110.png" setsrc="<%=item.image%>">
+                </a>
+            </li>
+        </ul>
+        <div class="swiper-pagination"></div>
+        <div class="left icon_ bullet2"></div>
+        <div class="right icon_ bullet2"></div>
+    </li>
+    <%})%>
+</script>
+<script type="text/template" id="videoTemplate">
+    <%$.each(videoData,function(index,item){%>
+    <li vurl="<%=item.video%>" poster="<%=item.poster%>">
+        <img src="img/nav/placeholder-110x110.png" setsrc="<%=item.image%>" class="videoImg">
+        <div class="videoPlay icon_"></div>
+        <div class="videoTitle">
+            <a><%=item.title%></a>
+            <p><%=item.detail%></p>
+        </div>
+    </li>
+    <%})%>
+</script>
+<script type="text/javascript" src="JS/index.js"></script>
+</body>
+</html>
