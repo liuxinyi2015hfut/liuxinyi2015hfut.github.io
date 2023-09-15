@@ -1,0 +1,296 @@
+[
+  {
+    "type": "小米手机",
+    "id":"navXM",
+    "goods": [
+      {
+        "tag": "新品",
+        "link": "https://www.mi.com/mi6/",
+        "image": "img/nav/xmphone/xm6.png",
+        "name": "小米6",
+        "price": "2499元起"
+      },
+      {
+        "tag": "现货",
+        "link": "https://www.mi.com/max2/",
+        "image": "img/nav/xmphone/xmMax2.png",
+        "name": "小米Max 2",
+        "price": "1699元起"
+      },
+      {
+        "tag": "下单立减300",
+        "link": "https://www.mi.com/minote2/",
+        "image": "img/nav/xmphone/xmNote2.jpg",
+        "name": "小米Note 2",
+        "price": "2799元起"
+      },
+      {
+        "tag": "现货",
+        "link": "https://www.mi.com/mix/",
+        "image": "img/nav/xmphone/xmMix.jpg",
+        "name": "小米MIX",
+        "price": "3499元起"
+      },
+      {
+        "tag": "",
+        "link": "https://www.mi.com/mi5splus/",
+        "image": "img/nav/xmphone/xm5sPlus.jpg",
+        "name": "小米5s Plus",
+        "price": "2299元起"
+      },
+      {
+        "tag": "立减200",
+        "link": "https://www.mi.com/mi5c/",
+        "image": "img/nav/xmphone/xm5c.png",
+        "name": "小米手机5C",
+        "price": "1499元"
+      }
+    ]
+  },
+  {
+    "type": "红米",
+    "id":"navHM",
+    "goods":[
+      {
+        "tag":"热卖",
+        "link":"https://www.mi.com/redminote4x/",
+        "image":"img/nav/hm/hmNote4x.jpg",
+        "name":"红米Note 4X",
+        "price":"999元起"
+      },
+      {
+        "tag":"热卖",
+        "link":"https://www.mi.com/redmi4x/",
+        "image":"img/nav/hm/hm4x.jpg",
+        "name":"红米4X",
+        "price":"699元起"
+      },
+      {
+        "tag":"",
+        "link":"https://www.mi.com/redmi4a/",
+        "image":"img/nav/hm/hm4a.png",
+        "name":"红米4A",
+        "price":"599元"
+      },
+      {
+        "tag":"",
+        "link":"https://www.mi.com/redmi4/",
+        "image":"img/nav/hm/hm4.jpg",
+        "name":"红米4",
+        "price":"799元起"
+      }
+    ]
+  },
+  {
+    "type": "平板 · 笔记本",
+    "id":"navMiPad",
+    "goods":[
+      {
+        "tag":"",
+        "link":"https://www.mi.com/mipad3/",
+        "image":"img/nav/mipad/mipad3.png",
+        "name":"小米平板3 64GB",
+        "price":"1499元"
+      },
+      {
+        "tag":"",
+        "link":"https://www.mi.com/mibookair-12/",
+        "image":"img/nav/mipad/air12.5.jpg",
+        "name":"小米笔记本Air 12.5",
+        "price":"3599元"
+      },
+      {
+        "tag":"新品",
+        "link":"https://www.mi.com/mibookair/",
+        "image":"img/nav/mipad/air13.3.jpg",
+        "name":"小米笔记本Air 13.3",
+        "price":"4899元"
+      }
+    ]
+  },
+  {
+    "type": "电视",
+    "id":"navTV",
+    "goods":[
+      {
+        "tag":"新品",
+        "link":"https://www.mi.com/mitv4/49/",
+        "image":"img/nav/tv/xmtv4-49.png",
+        "name":"小米电视4 49英寸",
+        "price":"3499元"
+      },
+      {
+        "tag":"新品",
+        "link":"https://www.mi.com/mitv4/55/",
+        "image":"img/nav/tv/xmtv4-55.png",
+        "name":"小米电视4 55英寸",
+        "price":"3999元"
+      },
+      {
+        "tag":"新品",
+        "link":"https://www.mi.com/mitv4/65/",
+        "image":"img/nav/tv/xmtv4-65.png",
+        "name":"小米电视4 65英寸",
+        "price":"9999元"
+      },
+      {
+        "tag":"",
+        "link":"https://www.mi.com/mitv4A/43/",
+        "image":"img/nav/tv/xmtv4A-43.png",
+        "name":"小米电视4A 43英寸",
+        "price":"2099元"
+      },
+      {
+        "tag":"",
+        "link":"https://www.mi.com/mitv4A/49/",
+        "image":"img/nav/tv/xmtv4A-49.png",
+        "name":"小米电视4A 49英寸",
+        "price":"2599元起"
+      },
+      {
+        "tag":"",
+        "link":"https://www.mi.com/buytv/",
+        "image":"img/nav/tv/tvall.png",
+        "name":["查看全部","小米电视"],
+        "price":""
+      }
+    ]
+  },
+  {
+    "type": "盒子 · 影音",
+    "id":"navBox",
+    "goods":[
+      {
+        "tag":"",
+        "link":"https://www.mi.com/mibox3s/",
+        "image":"img/nav/xmbox/miBox3s.png",
+        "name":"小米盒子3s",
+        "price":"299元"
+      },
+      {
+        "tag":"",
+        "link":"https://www.mi.com/mibox3c/",
+        "image":"img/nav/xmbox/miBox3c.png",
+        "name":"小米盒子3c",
+        "price":"199元"
+      },
+      {
+        "tag":"",
+        "link":"https://www.mi.com/hezi3s/",
+        "image":"img/nav/xmbox/xmBox3P.jpg",
+        "name":"小米盒子3 增强版",
+        "price":"399元"
+      },
+      {
+        "tag":"",
+        "link":"https://www.mi.com/misurround/",
+        "image":"img/nav/xmbox/xmyy.png",
+        "name":"小米家庭影院",
+        "price":"1999元"
+      },
+      {
+        "tag":"",
+        "link":"https://item.mi.com/1160800074.html",
+        "image":"img/nav/xmbox/xmyyN.jpg",
+        "name":"小米家庭音响 标准版",
+        "price":"699元"
+      }
+    ]
+  },
+  {
+    "type": "路由器",
+    "id":"navRT",
+    "goods":[
+      {
+        "tag":"",
+        "link":"https://www.mi.com/miwifihd/",
+        "image":"img/nav/router/HD-Pro.png",
+        "name":"小米路由器 HD/Pro",
+        "price":"499元起"
+      },
+      {
+        "tag":"新品",
+        "link":"https://www.mi.com/miwifi3g/",
+        "image":"img/nav/router/router3g.png",
+        "name":"小米路由器 3G",
+        "price":"249元"
+      },
+      {
+        "tag":"包邮",
+        "link":"https://www.mi.com/miwifi3/",
+        "image":"img/nav/router/router3.png",
+        "name":"小米路由器 3",
+        "price":"149元"
+      },
+      {
+        "tag":"包邮",
+        "link":"https://www.mi.com/miwifi3c/",
+        "image":"img/nav/router/router3c.png",
+        "name":"小米路由器 3C",
+        "price":"99元"
+      },
+      {
+        "tag":"",
+        "link":"https://www.mi.com/plc/",
+        "image":"img/nav/router/dlm.png",
+        "name":"小米WiFi电力猫",
+        "price":"249元"
+      },
+      {
+        "tag":"",
+        "link":"https://item.mi.com/1164700010.html",
+        "image":"img/nav/router/fdq2.jpg",
+        "name":"小米WiFi放大器 2",
+        "price":"49元"
+      }
+    ]
+  },
+  {
+    "type": "智能硬件",
+    "id":"navZN",
+    "goods":[
+      {
+        "tag":"包邮",
+        "link":"https://www.mi.com/shouhuan2/",
+        "image":"img/nav/zn/sh2.png",
+        "name":"小米手环2",
+        "price":"149元"
+      },
+      {
+        "tag":"",
+        "link":"https://www.mi.com/scale2/",
+        "image":"img/nav/zn/tzc.jpg",
+        "name":"小米体脂秤",
+        "price":"199元"
+      },
+      {
+        "tag":"新品",
+        "link":"https://www.mi.com/water3/",
+        "image":"img/nav/zn/jsq.png",
+        "name":"小米净水器",
+        "price":"1499元起"
+      },
+      {
+        "tag":"新品",
+        "link":"https://www.mi.com/mivr2c/",
+        "image":"img/nav/zn/xmvrplay2.png",
+        "name":"小米VR眼镜 PLAY2",
+        "price":"99元"
+      },
+      {
+        "tag":"",
+        "link":"https://www.mi.com/smart/",
+        "image":"img/nav/zn/znall.jpg",
+        "name":["查看全部","智能硬件"],
+        "price":""
+      },
+      {
+        "tag":"",
+        "link":"https://www.mi.com/dianfanbao2/",
+        "image":"img/nav/zn/dfb.jpg",
+        "name":"米家IH电饭煲",
+        "price":"399元"
+      }
+    ]
+  }
+]

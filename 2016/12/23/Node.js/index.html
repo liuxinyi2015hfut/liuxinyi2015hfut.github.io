@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,node,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="刘心怡" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Node.js是一个让JS可以运行在浏览器之外的服务器端的平台，NODE是一个环境  它实现了诸如文件系统、模块、包、操作系统API，网络通信等核心JS没有或不完善的功能 它摒弃传统平台依赖多线程来实现高并发的设计思路，而采用单线程，异步式I/O，事件·驱动式的程序设计模型 NODE采用的是谷歌的Ｖ8 引擎来渲染js的（运行速度快、稳定，编写的js代码不需要兼容的问题）">
+<meta name="keywords" content="JavaScript,node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node">
+<meta property="og:url" content="http://yoursite.com/2016/12/23/Node.js/index.html">
+<meta property="og:site_name" content="刘心怡">
+<meta property="og:description" content="Node.js是一个让JS可以运行在浏览器之外的服务器端的平台，NODE是一个环境  它实现了诸如文件系统、模块、包、操作系统API，网络通信等核心JS没有或不完善的功能 它摒弃传统平台依赖多线程来实现高并发的设计思路，而采用单线程，异步式I/O，事件·驱动式的程序设计模型 NODE采用的是谷歌的Ｖ8 引擎来渲染js的（运行速度快、稳定，编写的js代码不需要兼容的问题）">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2016/12/23/Node.js/Node.js-20190620-15-31-23.png">
+<meta property="og:updated_time" content="2018-12-09T06:32:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node">
+<meta name="twitter:description" content="Node.js是一个让JS可以运行在浏览器之外的服务器端的平台，NODE是一个环境  它实现了诸如文件系统、模块、包、操作系统API，网络通信等核心JS没有或不完善的功能 它摒弃传统平台依赖多线程来实现高并发的设计思路，而采用单线程，异步式I/O，事件·驱动式的程序设计模型 NODE采用的是谷歌的Ｖ8 引擎来渲染js的（运行速度快、稳定，编写的js代码不需要兼容的问题）">
+<meta name="twitter:image" content="http://yoursite.com/2016/12/23/Node.js/Node.js-20190620-15-31-23.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/23/Node.js/">
+
+
+
+
+
+  <title>node | 刘心怡</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘心怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Tomorrow will be better than today!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/23/Node.js/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘心怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘心怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">node</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-23T09:11:00+08:00">
+                2016-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Node.js是一个让JS可以运行在浏览器之外的服务器端的平台，NODE是一个环境</p>
+<ul>
+<li>它实现了诸如文件系统、模块、包、操作系统API，网络通信等核心JS没有或不完善的功能</li>
+<li>它摒弃传统平台依赖多线程来实现高并发的设计思路，而采用单线程，异步式I/O，事件·驱动式的程序设计模型</li>
+<li>NODE采用的是谷歌的Ｖ8 引擎来渲染js的（运行速度快、稳定，编写的js代码<strong>不需要兼容</strong>的问题）</li>
+</ul>
+<a id="more"></a>
+<h2 id="Node-js-安装"><a href="#Node-js-安装" class="headerlink" title="Node.js 安装"></a>Node.js 安装</h2><h3 id="检测PATH环境变量是否配置了Node-js"><a href="#检测PATH环境变量是否配置了Node-js" class="headerlink" title="检测PATH环境变量是否配置了Node.js"></a>检测PATH环境变量是否配置了Node.js</h3><ul>
+<li>点击开始菜单,点击运行</li>
+<li>输入 cmd</li>
+<li>输入命令 path 输出结果<br><img src="/2016/12/23/Node.js/Node.js-20190620-15-31-23.png" alt="path"></li>
+<li>如果有<code>node</code>的路径的话就表示配置正确，可以在命令行下执行<code>node</code>命令检查node.js版本<code>node -v</code></li>
+</ul>
+<h3 id="手工配置环境变量"><a href="#手工配置环境变量" class="headerlink" title="手工配置环境变量"></a>手工配置环境变量</h3><ul>
+<li>打开资源管理器</li>
+<li>在计算机上点击右键，显示菜单后点击属性</li>
+<li>选择高级系统设置</li>
+<li>选择高级页签下的环境变量</li>
+<li>在用户变量中找到path,如果没有就新建一个</li>
+<li>在path的最前面添加node.js的安装路径，如 C:\Program Files\nodejs</li>
+</ul>
+<h2 id="Node-js的优点"><a href="#Node-js的优点" class="headerlink" title="Node.js的优点"></a>Node.js的优点</h2><ul>
+<li>Nodejs基于Javascript语言</li>
+<li>统一公共类库，代码标准化</li>
+<li>Nodejs选择了目前最快的浏览器内核V8做为执行引擎</li>
+<li>Nodejs的社区非常活跃</li>
+</ul>
+<h2 id="Node概念"><a href="#Node概念" class="headerlink" title="Node概念"></a>Node概念</h2><h3 id="什么是回调"><a href="#什么是回调" class="headerlink" title="什么是回调"></a>什么是回调</h3><ul>
+<li>异步编程基本的方法，需要异步处理的时候一般采用后续传递的方式。</li>
+<li>将后续逻辑作为函数参数中作为起始函数的参数。</li>
+</ul>
+<h3 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h3><ul>
+<li>同步是指发起调用之后主线程只能挂起,调用者主动等待这个调用的结果</li>
+<li>异步是指发起调用之后主线程可以做别的事情,被调用者通过通知来告知调用者结果</li>
+</ul>
+<h3 id="什么是IO"><a href="#什么是IO" class="headerlink" title="什么是IO"></a>什么是IO</h3><ul>
+<li>Input(输入) 从文件系统中读取文件</li>
+<li>Output(输出) 向文件系统写入文件</li>
+</ul>
+<h3 id="什么是单线程-多线程"><a href="#什么是单线程-多线程" class="headerlink" title="什么是单线程/多线程"></a>什么是单线程/多线程</h3><ul>
+<li>单线程指程序按顺序执行，前面流程执行完毕之后后面的流程才能执行到</li>
+<li>多线程指同时可以执行多个任务，比如一边看电视，一边睡觉,通过系统线程上下文切换来弥补同步式IO调用时的时间开销</li>
+<li>Node单线程指的是主线程是单线程的，所有阻塞的部分交给一个线程池处理，然后这个主线程通过一个队列跟线程池协作</li>
+</ul>
+<h3 id="什么是事件循环"><a href="#什么是事件循环" class="headerlink" title="什么是事件循环"></a>什么是事件循环</h3><ul>
+<li>管理异步动作、定时器和回调函数的机制叫事件环</li>
+<li>异步的时候就会压入到这个队列，然后不停读取事件，事件发生后会把对应的回调加入队列</li>
+<li>队列按加入的顺序依次执行，由普通函数和回调函数组成。</li>
+</ul>
+<h2 id="全局对象Global"><a href="#全局对象Global" class="headerlink" title="全局对象Global"></a>全局对象Global</h2><ul>
+<li>在普通浏览器下执行js ，浏览器提供全局环境，全局对象是<code>window</code></li>
+<li><code>NODE</code>环境下的全局js对象是<code>Global</code></li>
+</ul>
+<blockquote>
+<p>默认在<code>node</code>中文件执行时套了一个闭包函数</p>
+<ul>
+<li>node.js文件中 的<code>this</code>被更改了,为了实现模块化，在此函数中将<code>this</code>指向改掉了，全局<code>this</code>是<code>{}</code>，定时器中<code>this</code>指向自己</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>我们声明的属性 不会自动挂载在global上，不会自动污染全局变量</li>
+</ul>
+</blockquote>
+<h3 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h3><ul>
+<li><code>console</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.time(<span class="string">'a'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt; <span class="number">100</span>;i++)&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'a'</span>);<span class="comment">//for循环执行时间</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>exports</code></li>
+<li><code>require</code></li>
+<li><code>module</code></li>
+<li><code>_filename</code></li>
+<li><code>_dimame</code></li>
+<li><code>setTimeout</code></li>
+<li><code>setImmediate</code>：立即执行，不能设置时间 ，但是异步的</li>
+</ul>
+<h4 id="process进程"><a href="#process进程" class="headerlink" title="process进程"></a>process进程</h4><h5 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h5><ul>
+<li><code>process.pid</code></li>
+<li><code>process.env</code>：在开发时会设置环境变量</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="string">''</span>;<span class="comment">//上线时，不会设置node_env 所以会自动采用下面的路径</span></span><br><span class="line"><span class="keyword">if</span>(process.env.NODE_ENV==<span class="string">'DEV'</span>)&#123;</span><br><span class="line">      url = <span class="string">'http://localhost:3000'</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      url = <span class="string">'http://www.baidu.com'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><ul>
+<li><code>process.kill(process.pid)</code>：杀死进程</li>
+<li><code>process.cwd()</code></li>
+<li><code>process.chdir()</code></li>
+<li><code>process.nextTick()</code>——异步</li>
+</ul>
+<h2 id="NODE模块"><a href="#NODE模块" class="headerlink" title="NODE模块"></a>NODE模块</h2><ul>
+<li>js没有模块系统，不支持封闭作用域或依赖管理</li>
+<li>js没有标准库，没有文件系统API</li>
+<li>js没有包管理系统，不能自动加载和安装依赖</li>
+</ul>
+<h3 id="实现模块化的规范"><a href="#实现模块化的规范" class="headerlink" title="实现模块化的规范"></a>实现模块化的规范</h3><ul>
+<li><code>CMD seajs</code> 就近依赖，需要在引入即可</li>
+<li><code>AMD requirejs</code> 依赖前置，先引进来，先定义好在使用</li>
+<li><code>commonjs</code>、<code>nodejs</code> 基于文件读写的，天生自带模块化</li>
+</ul>
+<blockquote>
+<p>CommonJS 是javascript模块化编程的一种规范，主要是在服务器端模块化的规范，一个单独的文件就是一个模块。每一个模块都是一个单独的作用域，也就是说，在该模块内部定义的变量，无法被其他模块读取，除非定义为global对象的属性。</p>
+</blockquote>
+<h3 id="文件加载缓存"><a href="#文件加载缓存" class="headerlink" title="文件加载缓存"></a>文件加载缓存</h3><p>加载模块后会缓存，多次加载后得到同一对象</p>
+<ul>
+<li>查看模块缓存<code>console.log(require.cache);</code></li>
+<li>查询模块绝对路径<code>require.resolve(&#39;./test.js&#39;);</code></li>
+<li>查看单个的模块缓存<code>require.cache[require.resolve(&#39;./test.js&#39;)]</code></li>
+<li>删除模块缓存<code>require.cache[require.resolve(&#39;./test.js&#39;)];</code></li>
+</ul>
+<h3 id="内置模块"><a href="#内置模块" class="headerlink" title="内置模块"></a>内置模块</h3><h4 id="http"><a href="#http" class="headerlink" title="http"></a><code>http</code></h4><h4 id="fs"><a href="#fs" class="headerlink" title="fs"></a>fs</h4><p>文件系统，操作文件、目录</p>
+<ul>
+<li><code>fs.writeFile(文件路径,写入内容字符串,&quot;utf-8&quot;,function (err) {})</code></li>
+<li><code>fs.exists(文件路径,function (err, data) {})</code>判断文件是否存在，存在执行函数</li>
+<li><code>fs.readFile(文件路径, &#39;utf8&#39;, function (err, data) {})</code><ul>
+<li>读取的文件必须存在</li>
+<li>读取时默认读出的内容都是buffer类型</li>
+<li>读取文件不能比内存大</li>
+<li>淹没可用内存，边读边写，而不是全部读到内存中，流</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copy</span>(<span class="params">source,target,callback</span>) </span>&#123;</span><br><span class="line">  fs.readFile(source,</span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">err,data</span>) </span>&#123;</span><br><span class="line">      <span class="comment">//如果有错误调用callback传递错误</span></span><br><span class="line">          <span class="keyword">if</span>(err) <span class="keyword">return</span> callback(err);</span><br><span class="line">      fs.writeFile(target,data,callback)</span><br><span class="line">&#125;)&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="url"><a href="#url" class="headerlink" title="url"></a>url</h4><ul>
+<li><code>url.parse ()</code><ul>
+<li>第二个参数<code>true</code>时，方法的返回对象的<code>query</code>属性值为对象， url地址<code>?</code>后面的值当成键值对存储到这个对象中；不加<code>true</code>是字符串，加<code>true</code>就变成一个对象</li>
+</ul>
+</li>
+</ul>
+<h4 id="util"><a href="#util" class="headerlink" title="util"></a>util</h4><p>提供了很多方法,</p>
+<ul>
+<li><code>util.inherits(Child,Parent);</code>：只继承父类公有属性</li>
+<li><code>util.isArray(new RegExp())</code>：判断类型的方法，<code>isArray</code>、<code>isRegExp</code>、<code>isDate</code>、<code>isError</code>…</li>
+</ul>
+<h4 id="events"><a href="#events" class="headerlink" title="events"></a>events</h4><p>node自带事件库，公有方法<code>on once remove</code></p>
+<h3 id="自定义模块"><a href="#自定义模块" class="headerlink" title="自定义模块"></a>自定义模块</h3><ul>
+<li>一个单独的文件就是一个模块。每一个模块都是一个单独的作用域，通过闭包的形式产生独立作用域</li>
+<li>如果需要提供一些方法给其他的用<ul>
+<li>模块导出：<code>exports / module.exports</code></li>
+<li>其他模块引用：<code>require</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><code>require()</code>的返回值 并不是<code>exports</code>对象，是<code>module.exports</code>，<code>module.exports = exports = {}</code></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line">exports = a<span class="comment">//模块没有导出a变量值</span></span><br><span class="line"><span class="comment">//正确写法：module.exports = a或exports.a=a或module.exports.a=a</span></span><br></pre></td></tr></table></figure>
+<h3 id="第三方模块"><a href="#第三方模块" class="headerlink" title="第三方模块"></a>第三方模块</h3><p>npm 是node的第三方管理模块工具</p>
+<blockquote>
+<p>第三方模块可以直接引用模块名字会自动去当前目录下查找，找到对应的<code>package.json</code>中的<code>main</code>文件将其引入，如果找不到会去上级目录查找，到根目录未找到则报错</p>
+</blockquote>
+<h2 id="流"><a href="#流" class="headerlink" title="流"></a>流</h2><p>流是一组有序的，有起点和终点的字节数据传输手段 它不关心文件的整体内容，只关注是否从文件中读到了数据，以及读到数据之后的处理 流是一个抽象接口，被 Node 中的很多对象所实现。比如HTTP 服务器request和response对象都是流。</p>
+<h3 id="readStream"><a href="#readStream" class="headerlink" title="readStream"></a>readStream</h3><p>将对象数据读取为流数据，当监听data事件后，开始发射数据</p>
+<h4 id="创建可读流"><a href="#创建可读流" class="headerlink" title="创建可读流"></a>创建可读流</h4><p><code>var rs = fs.createReadStream(path,[options]);</code></p>
+<ul>
+<li>path：读取文件的路径</li>
+<li>options：<ul>
+<li>flags：打开文件要做的操作,默认为<code>&quot;r&quot;</code></li>
+<li>encoding：默认为<code>null</code></li>
+<li>start：开始读取的索引位置</li>
+<li>end：结束读取的索引位置</li>
+<li>highWaterMark：读取缓存区大小，默认的大小64kb</li>
+</ul>
+</li>
+</ul>
+<h4 id="监听data事件"><a href="#监听data事件" class="headerlink" title="监听data事件"></a>监听data事件</h4><p><code>rs</code>继承了事件库<code>events</code><br><code>rs.on(&#39;data&#39;, function (data) {});</code></p>
+<ul>
+<li>会默认发布data事件，将数据传入到<code>callback</code>中，直到数据读干</li>
+<li><code>data</code>是<code>buffer类型</code>，将<code>buffer</code>拼接起来</li>
+</ul>
+<h4 id="监听end事件"><a href="#监听end事件" class="headerlink" title="监听end事件"></a>监听end事件</h4><p><code>rs.on(&#39;end&#39;, function () {});</code><br>当文件读取完毕后执行此方法</p>
+<h4 id="监听error事件"><a href="#监听error事件" class="headerlink" title="监听error事件"></a>监听error事件</h4><p><code>rs.on(&#39;error&#39;,function (err) {});</code></p>
+<h4 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h4><ul>
+<li><code>rs.pause();</code>：暂停data事件的触发</li>
+<li><code>rs.resume();</code>：恢复流的读取，继续开始data事件的触发</li>
+<li><code>rs.setEncoding(&#39;utf8&#39;);</code>：设置编码</li>
+</ul>
+<h3 id="writeStream"><a href="#writeStream" class="headerlink" title="writeStream"></a>writeStream</h3><h4 id="创建可写流"><a href="#创建可写流" class="headerlink" title="创建可写流"></a>创建可写流</h4><p><code>var ws = fs.createWriteStream(path,[options]);</code></p>
+<ul>
+<li>path：写入的文件路径</li>
+<li>options：<ul>
+<li>flags：打开文件要做的操作,默认为<code>&quot;w&quot;</code></li>
+<li>encoding：默认为<code>utf8</code></li>
+<li>highWaterMark：写入缓存区的大小，默认大小16kb</li>
+</ul>
+</li>
+</ul>
+<h4 id="write方法"><a href="#write方法" class="headerlink" title="write方法"></a>write方法</h4><p><code>var flag=ws.write(chunk,[encoding],[callback]);</code></p>
+<ul>
+<li>chunk：写入的数据<code>buffer/string</code></li>
+<li>encoding：编码格式chunk为字符串时有用，可选</li>
+<li>callback：写入成功后的回调</li>
+<li>flag：<code>flag</code>代表是否还能写入，如果你给我的已经沾满了我的预期，那就返回<code>false</code>，否则返回<code>true</code></li>
+</ul>
+<h4 id="end方法"><a href="#end方法" class="headerlink" title="end方法"></a>end方法</h4><p><code>ws.end(chunk,[encoding],[callback]);</code><br>调用该方法关闭文件，迫使系统缓存区的数据立即写入文件中。不能再次写入，<strong>文件关闭后不能调用<code>write</code>方法</strong></p>
+<h3 id="pipe方法"><a href="#pipe方法" class="headerlink" title="pipe方法"></a>pipe方法</h3><p><code>可读流.pipe(可写流)</code>： 异步的 并且是读一点写一点，防止淹没可用内存</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copy</span>(<span class="params">source,target</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> rs = fs.createReadStream(source,</span><br><span class="line">      &#123;<span class="attr">highWaterMark</span>:<span class="number">4</span>&#125;);</span><br><span class="line">    <span class="keyword">let</span> ws = fs.createWriteStream(target,</span><br><span class="line">      &#123;<span class="attr">highWaterMark</span>:<span class="number">1</span>&#125;);</span><br><span class="line">    rs.pipe(ws);</span><br><span class="line">&#125;</span><br><span class="line">copy(<span class="string">'1.txt'</span>,<span class="string">'3.txt'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="创建服务"><a href="#创建服务" class="headerlink" title="创建服务"></a>创建服务</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="comment">//创建一个服务,变量server就是我们创建出来的那个服务</span></span><br><span class="line"><span class="keyword">var</span> server=http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">req,res</span>) </span>&#123;<span class="comment">//当客户端向服务器这个端口号发送一个请求,并且当前的服务已经成功接收到这个请求后会执行这个函数</span></span><br><span class="line"><span class="comment">//req(请求):存放的是客户端请求的信息,包含客户端访问服务器url,问号传参的方式</span></span><br><span class="line"><span class="comment">//res(响应):服务器响应给客户端的信息</span></span><br><span class="line">  <span class="keyword">var</span> urlObj = url.parse(request.url);<span class="comment">//  url.parse   把request的属性url的属性值转换成对象</span></span><br><span class="line">    <span class="keyword">var</span> pathname = urlObj.pathname;</span><br><span class="line">     <span class="keyword">if</span>(pathname === <span class="string">"/index.html"</span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> content=fs.readFileSync(<span class="string">"./index.html"</span>,<span class="string">"utf-8"</span>);</span><br><span class="line">    res.end(content);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//监听当前的服务</span></span><br><span class="line">server.listen(<span class="number">8080</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//当服务创建成功并且8080端口号也监听成功后执行这个回调函数</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"server is success"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="设置响应头"><a href="#设置响应头" class="headerlink" title="设置响应头"></a>设置响应头</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">res.setHeader(<span class="string">'Content-type'</span>,<span class="string">'text/plain;charset=utf8'</span>);</span><br><span class="line">res.statusCode = <span class="number">200</span>;</span><br><span class="line">res.writeHead(<span class="number">200</span>,&#123;<span class="string">'Content-type'</span>:<span class="string">'text/plain;charset=utf8'</span>&#125;);</span><br></pre></td></tr></table></figure>
+<p>可以返回html文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line">fs.createReadStream(<span class="string">'./index.html'</span>).pipe(response);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>需要根据路径返回不同的内容，根据内容类型，设置<code>content-type</code>属性</p>
+</blockquote>
+<h3 id="请求信息"><a href="#请求信息" class="headerlink" title="请求信息"></a>请求信息</h3><ul>
+<li>请求路径<code>console.log(req.url);</code></li>
+<li>请求方法<code>console.log(req.method);</code></li>
+<li>请求头信息<code>console.log(req.headers);</code></li>
+</ul>
+<h3 id="http服务"><a href="#http服务" class="headerlink" title="http服务"></a>http服务</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">request,response</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(request.url==<span class="string">'/hello.html'</span>)&#123;</span><br><span class="line">    response.setHeader(<span class="string">'Content‐type'</span>,<span class="string">'text/html;charset=utf8'</span>);</span><br><span class="line">    fs.createReadStream(<span class="string">'./hello.html'</span>).pipe(response);</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(request.url==<span class="string">'/favicon.ico'</span>)&#123;</span><br><span class="line">    response.statusCode = <span class="string">'404'</span>;</span><br><span class="line">    response.end(<span class="string">''</span>);</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(request.url==<span class="string">'/style.css'</span>)&#123;</span><br><span class="line">    response.setHeader(<span class="string">'Content‐type'</span>,<span class="string">'text/css;charset=utf8'</span>);</span><br><span class="line">    fs.createReadStream(<span class="string">'./style.css'</span>).pipe(response);</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(request.url==<span class="string">'/index.js'</span>)&#123;</span><br><span class="line">    response.setHeader(<span class="string">'Content‐type'</span>,<span class="string">'application/x‐javascript;charset=utf8'</span>)</span><br><span class="line">    fs.createReadStream(<span class="string">'./index.js'</span>).pipe(response);</span><br><span class="line">&#125;).listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="路径参数"><a href="#路径参数" class="headerlink" title="路径参数"></a>路径参数</h3><p>当访问路径时带有查询参数,无法访问到正确路径<br>url 可以通过问号传参<br>?后面的是参数  &amp; 把每一组参数分开</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Url &#123;</span><br><span class="line">  protocol: <span class="string">'http:'</span>, <span class="comment">//协议</span></span><br><span class="line">  slashes: <span class="literal">true</span>, <span class="comment">//是否有//</span></span><br><span class="line">  auth: <span class="literal">null</span>, <span class="comment">//用户名密码</span></span><br><span class="line">  host: <span class="string">'zhidao.baidu.com'</span>, <span class="comment">//主机</span></span><br><span class="line">  port: <span class="literal">null</span>, <span class="comment">//80 端口</span></span><br><span class="line">  hostname: <span class="string">'zhidao.baidu.com'</span>, <span class="comment">//主机名</span></span><br><span class="line">  hash: <span class="literal">null</span>, <span class="comment">//hash值</span></span><br><span class="line">  search: <span class="string">'?lm=0&amp;rn=10&amp;pn=0&amp;fr=search&amp;ie=gbk&amp;word=asdasd'</span>, <span class="comment">//路径和和hash值之间的</span></span><br><span class="line">  query: <span class="string">'lm=0&amp;rn=10&amp;pn=0&amp;fr=search&amp;ie=gbk&amp;word=asdasd'</span>, <span class="comment">//如果true转换成对象</span></span><br><span class="line">  pathname: <span class="string">'/search'</span>, <span class="comment">//路径</span></span><br><span class="line">  path: <span class="string">'/search?lm=0&amp;rn=10&amp;pn=0&amp;fr=search&amp;ie=gbk&amp;word=asdasd'</span>, <span class="comment">//路径+查询字符串</span></span><br><span class="line">  href: <span class="string">'http://zhidao.baidu.com/search?lm=0&amp;rn=10&amp;pn=0&amp;fr=search&amp;ie=gbk&amp;word=asdasd'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="改造服务"><a href="#改造服务" class="headerlink" title="改造服务"></a>改造服务</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> urlObj = url.parse(request.url,<span class="literal">true</span>);</span><br><span class="line"><span class="keyword">var</span> pathname = urlObj.pathname;</span><br><span class="line"><span class="keyword">if</span>(pathname==<span class="string">'/'</span>)&#123;</span><br><span class="line">  response.setHeader(<span class="string">'Content‐type'</span>,<span class="string">'text/html;charset=utf8'</span>);</span><br><span class="line">  fs.createReadStream(<span class="string">'./index.html'</span>).pipe(response);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(pathname==<span class="string">'/style.css'</span>)&#123;</span><br><span class="line">  response.setHeader(<span class="string">'Content‐type'</span>,<span class="string">'text/css;charset=utf8'</span>);</span><br><span class="line">  fs.createReadStream(<span class="string">'./style.css'</span>).pipe(response);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="合并冗余代码"><a href="#合并冗余代码" class="headerlink" title="合并冗余代码"></a>合并冗余代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> mime = &#123;</span><br><span class="line">  <span class="string">'.html'</span>:<span class="string">'text/html'</span>,</span><br><span class="line">  <span class="string">'.js'</span>:<span class="string">'application/x‐javascript'</span>,</span><br><span class="line">  <span class="string">'.css'</span>:<span class="string">'text/css'</span>,</span><br><span class="line">&#125;</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">request,response</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> urlObj = url.parse(request.url,<span class="literal">true</span>);</span><br><span class="line">  <span class="keyword">var</span> pathname = urlObj.pathname;</span><br><span class="line">  <span class="keyword">if</span>(pathname==<span class="string">'/'</span>)&#123;</span><br><span class="line">    response.setHeader(<span class="string">'Content‐type'</span>,<span class="string">'text/html;charset=utf8'</span>);</span><br><span class="line">    fs.createReadStream(<span class="string">'./index.html'</span>).pipe(response);</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(pathname==<span class="string">'/favicon.ico'</span>)&#123;</span><br><span class="line">    response.statusCode = <span class="number">404</span>;</span><br><span class="line">    response.end(<span class="string">''</span>);</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    response.setHeader(<span class="string">'Content‐type'</span>,mime[path.extname(pathname)]+<span class="string">';charset=utf8'</span>)</span><br><span class="line">    fs.createReadStream(<span class="string">'.'</span>+pathname).pipe(response);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).listen(<span class="number">8080</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="使用mime模块"><a href="#使用mime模块" class="headerlink" title="使用mime模块"></a>使用mime模块</h3><p><code>$ npm install mime</code>安装mime</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">var</span> mime = <span class="built_in">require</span>(<span class="string">'mime'</span>);</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">request,response</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> urlObj = url.parse(request.url,<span class="literal">true</span>);</span><br><span class="line">  <span class="keyword">var</span> pathname = urlObj.pathname;</span><br><span class="line">  <span class="keyword">if</span>(pathname==<span class="string">'/'</span>)&#123;</span><br><span class="line">    response.setHeader(<span class="string">'Content‐type'</span>,<span class="string">'text/html;charset=utf8'</span>);</span><br><span class="line">    fs.createReadStream(<span class="string">'./index.html'</span>).pipe(response);</span><br><span class="line">  &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> flag = fs.existsSync(<span class="string">'./'</span> + pathname);</span><br><span class="line">    <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">      response.setHeader(<span class="string">'Content‐type'</span>, mime.lookup(pathname) +</span><br><span class="line">      fs.createReadStream(<span class="string">'.'</span> + pathname).pipe(response);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      response.statusCode = <span class="number">404</span>;</span><br><span class="line">      response.end();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).listen(<span class="number">8080</span>);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/node/" rel="tag"># node</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/21/less基础/" rel="next" title="less基础">
+                <i class="fa fa-chevron-left"></i> less基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/23/npm和yarn/" rel="prev" title="npm和yarn">
+                npm和yarn <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘心怡</p>
+              <p class="site-description motion-element" itemprop="description">Tomorrow will be better than today</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js-安装"><span class="nav-number">1.</span> <span class="nav-text">Node.js 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#检测PATH环境变量是否配置了Node-js"><span class="nav-number">1.1.</span> <span class="nav-text">检测PATH环境变量是否配置了Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手工配置环境变量"><span class="nav-number">1.2.</span> <span class="nav-text">手工配置环境变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js的优点"><span class="nav-number">2.</span> <span class="nav-text">Node.js的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node概念"><span class="nav-number">3.</span> <span class="nav-text">Node概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是回调"><span class="nav-number">3.1.</span> <span class="nav-text">什么是回调</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步和异步"><span class="nav-number">3.2.</span> <span class="nav-text">同步和异步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是IO"><span class="nav-number">3.3.</span> <span class="nav-text">什么是IO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是单线程-多线程"><span class="nav-number">3.4.</span> <span class="nav-text">什么是单线程/多线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是事件循环"><span class="nav-number">3.5.</span> <span class="nav-text">什么是事件循环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局对象Global"><span class="nav-number">4.</span> <span class="nav-text">全局对象Global</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局对象"><span class="nav-number">4.1.</span> <span class="nav-text">全局对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#process进程"><span class="nav-number">4.1.1.</span> <span class="nav-text">process进程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#属性"><span class="nav-number">4.1.1.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法"><span class="nav-number">4.1.1.2.</span> <span class="nav-text">方法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NODE模块"><span class="nav-number">5.</span> <span class="nav-text">NODE模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现模块化的规范"><span class="nav-number">5.1.</span> <span class="nav-text">实现模块化的规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件加载缓存"><span class="nav-number">5.2.</span> <span class="nav-text">文件加载缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内置模块"><span class="nav-number">5.3.</span> <span class="nav-text">内置模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#http"><span class="nav-number">5.3.1.</span> <span class="nav-text">http</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fs"><span class="nav-number">5.3.2.</span> <span class="nav-text">fs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#url"><span class="nav-number">5.3.3.</span> <span class="nav-text">url</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#util"><span class="nav-number">5.3.4.</span> <span class="nav-text">util</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#events"><span class="nav-number">5.3.5.</span> <span class="nav-text">events</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义模块"><span class="nav-number">5.4.</span> <span class="nav-text">自定义模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三方模块"><span class="nav-number">5.5.</span> <span class="nav-text">第三方模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流"><span class="nav-number">6.</span> <span class="nav-text">流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#readStream"><span class="nav-number">6.1.</span> <span class="nav-text">readStream</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建可读流"><span class="nav-number">6.1.1.</span> <span class="nav-text">创建可读流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#监听data事件"><span class="nav-number">6.1.2.</span> <span class="nav-text">监听data事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#监听end事件"><span class="nav-number">6.1.3.</span> <span class="nav-text">监听end事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#监听error事件"><span class="nav-number">6.1.4.</span> <span class="nav-text">监听error事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他操作"><span class="nav-number">6.1.5.</span> <span class="nav-text">其他操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#writeStream"><span class="nav-number">6.2.</span> <span class="nav-text">writeStream</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建可写流"><span class="nav-number">6.2.1.</span> <span class="nav-text">创建可写流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#write方法"><span class="nav-number">6.2.2.</span> <span class="nav-text">write方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#end方法"><span class="nav-number">6.2.3.</span> <span class="nav-text">end方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pipe方法"><span class="nav-number">6.3.</span> <span class="nav-text">pipe方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建服务"><span class="nav-number">7.</span> <span class="nav-text">创建服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置响应头"><span class="nav-number">7.1.</span> <span class="nav-text">设置响应头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求信息"><span class="nav-number">7.2.</span> <span class="nav-text">请求信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http服务"><span class="nav-number">7.3.</span> <span class="nav-text">http服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路径参数"><span class="nav-number">7.4.</span> <span class="nav-text">路径参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改造服务"><span class="nav-number">7.5.</span> <span class="nav-text">改造服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并冗余代码"><span class="nav-number">7.6.</span> <span class="nav-text">合并冗余代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用mime模块"><span class="nav-number">7.7.</span> <span class="nav-text">使用mime模块</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘心怡</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

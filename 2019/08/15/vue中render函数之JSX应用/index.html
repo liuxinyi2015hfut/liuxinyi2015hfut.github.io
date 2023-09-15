@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,vue,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="刘心怡" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="快速原型开发@vue/cli-service-global可以快速识别.vue文件封装组件插件等功能 123sudo npm install @vue/cli -gsudo npm install -g @vue/cli-service-globalvue serve App.vue 模板缺陷模板最大的缺点是不易扩展，可能会造成逻辑冗余。 Level组件需要对不同的type产生不同的标签 1234">
+<meta name="keywords" content="JavaScript,vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue中render函数之JSX应用">
+<meta property="og:url" content="http://yoursite.com/2019/08/15/vue中render函数之JSX应用/index.html">
+<meta property="og:site_name" content="刘心怡">
+<meta property="og:description" content="快速原型开发@vue/cli-service-global可以快速识别.vue文件封装组件插件等功能 123sudo npm install @vue/cli -gsudo npm install -g @vue/cli-service-globalvue serve App.vue 模板缺陷模板最大的缺点是不易扩展，可能会造成逻辑冗余。 Level组件需要对不同的type产生不同的标签 1234">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-16T01:20:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue中render函数之JSX应用">
+<meta name="twitter:description" content="快速原型开发@vue/cli-service-global可以快速识别.vue文件封装组件插件等功能 123sudo npm install @vue/cli -gsudo npm install -g @vue/cli-service-globalvue serve App.vue 模板缺陷模板最大的缺点是不易扩展，可能会造成逻辑冗余。 Level组件需要对不同的type产生不同的标签 1234">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/15/vue中render函数之JSX应用/">
+
+
+
+
+
+  <title>vue中render函数之JSX应用 | 刘心怡</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘心怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Tomorrow will be better than today!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/15/vue中render函数之JSX应用/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘心怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘心怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue中render函数之JSX应用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-15T10:22:04+08:00">
+                2019-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="快速原型开发"><a href="#快速原型开发" class="headerlink" title="快速原型开发"></a>快速原型开发</h2><p><code>@vue/cli-service-global</code>可以快速识别.vue文件封装组件插件等功能</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install @vue/cli -g</span><br><span class="line">sudo npm install -g @vue/cli-service-global</span><br><span class="line">vue serve App.vue</span><br></pre></td></tr></table></figure>
+<h2 id="模板缺陷"><a href="#模板缺陷" class="headerlink" title="模板缺陷"></a>模板缺陷</h2><p>模板最大的缺点是不易扩展，可能会造成逻辑冗余。</p>
+<p>Level组件需要对不同的type产生不同的标签</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--使用Level组件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Level</span> <span class="attr">:type</span>=<span class="string">"1"</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">Level</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Level</span> <span class="attr">:type</span>=<span class="string">"2"</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">Level</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Level</span> <span class="attr">:type</span>=<span class="string">"3"</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">Level</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span> <span class="attr">v-if</span>=<span class="string">"type==1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span> <span class="attr">v-else-if</span>=<span class="string">"type==2"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h3</span> <span class="attr">v-else-if</span>=<span class="string">"type==3"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// Level组件</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">    props: &#123;</span></span><br><span class="line"><span class="undefined">      type: &#123;</span></span><br><span class="line"><span class="javascript">        type: <span class="built_in">Number</span></span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="函数式组件"><a href="#函数式组件" class="headerlink" title="函数式组件"></a>函数式组件</h2><p>函数式组件没有模板,必须提供render函数</p>
+<blockquote>
+<p>复杂的逻辑变得非常简单</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数式组件导出对象</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// 必须提供render函数</span></span><br><span class="line">  render(h) &#123;</span><br><span class="line">    <span class="keyword">return</span> h(</span><br><span class="line">      <span class="string">"h"</span> + <span class="keyword">this</span>.type<span class="comment">/*标签类型*/</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">// 绑定事件</span></span><br><span class="line">        on:&#123;</span><br><span class="line">          click()&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">//设置属性</span></span><br><span class="line">        attrs:&#123;</span><br><span class="line">          a:<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;<span class="comment">/*属性*/</span>,</span><br><span class="line">      <span class="keyword">this</span>.$slots.default<span class="comment">/*子节点*/</span></span><br><span class="line">    );</span><br><span class="line">  &#125;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    type: &#123;</span><br><span class="line">      type: <span class="built_in">Number</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="JSX应用"><a href="#JSX应用" class="headerlink" title="JSX应用"></a>JSX应用</h2><p>jsx会让代码看起来更加简洁易于读取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  render(h) &#123;</span><br><span class="line">    <span class="keyword">const</span> tag = <span class="string">"h"</span> + <span class="keyword">this</span>.type;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">tag</span>&gt;</span>&#123;this.$slots.default&#125;<span class="tag">&lt;/<span class="name">tag</span>&gt;</span></span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    type: &#123;</span><br><span class="line">      type: <span class="built_in">Number</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="render方法订制组件"><a href="#render方法订制组件" class="headerlink" title="render方法订制组件"></a>render方法订制组件</h2><p>编写List组件可以根据用户传入的数据自动循环列表</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">List</span> <span class="attr">:data</span>=<span class="string">"data"</span>&gt;</span><span class="tag">&lt;/<span class="name">List</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> List <span class="keyword">from</span> <span class="string">"./components/List"</span>;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">    data() &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> &#123; <span class="attr">data</span>: [<span class="string">"苹果"</span>, <span class="string">"香蕉"</span>, <span class="string">"橘子"</span>] &#125;;</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    components: &#123;</span></span><br><span class="line"><span class="undefined">      List</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- List组件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"(item,index) in data"</span> <span class="attr">:key</span>=<span class="string">"index"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">props: &#123;</span></span><br><span class="line"><span class="javascript">  data: <span class="built_in">Array</span>,</span></span><br><span class="line"><span class="javascript">  <span class="keyword">default</span>: <span class="function"><span class="params">()</span> =&gt;</span> []</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined">&#125;;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Lsit组件自定义循环的元素</p>
+<ul>
+<li>通过render方法来订制,在父组件中传入render方法</li>
+<li>我们需要createElement方法，就会想到可以编写个函数组件，将createElement方法传递出来</li>
+<li>ListItem.vue调用最外层的render方法，将createElement和当前项传递出来</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--父组件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">List</span> <span class="attr">:data</span>=<span class="string">"data"</span> <span class="attr">:render</span>=<span class="string">"render"</span>&gt;</span><span class="tag">&lt;/<span class="name">List</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> List <span class="keyword">from</span> <span class="string">"./components/List"</span>;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span></span><br><span class="line"><span class="undefined">  data() &#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123; <span class="attr">data</span>: [<span class="string">"苹果"</span>, <span class="string">"香蕉"</span>, <span class="string">"橘子"</span>] &#125;;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  components:&#123;</span></span><br><span class="line"><span class="undefined">    List</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  methods:&#123;</span></span><br><span class="line"><span class="undefined">    render(h, name) &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--List组件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"(item,index) in data"</span> <span class="attr">:key</span>=<span class="string">"index"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-if</span>=<span class="string">"!render"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- 将render方法传到函数组件中，将渲染项传入到组件中，在内部回调这个render方法 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">ListItem</span> <span class="attr">v-else</span> <span class="attr">:item</span>=<span class="string">"item"</span> <span class="attr">:render</span>=<span class="string">"render"</span>&gt;</span><span class="tag">&lt;/<span class="name">ListItem</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="comment">// 函数组件ListItem</span></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> ListItem <span class="keyword">from</span> <span class="string">"./ListItem"</span>;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">  components: &#123;</span></span><br><span class="line"><span class="undefined">    ListItem</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  props: &#123;</span></span><br><span class="line"><span class="undefined">    render: &#123;</span></span><br><span class="line"><span class="javascript">      type: <span class="built_in">Function</span></span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    data:&#123;</span></span><br><span class="line"><span class="javascript">      type:<span class="built_in">Array</span>,</span></span><br><span class="line"><span class="javascript">      <span class="keyword">default</span>: <span class="function"><span class="params">()</span> =&gt;</span> []</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--ListItem组件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined"> props: &#123;</span></span><br><span class="line"><span class="undefined">  render: &#123;</span></span><br><span class="line"><span class="javascript">   type: <span class="built_in">Function</span></span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  item: &#123;&#125;</span></span><br><span class="line"><span class="undefined"> &#125;,</span></span><br><span class="line"><span class="undefined"> render(h) &#123;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">return</span> <span class="keyword">this</span>.render(h, <span class="keyword">this</span>.item);</span></span><br><span class="line"><span class="undefined"> &#125;</span></span><br><span class="line"><span class="undefined">&#125;;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="slot-作用域插槽"><a href="#slot-作用域插槽" class="headerlink" title="slot 作用域插槽"></a>slot 作用域插槽</h2><p>使用<code>v-slot</code>定义模板和设置模板的参数，使用<code>&lt;slot&gt;</code>使用模板并给模板传递参数</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--child用于匹配--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--父组件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">List</span> <span class="attr">:arr</span>=<span class="string">"arr"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:child</span>=<span class="string">"&#123;item&#125;"</span>&gt;</span></span><br><span class="line">        &#123;&#123;item&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">List</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--List组件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-for</span>=<span class="string">"(item,key) in arr"</span> <span class="attr">:key</span>=<span class="string">"key"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"child"</span> <span class="attr">:item</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="编写可编辑表格"><a href="#编写可编辑表格" class="headerlink" title="编写可编辑表格"></a>编写可编辑表格</h2><p>基于iview使用jsx扩展成可编辑的表格</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Table</span> <span class="attr">:columns</span>=<span class="string">"columns"</span> <span class="attr">:data</span>=<span class="string">"data"</span>&gt;</span><span class="tag">&lt;/<span class="name">Table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">  methods:&#123;</span></span><br><span class="line"><span class="undefined">    render(h,&#123;column,index,row&#125;)&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> value = row[column.key];</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 绑定原生事件，onOn-enter传参on-enter函数</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">on-click</span>=<span class="string">&#123;(e)</span>=&gt;</span>this.changeIndex(e,index)&#125; &gt;</span></span><br><span class="line"><span class="javascript">          &#123;<span class="keyword">this</span>.index === index?(</span></span><br><span class="line"><span class="javascript">            &lt;i-input type=<span class="string">"text"</span></span></span><br><span class="line"><span class="undefined">                    value=&#123;value&#125;</span></span><br><span class="line"><span class="undefined">                    on-input=&#123;(value)=&gt;&#123;</span></span><br><span class="line"><span class="javascript">                                  <span class="keyword">this</span>.handleChange(value,column,row)</span></span><br><span class="line"><span class="undefined">                              &#125;&#125;</span></span><br><span class="line"><span class="javascript">                    onOn-enter=&#123;()=&gt;<span class="keyword">this</span>.enter(row,index)&#125;</span></span><br><span class="line"><span class="undefined">            /&gt;</span></span><br><span class="line"><span class="undefined">          ):(</span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;value&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="undefined">          )&#125;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="undefined">      )</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    enter(row,index)&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.data.splice(index,<span class="number">1</span>,row);</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.index = <span class="number">-1</span>;</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    handleChange(value,column,row)&#123;</span></span><br><span class="line"><span class="javascript">      row[column[<span class="string">'key'</span>]]= value;</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    changeIndex(e,index)&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.index = index;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span></span><br><span class="line"><span class="javascript">        e.currentTarget.getElementsByTagName(<span class="string">"input"</span>)[<span class="number">0</span>].focus()</span></span><br><span class="line"><span class="undefined">      &#125;)</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  data() &#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="undefined">      index:-1,</span></span><br><span class="line"><span class="undefined">      columns: [</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'Name'</span>,</span></span><br><span class="line"><span class="javascript">          key: <span class="string">'name'</span>,</span></span><br><span class="line"><span class="javascript">          render:<span class="keyword">this</span>.render</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'Age'</span>,</span></span><br><span class="line"><span class="javascript">          key: <span class="string">'age'</span>,</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'Address'</span>,</span></span><br><span class="line"><span class="javascript">          key: <span class="string">'address'</span>,</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">      ],</span></span><br><span class="line"><span class="undefined">      data: [</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="javascript">          name: <span class="string">'John Brown'</span>,</span></span><br><span class="line"><span class="undefined">          age: 18,</span></span><br><span class="line"><span class="javascript">          address: <span class="string">'New York No. 1 Lake Park'</span>,</span></span><br><span class="line"><span class="javascript">          date: <span class="string">'2016-10-03'</span>,</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="javascript">          name: <span class="string">'Jim Green'</span>,</span></span><br><span class="line"><span class="undefined">          age: 24,</span></span><br><span class="line"><span class="javascript">          address: <span class="string">'London No. 1 Lake Park'</span>,</span></span><br><span class="line"><span class="javascript">          date: <span class="string">'2016-10-01'</span>,</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">      ],</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">&#125;;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/13/vue组件间通信方式/" rel="next" title="vue组件间通信方式">
+                <i class="fa fa-chevron-left"></i> vue组件间通信方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/16/vue中使用JWT认证/" rel="prev" title="vue中使用JWT认证">
+                vue中使用JWT认证 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘心怡</p>
+              <p class="site-description motion-element" itemprop="description">Tomorrow will be better than today</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速原型开发"><span class="nav-number">1.</span> <span class="nav-text">快速原型开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板缺陷"><span class="nav-number">2.</span> <span class="nav-text">模板缺陷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数式组件"><span class="nav-number">3.</span> <span class="nav-text">函数式组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX应用"><span class="nav-number">4.</span> <span class="nav-text">JSX应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#render方法订制组件"><span class="nav-number">5.</span> <span class="nav-text">render方法订制组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slot-作用域插槽"><span class="nav-number">6.</span> <span class="nav-text">slot 作用域插槽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写可编辑表格"><span class="nav-number">7.</span> <span class="nav-text">编写可编辑表格</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘心怡</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

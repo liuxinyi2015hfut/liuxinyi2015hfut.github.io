@@ -1,0 +1,72 @@
+[
+  {
+    "link": "https://item.mi.com/product/10000031.html",
+    "image": "img/star/1/xmad_14966625747867_qcTyh.png",
+    "name": "红米4X",
+    "detail": "4100mAh超长续航，8 核处理器",
+    "price": "699元起"
+  },
+  {
+    "link": "https://item.mi.com/product/10000024.html",
+    "image": "img/star/1/5e2eb710-a99f-4235-ac5c-1b20b1e6c3b6.png",
+    "name": "小米5s 64GB",
+    "detail": "“暗夜之眼”超感光相机",
+    "price": "1999元"
+  },
+  {
+    "link": "https://item.mi.com/product/10000022.html",
+    "image": "img/star/1/xmad_14926862610682_UhkfS.png",
+    "name": "小米MIX",
+    "detail": "6.4 全面屏，全陶瓷机身",
+    "price": "3499元起"
+  },
+  {
+    "link": "https://item.mi.com/buy/mitv4a-49",
+    "image": "img/star/1/xmad_14926528960147_wJMsC.png",
+    "name": "小米电视4A 49英寸 标准版",
+    "detail": "直降300元，全高清HDR",
+    "price": "2299元"
+  },
+  {
+    "link": "https://www.mi.com/mipad3/",
+    "image": "img/star/1/xmad_14913905000358_VqawM.png",
+    "name": "小米平板3",
+    "detail": "今早10点开售",
+    "price": "1499元"
+  },
+  {
+    "link": "https://www.mi.com/battery2/",
+    "image": "img/star/2/xmad_14917453512947_AmXkT.png",
+    "name": "10000mAh小米移动电源2",
+    "detail": "双向快充，高密度锂聚合物电芯",
+    "price": "79元"
+  },
+  {
+    "link": "https://www.mi.com/shouhuan2/",
+    "image": "img/star/2/6ef55907-bbed-49be-a2bb-be0821b5f7b8.png",
+    "name": "小米手环 2",
+    "detail": "OLED 显示屏幕，升级计步算法",
+    "price": "149元"
+  },
+  {
+    "link": "https://www.mi.com/earphonepro/",
+    "image": "img/star/2/302f2608-655a-489c-a0c5-a3b9172defd1.png",
+    "name": "小米圈铁耳机Pro",
+    "detail": "独创双动圈+动铁，三单元发声",
+    "price": "149元"
+  },
+  {
+    "link": "https://item.mi.com/1164300033.html",
+    "image": "img/star/2/xmad_14972549116226_tZpod.png",
+    "name": "米家空气净化器Pro",
+    "detail": "OLED显示屏幕，激光颗粒物传感器",
+    "price": "1499元"
+  },
+  {
+    "link": "https://www.mi.com/miwifi3/",
+    "image": "img/star/2/de35852a-1be5-4ef5-846f-dcdd2efcfea6.png",
+    "name": "小米路由器3",
+    "detail": "更快更强，不止四天线",
+    "price": "149元"
+  }
+]

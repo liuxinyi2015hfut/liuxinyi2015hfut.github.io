@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CSS,css,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="刘心怡" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Flexible Box（简称flexbox）布局，是CSS3提供的一种全新的CSS布局方式，拥有很多新的布局特性。  支持任意方向的布局（左，右，下及其上） 支持视觉上的反向和重新布局 支持自适应各种不同空间 可以针对容器对齐 拥有统一的高度">
+<meta name="keywords" content="CSS,css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flexbox">
+<meta property="og:url" content="http://yoursite.com/2016/12/19/flexbox/index.html">
+<meta property="og:site_name" content="刘心怡">
+<meta property="og:description" content="Flexible Box（简称flexbox）布局，是CSS3提供的一种全新的CSS布局方式，拥有很多新的布局特性。  支持任意方向的布局（左，右，下及其上） 支持视觉上的反向和重新布局 支持自适应各种不同空间 可以针对容器对齐 拥有统一的高度">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2016/12/19/flexbox/flexbox-20190620-17-11-22.png">
+<meta property="og:image" content="http://yoursite.com/2016/12/19/flexbox/flexbox-20190620-17-15-29.png">
+<meta property="og:image" content="http://yoursite.com/2016/12/19/flexbox/flexbox-20190620-17-23-31.png">
+<meta property="og:image" content="http://yoursite.com/2016/12/19/flexbox/flexbox-20190620-17-24-30.png">
+<meta property="og:image" content="http://yoursite.com/2016/12/19/flexbox/flexbox-20190620-17-25-28.png">
+<meta property="og:image" content="http://yoursite.com/2016/12/19/flexbox/flexbox-20190620-17-26-42.png">
+<meta property="og:image" content="http://yoursite.com/2016/12/19/flexbox/flexbox-20190620-17-27-17.png">
+<meta property="og:image" content="http://yoursite.com/2016/12/19/flexbox/flexbox-20190620-17-27-45.png">
+<meta property="og:image" content="http://yoursite.com/2016/12/19/flexbox/flexbox-20190620-17-28-39.png">
+<meta property="og:image" content="http://yoursite.com/2016/12/19/flexbox/flexbox-20190620-17-29-51.png">
+<meta property="og:image" content="http://yoursite.com/2016/12/19/flexbox/flexbox-20190620-17-30-56.png">
+<meta property="og:image" content="http://yoursite.com/2016/12/19/flexbox/flexbox-20190620-17-32-05.png">
+<meta property="og:image" content="http://yoursite.com/2016/12/19/flexbox/flexbox-20190620-17-37-18.png">
+<meta property="og:updated_time" content="2016-12-20T08:56:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flexbox">
+<meta name="twitter:description" content="Flexible Box（简称flexbox）布局，是CSS3提供的一种全新的CSS布局方式，拥有很多新的布局特性。  支持任意方向的布局（左，右，下及其上） 支持视觉上的反向和重新布局 支持自适应各种不同空间 可以针对容器对齐 拥有统一的高度">
+<meta name="twitter:image" content="http://yoursite.com/2016/12/19/flexbox/flexbox-20190620-17-11-22.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/19/flexbox/">
+
+
+
+
+
+  <title>flexbox | 刘心怡</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘心怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Tomorrow will be better than today!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/19/flexbox/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘心怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘心怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">flexbox</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-19T13:11:00+08:00">
+                2016-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Flexible Box（简称flexbox）布局，是CSS3提供的一种全新的CSS布局方式，拥有很多新的布局特性。</p>
+<ul>
+<li>支持任意方向的布局（左，右，下及其上）</li>
+<li>支持视觉上的反向和重新布局</li>
+<li>支持自适应各种不同空间</li>
+<li>可以针对容器对齐</li>
+<li>拥有统一的高度<a id="more"></a>
+</li>
+</ul>
+<h2 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h2><ul>
+<li>采用Flex布局的元素，称为Flex容器（flex container）。它的所有子元素自动成为容器成员，称为Flex项目（flex item）。</li>
+<li>容器有主轴和交叉轴组成</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">display</span>: flex;</span><br><span class="line"><span class="attribute">display</span>: -webkit-flex; <span class="comment">//Safari仍旧需要使用特定的浏览器前缀</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2016/12/19/flexbox/flexbox-20190620-17-11-22.png" alt="Flex容器"></p>
+<h3 id="flex-direction属性"><a href="#flex-direction属性" class="headerlink" title="flex-direction属性"></a>flex-direction属性</h3><ul>
+<li><code>flex-direction</code>属性来定义布局中子元素的布局方向（主轴方向）</li>
+<li>值有<code>column-reverse</code>、<code>column</code>、<code>row</code>、<code>row-reverse</code>。默认值<code>row</code>。效果依次如下</li>
+</ul>
+<p><img src="/2016/12/19/flexbox/flexbox-20190620-17-15-29.png" alt="flex-direction属性"></p>
+<h4 id="缺省布局（横向布局）"><a href="#缺省布局（横向布局）" class="headerlink" title="缺省布局（横向布局）"></a>缺省布局（横向布局）</h4><p>flexbox布局中，如果修改子元素宽度，比如，宽度设为300px，不会溢出父元素容器的最大宽度，只会自适应父元素，除非父元素的宽度变化，子元素才会修改自身的宽度来适应。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">dispaly</span>:flex;</span><br><span class="line"><span class="attribute">display</span>:-webkit-flex;</span><br><span class="line"><span class="attribute">flex-direction</span>: row; <span class="comment">//这是布局方向的缺省值</span></span><br><span class="line">  <span class="attribute">-webkit-flex-direction</span>: row;</span><br></pre></td></tr></table></figure>
+<h4 id="纵向布局"><a href="#纵向布局" class="headerlink" title="纵向布局"></a>纵向布局</h4><p>通过设置flex-direction为column，可以设置flexbox的整体布局为纵向</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">display</span>:flex;</span><br><span class="line"><span class="attribute">display</span>:-webkit-flex;</span><br><span class="line"><span class="attribute">flex-direction</span>:column;</span><br><span class="line"><span class="attribute">-webkit-flex-direction</span>:column;</span><br></pre></td></tr></table></figure>
+<h3 id="对齐方式"><a href="#对齐方式" class="headerlink" title="对齐方式"></a>对齐方式</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">align-items</span>:flex-end;<span class="comment">//纵向布局中水平对齐，flex-end表示居右；横向布局中垂直对齐，表示居下</span></span><br><span class="line"><span class="attribute">justify-content</span>:flex-end;<span class="comment">//纵向布局中垂直对齐，flex-end表示居下；横向布局中水平对齐，表示居右</span></span><br></pre></td></tr></table></figure>
+<h4 id="主轴方向对齐"><a href="#主轴方向对齐" class="headerlink" title="主轴方向对齐"></a>主轴方向对齐</h4><ul>
+<li><code>justify-content</code>——设置主轴方向上的对齐方式</li>
+<li>值<code>flex-start</code>、<code>flex-end</code>、<code>center</code>、<code>space-between</code>、<code>space-around</code>，，默认值<code>flex-start</code><ul>
+<li>在横向布局中，效果如下</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2016/12/19/flexbox/flexbox-20190620-17-23-31.png" alt="主轴方向对齐"></p>
+<h4 id="交叉轴方向对齐"><a href="#交叉轴方向对齐" class="headerlink" title="交叉轴方向对齐"></a>交叉轴方向对齐</h4><h5 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h5><p>设置单行在交叉轴方向上的对齐方式</p>
+<ul>
+<li>值<code>flex-start</code>、<code>flex-end</code>、<code>center</code>、<code>stretch</code>、<code>baseline</code>，默认值<code>stretch</code><ul>
+<li>在横向布局中，效果如下</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2016/12/19/flexbox/flexbox-20190620-17-24-30.png" alt="align-items"></p>
+<h5 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h5><p>设置多行在交叉轴方向上的对齐方式，不换行时该属性不起作用。<code>flex-wrap</code>必须设置为<code>wrap</code>和<code>wrap-reverse</code>。</p>
+<ul>
+<li>值<code>flex-start</code>、<code>flex-end</code>、<code>center</code>、<code>space-between</code>、<code>space-around</code>，默认值<code>stretch</code><ul>
+<li>在横向布局中，效果如下</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2016/12/19/flexbox/flexbox-20190620-17-25-28.png" alt="align-content"></p>
+<h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><ul>
+<li><code>flex-wrap</code>——设置是否换行</li>
+<li>值，如下。默认值<code>nowrap</code><ul>
+<li><code>nowrap</code>——不换行<img src="/2016/12/19/flexbox/flexbox-20190620-17-26-42.png" alt="nowrap"></li>
+<li><code>wrap</code>——换行，第一行在上方<img src="/2016/12/19/flexbox/flexbox-20190620-17-27-17.png" alt="wrap"></li>
+<li><code>wrap-reverse</code>——换行，第一行在下方<img src="/2016/12/19/flexbox/flexbox-20190620-17-27-45.png" alt="wrap-reverse"></li>
+</ul>
+</li>
+</ul>
+<h3 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h3><p><code>flex-flow</code>属性是<code>flex-direction</code>属性和<code>flex-wrap</code>属性的简写形式，默认值为<code>row nowrap</code>。</p>
+<h2 id="项目属性"><a href="#项目属性" class="headerlink" title="项目属性"></a>项目属性</h2><h3 id="排列顺序"><a href="#排列顺序" class="headerlink" title="排列顺序"></a>排列顺序</h3><p><code>order</code>——定义项目的排列顺序。数值越小，排列越靠前，默认为<code>0</code>。</p>
+<h3 id="项目放大比例"><a href="#项目放大比例" class="headerlink" title="项目放大比例"></a>项目放大比例</h3><p><code>flex-grow</code>——定义项目放大比例，默认为<code>0</code>（即使存在剩余空间，也不放大）</p>
+<ul>
+<li>当所有项目的<code>flex-grow</code>都为<code>1</code>时，将等分<strong>剩余空间</strong>，如图<img src="/2016/12/19/flexbox/flexbox-20190620-17-28-39.png" alt="项目放大比例1"></li>
+<li>当一个项目<code>flex-grow</code>为<code>2</code>时，其余都为<code>1</code>时，前者占据的剩余空间将比其他项多一倍。，如图<img src="/2016/12/19/flexbox/flexbox-20190620-17-29-51.png" alt="项目放大比例2"></li>
+</ul>
+<h3 id="项目缩小比例"><a href="#项目缩小比例" class="headerlink" title="项目缩小比例"></a>项目缩小比例</h3><p><code>flex-shrink</code>——定义项目的缩小比例。默认值<code>1</code>（空间不足，项目将缩小）<br><img src="/2016/12/19/flexbox/flexbox-20190620-17-30-56.png" alt="项目缩小比例"></p>
+<h3 id="伸缩项目的基准值"><a href="#伸缩项目的基准值" class="headerlink" title="伸缩项目的基准值"></a>伸缩项目的基准值</h3><p><code>flex-basis</code>——定义伸缩项目的基准值，剩余空间按比例进行伸缩（浏览器根据这个属性，计算主轴是否有多余空间）。默认值<code>auto</code>（即项目本来大小）。</p>
+<h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><p>flex属性是<code>flex-grow</code>, <code>flex-shrink</code> 和<code>flex-basis</code>的简写。<code>flex:&lt;&#39;flex-grow&#39;&gt; &lt;&#39;flex-shrink&#39;&gt; &lt;&#39;flex-basis&#39;&gt;</code>。后面两个属性可选。默认值<code>0 1 auto</code></p>
+<ul>
+<li><code>flex:auto</code>=&gt;<code>flex:1 1 auto</code></li>
+<li><code>flex:none</code>=&gt;<code>flex:0 0 auto</code></li>
+<li><code>flex:1</code>=&gt;<code>flex:1 1 0%</code></li>
+</ul>
+<blockquote>
+<p>优先使用<code>flew</code>属性</p>
+</blockquote>
+<h3 id="单个项目交叉轴方向对齐方式"><a href="#单个项目交叉轴方向对齐方式" class="headerlink" title="单个项目交叉轴方向对齐方式"></a>单个项目交叉轴方向对齐方式</h3><p><code>align-self</code>——允许单个项目有与其他项目不一样的交叉轴方向对齐方式。默认值<code>auto</code></p>
+<ul>
+<li>值<code>auto</code>、<code>flex-start</code>、<code>flex-end</code>、<code>center</code>、<code>baseline</code>、<code>stretch</code><br><img src="/2016/12/19/flexbox/flexbox-20190620-17-32-05.png" alt="单个项目交叉轴方向对齐方式"></li>
+</ul>
+<h2 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h2><h3 id="拉伸的主轴空间计算"><a href="#拉伸的主轴空间计算" class="headerlink" title="拉伸的主轴空间计算"></a>拉伸的主轴空间计算</h3><ul>
+<li>先根据各个项目大小计算出剩余的空间</li>
+<li>计算出扩展系数总和</li>
+<li>每个项目占据空间=本身大小+(项目的扩展系数/扩展系数总和)乘以总剩余空间</li>
+</ul>
+<h3 id="收缩的主轴空间计算"><a href="#收缩的主轴空间计算" class="headerlink" title="收缩的主轴空间计算"></a>收缩的主轴空间计算</h3><ul>
+<li>计算总的溢出的内容</li>
+<li>计算出所有项目基准值乘以收缩系数的总占用值</li>
+<li>计算每个项目基准值乘以收缩系数的值<br>每个项目占据空间=本身大小-(项目占用值/总占用值)乘以溢出的内容</li>
+</ul>
+<h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><p><img src="/2016/12/19/flexbox/flexbox-20190620-17-37-18.png" alt="兼容性"></p>
+<h3 id="flex容器"><a href="#flex容器" class="headerlink" title="flex容器"></a>flex容器</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">display</span>: box;</span><br><span class="line"><span class="comment">/* OLD - Android 4.4- */</span></span><br><span class="line"><span class="attribute">display</span>: -webkit-box;</span><br><span class="line"><span class="comment">/* OLD - iOS 6-, Safari 3.1-6 */</span></span><br><span class="line"><span class="attribute">display</span>: -moz-box;</span><br><span class="line"><span class="comment">/* OLD - Firefox 19- (buggy but mostly works) */</span></span><br><span class="line"><span class="attribute">display</span>: -ms-flexbox;</span><br><span class="line"><span class="comment">/* TWEENER - IE 10 */</span></span><br><span class="line"><span class="attribute">display</span>: -webkit-flex;</span><br><span class="line"><span class="comment">/* NEW - Chrome */</span></span><br><span class="line"><span class="attribute">display</span>: flex;</span><br><span class="line"><span class="comment">/* NEW, Spec - Opera 12.1, Firefox 20+ */</span></span><br></pre></td></tr></table></figure>
+<h4 id="主轴设置"><a href="#主轴设置" class="headerlink" title="主轴设置"></a>主轴设置</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 09版 */</span></span><br><span class="line"><span class="attribute">-webkit-box-orient</span>: vertical;<span class="comment">//横向排列时值是horizontal</span></span><br><span class="line"><span class="comment">/* 12版 */</span></span><br><span class="line"><span class="attribute">-webkit-flex-direction</span>: column;</span><br><span class="line"><span class="attribute">-moz-flex-direction</span>: column;</span><br><span class="line"><span class="attribute">-ms-flex-direction</span>: column;</span><br><span class="line"><span class="attribute">-o-flex-direction</span>: column;</span><br><span class="line"><span class="attribute">flex-direction</span>: column;</span><br></pre></td></tr></table></figure>
+<h4 id="排列顺序-1"><a href="#排列顺序-1" class="headerlink" title="排列顺序"></a>排列顺序</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">webkit-box-ordinal-group</span>: <span class="number">1</span>;</span><br><span class="line"><span class="comment">/* OLD - iOS 6-, Safari 3.1-6 */</span></span><br><span class="line"><span class="attribute">-moz-box-ordinal-group</span>: <span class="number">1</span>;</span><br><span class="line"><span class="comment">/* OLD - Firefox 19- */</span></span><br><span class="line"><span class="attribute">-ms-flex-order</span>: <span class="number">1</span>;</span><br><span class="line"><span class="comment">/* TWEENER - IE 10 */</span></span><br><span class="line"><span class="attribute">-webkit-order</span>: <span class="number">1</span>;</span><br><span class="line"><span class="comment">/* NEW - Chrome */</span></span><br><span class="line"><span class="attribute">order</span>: <span class="number">1</span>;</span><br><span class="line"><span class="comment">/* NEW, Spec - Opera 12.1, Firefox 20+ */</span></span><br></pre></td></tr></table></figure>
+<h4 id="交叉轴方向对齐-1"><a href="#交叉轴方向对齐-1" class="headerlink" title="交叉轴方向对齐"></a>交叉轴方向对齐</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 09版 */</span></span><br><span class="line"> <span class="attribute">-webkit-box-align</span>: center;</span><br><span class="line"><span class="comment">/* 12版 */</span></span><br><span class="line"><span class="attribute">-webkit-align-items</span>: center;</span><br><span class="line"><span class="attribute">-moz-align-items</span>: center;</span><br><span class="line"><span class="attribute">-ms-align-items</span>: center;</span><br><span class="line"><span class="attribute">-o-align-items</span>: center;</span><br><span class="line"><span class="attribute">align-items</span>: center;</span><br></pre></td></tr></table></figure>
+<h4 id="主轴方向对齐-1"><a href="#主轴方向对齐-1" class="headerlink" title="主轴方向对齐"></a>主轴方向对齐</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 09版 */</span></span><br><span class="line"><span class="attribute">-webkit-box-pack</span>: center;</span><br><span class="line"> <span class="comment">/* 12版 */</span></span><br><span class="line"> <span class="attribute">-webkit-justify-content</span>: center;</span><br><span class="line"> <span class="attribute">-moz-justify-content</span>: center;</span><br><span class="line"> <span class="attribute">-ms-justify-content</span>: center;</span><br><span class="line"> <span class="attribute">-o-justify-content</span>: center;</span><br><span class="line"> <span class="attribute">justify-content</span>: center;</span><br></pre></td></tr></table></figure>
+<h4 id="换行-1"><a href="#换行-1" class="headerlink" title="换行"></a>换行</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 09版 */</span></span><br><span class="line"><span class="comment">/*-webkit-box-lines: multiple;*/</span></span><br><span class="line"><span class="comment">/* 12版 */</span></span><br><span class="line"><span class="attribute">-webkit-flex-wrap</span>: wrap;</span><br><span class="line"><span class="attribute">-moz-flex-wrap</span>: wrap;</span><br><span class="line"><span class="attribute">-ms-flex-wrap</span>: wrap;</span><br><span class="line"><span class="attribute">-o-flex-wrap</span>: wrap;</span><br><span class="line"><span class="attribute">flex-wrap</span>: wrap;</span><br></pre></td></tr></table></figure>
+<h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">-webkit-box-flex</span>: <span class="number">1</span>;</span><br><span class="line"><span class="comment">/* OLD - iOS 6-, Safari 3.1-6 */</span></span><br><span class="line"><span class="attribute">-moz-box-flex</span>: <span class="number">1</span>;</span><br><span class="line"><span class="comment">/* OLD - Firefox 19- */</span></span><br><span class="line"><span class="attribute">width</span>: <span class="number">20%</span>;</span><br><span class="line"><span class="comment">/* For old syntax, otherwise collapses. */</span></span><br><span class="line"><span class="attribute">-webkit-flex</span>: <span class="number">1</span>;</span><br><span class="line"><span class="comment">/* Chrome */</span></span><br><span class="line"><span class="attribute">-ms-flex</span>: <span class="number">1</span>;</span><br><span class="line"><span class="comment">/* IE 10 */</span></span><br><span class="line"><span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line"><span class="comment">/* NEW, Spec - Opera 12.1, Firefox 20+ */</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/21/jQuery/" rel="next" title="jQuery">
+                <i class="fa fa-chevron-left"></i> jQuery
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/20/linux和DOS常用命令/" rel="prev" title="linux和DOS常用命令">
+                linux和DOS常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘心怡</p>
+              <p class="site-description motion-element" itemprop="description">Tomorrow will be better than today</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#容器属性"><span class="nav-number">1.</span> <span class="nav-text">容器属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-direction属性"><span class="nav-number">1.1.</span> <span class="nav-text">flex-direction属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#缺省布局（横向布局）"><span class="nav-number">1.1.1.</span> <span class="nav-text">缺省布局（横向布局）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#纵向布局"><span class="nav-number">1.1.2.</span> <span class="nav-text">纵向布局</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对齐方式"><span class="nav-number">1.2.</span> <span class="nav-text">对齐方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主轴方向对齐"><span class="nav-number">1.2.1.</span> <span class="nav-text">主轴方向对齐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉轴方向对齐"><span class="nav-number">1.2.2.</span> <span class="nav-text">交叉轴方向对齐</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#align-items"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">align-items</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#align-content"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">align-content</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#换行"><span class="nav-number">1.3.</span> <span class="nav-text">换行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-flow"><span class="nav-number">1.4.</span> <span class="nav-text">flex-flow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目属性"><span class="nav-number">2.</span> <span class="nav-text">项目属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#排列顺序"><span class="nav-number">2.1.</span> <span class="nav-text">排列顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目放大比例"><span class="nav-number">2.2.</span> <span class="nav-text">项目放大比例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目缩小比例"><span class="nav-number">2.3.</span> <span class="nav-text">项目缩小比例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伸缩项目的基准值"><span class="nav-number">2.4.</span> <span class="nav-text">伸缩项目的基准值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex"><span class="nav-number">2.5.</span> <span class="nav-text">flex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单个项目交叉轴方向对齐方式"><span class="nav-number">2.6.</span> <span class="nav-text">单个项目交叉轴方向对齐方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算"><span class="nav-number">3.</span> <span class="nav-text">计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拉伸的主轴空间计算"><span class="nav-number">3.1.</span> <span class="nav-text">拉伸的主轴空间计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#收缩的主轴空间计算"><span class="nav-number">3.2.</span> <span class="nav-text">收缩的主轴空间计算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兼容性"><span class="nav-number">4.</span> <span class="nav-text">兼容性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#flex容器"><span class="nav-number">4.1.</span> <span class="nav-text">flex容器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主轴设置"><span class="nav-number">4.1.1.</span> <span class="nav-text">主轴设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排列顺序-1"><span class="nav-number">4.1.2.</span> <span class="nav-text">排列顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉轴方向对齐-1"><span class="nav-number">4.1.3.</span> <span class="nav-text">交叉轴方向对齐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主轴方向对齐-1"><span class="nav-number">4.1.4.</span> <span class="nav-text">主轴方向对齐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#换行-1"><span class="nav-number">4.1.5.</span> <span class="nav-text">换行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目"><span class="nav-number">4.2.</span> <span class="nav-text">项目</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘心怡</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

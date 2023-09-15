@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="其他,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="刘心怡" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="浏览器是方便一般互联网用户通过界面解析和发送HTTP协议的软件  PC端浏览器和移动端浏览器功能基本相同，但运行的操作系统不同，渲染机制有差异">
+<meta name="keywords" content="其他">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器解析">
+<meta property="og:url" content="http://yoursite.com/2019/07/17/浏览器解析/index.html">
+<meta property="og:site_name" content="刘心怡">
+<meta property="og:description" content="浏览器是方便一般互联网用户通过界面解析和发送HTTP协议的软件  PC端浏览器和移动端浏览器功能基本相同，但运行的操作系统不同，渲染机制有差异">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/07/17/浏览器解析/浏览器解析-20190719-16-47-33.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/17/浏览器解析/浏览器解析-20190725-17-36-38.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/17/浏览器解析/浏览器解析-20190726-10-09-55.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/17/浏览器解析/浏览器解析-20190729-11-30-52.png">
+<meta property="og:updated_time" content="2019-07-19T09:36:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浏览器解析">
+<meta name="twitter:description" content="浏览器是方便一般互联网用户通过界面解析和发送HTTP协议的软件  PC端浏览器和移动端浏览器功能基本相同，但运行的操作系统不同，渲染机制有差异">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/17/浏览器解析/浏览器解析-20190719-16-47-33.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/17/浏览器解析/">
+
+
+
+
+
+  <title>浏览器解析 | 刘心怡</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘心怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Tomorrow will be better than today!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/17/浏览器解析/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘心怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘心怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">浏览器解析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-17T14:26:00+08:00">
+                2019-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/其他/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>浏览器是方便一般互联网用户通过界面解析和发送HTTP协议的软件</p>
+<blockquote>
+<p>PC端浏览器和移动端浏览器功能基本相同，但运行的操作系统不同，渲染机制有差异<br><a id="more"></a></p>
+</blockquote>
+<h2 id="浏览器的内核"><a href="#浏览器的内核" class="headerlink" title="浏览器的内核"></a>浏览器的内核</h2><p>浏览器中负责将表示页面的字符转变成可视化图像的模块</p>
+<h3 id="远程主机响应（请求网页-http协议）"><a href="#远程主机响应（请求网页-http协议）" class="headerlink" title="远程主机响应（请求网页 http协议）"></a>远程主机响应（请求网页 http协议）</h3><p>http协议</p>
+<ul>
+<li><p>请求报文格式：<code>[请求方式] [请求URL] [HTTP版本]\r\n[首部名称]:[可选空格][首部内容]\r\n[首部名称]:[可选空格][首部内容]\r\n[首部名称]:[可选空格][首部内容]\r\n\r\n[实体]</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'GET / HTTTP/1.0\r\nHost:www.xxxx.cn\r\nUser-Agent: Mozilla/5.0(Macintosh;Intel Mac OS X 10_12_1) AppleWebkit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36\r\nAccept: text/html\r\nAccept-Language:zh_CN,zh;q=0.9\r\n\r\n'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>相应报文格式：<code>[HTTP版本] [状态码] [原因短语]\r\n[首部名称]:[可选空格][首部内容]\r\n[首部名称]:[可选空格][首部内容]\r\n[首部名称]:[可选空格][首部内容]\r\n\r\n[实体]</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line"><span class="built_in">Date</span>: Wed, <span class="number">25</span> Apr <span class="number">2019</span> <span class="number">12</span>:<span class="number">01</span>:<span class="number">22</span> GMT <span class="comment">// 服务器发送内容时间</span></span><br><span class="line">Server: Apache <span class="comment">// 服务器</span></span><br><span class="line">Last-Modified: Fri, <span class="number">20</span> Apr <span class="number">2018</span> <span class="number">09</span>:<span class="number">13</span>:<span class="number">48</span> GMT <span class="comment">// 网页最后修改时间</span></span><br><span class="line">ETag: <span class="string">"700a6f-f72f-56a441b148b81"</span> <span class="comment">// 强校验码，用于缓存策略</span></span><br><span class="line">Accept-Ranges: bytes <span class="comment">// 范围请求</span></span><br><span class="line">Content-Length: <span class="number">63279</span> <span class="comment">// 实体长度</span></span><br><span class="line">Vary: Accept-Encoding,User-Agent</span><br><span class="line">Connection: close <span class="comment">// 关闭连接</span></span><br><span class="line">Content-Type: text/html <span class="comment">// 实体类型</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="网页内容组成"><a href="#网页内容组成" class="headerlink" title="网页内容组成"></a>网页内容组成</h3><ul>
+<li>doctype：提供浏览器html版本信息，<code>&lt;!doctype html&gt;</code></li>
+<li>head：html头部<ul>
+<li>meta：元数据<ul>
+<li>charset： 此特性声明当前文档所使用的字符编码，<code>&lt;meta chartset=&quot;utf-8&quot;&gt;</code></li>
+<li>http-equiv：客户端行为设置，如渲染模式，缓存等，<code>&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;&gt;</code></li>
+<li>name=”keywords”：搜索引擎使用，SEO优化</li>
+<li>name=”description”：搜索引擎使用，SEO优化</li>
+<li>name=”viewport”：浏览器视口设置，</li>
+</ul>
+</li>
+<li>link：</li>
+<li>script：需要在body前完成加载或运行的脚本</li>
+</ul>
+</li>
+<li>body：html实体<ul>
+<li>script：需要在body解析时加载或运行的脚本</li>
+</ul>
+</li>
+</ul>
+<h3 id="加载资源"><a href="#加载资源" class="headerlink" title="加载资源"></a>加载资源</h3><p>浏览器解析到URL地址时，调用特定的资源加载器，加载不同的外联资源</p>
+<blockquote>
+<p>chrome会在html文件解析过程中进行预扫描，加载其他资源</p>
+</blockquote>
+<ul>
+<li>一般资源加载过程不会阻碍渲染过程，如CSS资源</li>
+<li>javascript资源会阻碍渲染过程，放置在头部会造成进入网页时的短暂白屏</li>
+</ul>
+<blockquote>
+<p>在现代浏览器中，渲染被阻塞时，浏览器会开启新的线程继续渲染</p>
+</blockquote>
+<h3 id="渲染引擎"><a href="#渲染引擎" class="headerlink" title="渲染引擎"></a>渲染引擎</h3><p>渲染引擎的一般渲染过程。虚线表示渲染阶段依赖的外部模块，不属于渲染引擎<br><img src="/2019/07/17/浏览器解析/浏览器解析-20190719-16-47-33.png" alt="渲染过程"></p>
+<ul>
+<li>HTML解释器：解释HTML文件的解释器，DOM树</li>
+<li>CSS解释器：解释级联样式，为DOM对象计算样式信息，CSSOM树</li>
+<li>javascript引擎：解释JS脚本，并使JS代码有调用DOM接口和CSSOM接口的能力</li>
+<li>布局：结构DOM和CSSOM，计算出DOM对象的大小位置信息</li>
+<li>绘图：将经过布局计算的DOM节点绘制成图像</li>
+</ul>
+<blockquote>
+<p>渲染之前需要加载资源，渲染后DOM或CSS变化后，重新进行布局计算和渲染操作</p>
+</blockquote>
+<h3 id="内核架构"><a href="#内核架构" class="headerlink" title="内核架构"></a>内核架构</h3><p><img src="/2019/07/17/浏览器解析/浏览器解析-20190725-17-36-38.png" alt="webkit架构图"></p>
+<h2 id="浏览器内核以外的功能"><a href="#浏览器内核以外的功能" class="headerlink" title="浏览器内核以外的功能"></a>浏览器内核以外的功能</h2><p>基于webkit内核构建浏览器应用，除去内核完成的功能，现代浏览器的工作：</p>
+<ul>
+<li>资源管理</li>
+<li>多页面管理：多标签页的管理</li>
+<li>插件和扩展</li>
+<li>账户和同步</li>
+<li>安全机制</li>
+<li>多系统支持</li>
+</ul>
+<h3 id="Chromium-开源的最新版chrome浏览器-多进程架构"><a href="#Chromium-开源的最新版chrome浏览器-多进程架构" class="headerlink" title="Chromium(开源的最新版chrome浏览器)多进程架构"></a>Chromium(开源的最新版chrome浏览器)多进程架构</h3><p><img src="/2019/07/17/浏览器解析/浏览器解析-20190726-10-09-55.png" alt="Chromium的模块"></p>
+<p>主要进程：</p>
+<ul>
+<li>Browser进程：主进程，负责浏览器界面和页面管理等，调度其他进程，控制其他进程的创建和销毁</li>
+<li>Renderer进程：渲染进程<blockquote>
+<p>打开网页不一定创建一个Renderer进程，看浏览器开发者的配置，可能多个网页一个进程</p>
+</blockquote>
+</li>
+<li>NPAPI插件进程：用于管理如flash插件等</li>
+<li>GPU进程：当GPU硬件加速打开时才会创建</li>
+</ul>
+<blockquote>
+<p>进程间能互相调用，通过IPC通信，不同操作系统的进程通信方法不同（如windows和Linux）</p>
+</blockquote>
+<p>多线程架构的目的：</p>
+<ul>
+<li>职责分离，故障范围小</li>
+<li>隔离性</li>
+<li>性能</li>
+</ul>
+<h2 id="渲染原理"><a href="#渲染原理" class="headerlink" title="渲染原理"></a>渲染原理</h2><ul>
+<li>加载：加载渲染所需html代码</li>
+<li>渲染：将html代码绘制成图像</li>
+</ul>
+<h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><h4 id="资源加载机制"><a href="#资源加载机制" class="headerlink" title="资源加载机制"></a>资源加载机制</h4><p>资源加载器</p>
+<ul>
+<li>特定资源加载器：针对每种资源类型的特定加载器，仅加载某一种资源</li>
+<li>缓存资源加载器：<strong>特定加载器</strong>先通过<strong>缓存资源加载器</strong>来查找是否有缓存资源。如果资源缓存池中存在，取出使用，如果不存在，发送请求给网络模块</li>
+<li>通用资源加载器：只负责通过网络获取目标资源的数据，不负责进一步解析</li>
+</ul>
+<blockquote>
+<p>资源缓存</p>
+<ul>
+<li>页面缓存：Page Cache</li>
+<li>内存缓存: Memory Cache</li>
+<li>磁盘缓存: Disk Cache</li>
+</ul>
+</blockquote>
+<h4 id="网络栈"><a href="#网络栈" class="headerlink" title="网络栈"></a>网络栈</h4><p><img src="/2019/07/17/浏览器解析/浏览器解析-20190729-11-30-52.png" alt="网络栈"></p>
+<ul>
+<li>URLRequest：确定请求类型，协议</li>
+<li>URLRequestJob(Http)：判断是否需要建立网络连接（查找缓存）</li>
+<li>HttpNetworkTransaction：建立HTTP事务</li>
+<li>HttpStream：建立TCP socket连接</li>
+<li>StreamSocket</li>
+</ul>
+<h4 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h4><ul>
+<li>DNS预取：<code>&lt;link rel=&quot;dns-prefetch&quot; href=&quot;&quot;&gt;</code></li>
+<li>资源预取</li>
+<li>TCP preconnect</li>
+</ul>
+<h4 id="提高加载速度"><a href="#提高加载速度" class="headerlink" title="提高加载速度"></a>提高加载速度</h4><h3 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/其他/" rel="tag"># 其他</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/15/webpack简单实现/" rel="next" title="webpack简单实现">
+                <i class="fa fa-chevron-left"></i> webpack简单实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/22/angularJS_1.x/" rel="prev" title="rangularJS_1.x">
+                rangularJS_1.x <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘心怡</p>
+              <p class="site-description motion-element" itemprop="description">Tomorrow will be better than today</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器的内核"><span class="nav-number">1.</span> <span class="nav-text">浏览器的内核</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#远程主机响应（请求网页-http协议）"><span class="nav-number">1.1.</span> <span class="nav-text">远程主机响应（请求网页 http协议）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网页内容组成"><span class="nav-number">1.2.</span> <span class="nav-text">网页内容组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载资源"><span class="nav-number">1.3.</span> <span class="nav-text">加载资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渲染引擎"><span class="nav-number">1.4.</span> <span class="nav-text">渲染引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内核架构"><span class="nav-number">1.5.</span> <span class="nav-text">内核架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器内核以外的功能"><span class="nav-number">2.</span> <span class="nav-text">浏览器内核以外的功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Chromium-开源的最新版chrome浏览器-多进程架构"><span class="nav-number">2.1.</span> <span class="nav-text">Chromium(开源的最新版chrome浏览器)多进程架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渲染原理"><span class="nav-number">3.</span> <span class="nav-text">渲染原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载"><span class="nav-number">3.1.</span> <span class="nav-text">加载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#资源加载机制"><span class="nav-number">3.1.1.</span> <span class="nav-text">资源加载机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络栈"><span class="nav-number">3.1.2.</span> <span class="nav-text">网络栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#预加载"><span class="nav-number">3.1.3.</span> <span class="nav-text">预加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提高加载速度"><span class="nav-number">3.1.4.</span> <span class="nav-text">提高加载速度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渲染"><span class="nav-number">3.2.</span> <span class="nav-text">渲染</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘心怡</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

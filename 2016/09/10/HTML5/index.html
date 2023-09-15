@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HTML,html,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="刘心怡" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="HTML5新增标签和新增属性、视口">
+<meta name="keywords" content="HTML,html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5">
+<meta property="og:url" content="http://yoursite.com/2016/09/10/HTML5/index.html">
+<meta property="og:site_name" content="刘心怡">
+<meta property="og:description" content="HTML5新增标签和新增属性、视口">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-09-12T06:33:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5">
+<meta name="twitter:description" content="HTML5新增标签和新增属性、视口">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/10/HTML5/">
+
+
+
+
+
+  <title>HTML5 | 刘心怡</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘心怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Tomorrow will be better than today!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/10/HTML5/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘心怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘心怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTML5</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-10T13:16:00+08:00">
+                2016-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML/html/" itemprop="url" rel="index">
+                    <span itemprop="name">html</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>HTML5新增标签和新增属性、视口<br><a id="more"></a></p>
+<h2 id="HTML5新增标签"><a href="#HTML5新增标签" class="headerlink" title="HTML5新增标签"></a>HTML5新增标签</h2><p>作用：<br>1、标签更加语义化更加明确</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">作用</th>
+<th style="text-align:center">h5标签</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">头部</td>
+<td style="text-align:center"><code>&lt;header&gt;&lt;/header&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">底部</td>
+<td style="text-align:center"><code>&lt;footer&gt;&lt;/footer&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">文档中唯一的主体部分</td>
+<td style="text-align:center"><code>&lt;main&gt;&lt;/main&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">导航</td>
+<td style="text-align:center"><code>&lt;nav&gt;&lt;/nav&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">侧边栏</td>
+<td style="text-align:center"><code>&lt;aside&gt;&lt;/aside&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">划分大结构(相当于pc里的div标签)</td>
+<td style="text-align:center"><code>&lt;section &gt;&lt;/section&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">一段文章内容</td>
+<td style="text-align:center"><code>&lt;article&gt;&lt;/article&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">音频(可以引一段mp3格式的音乐)</td>
+<td style="text-align:center"><code>&lt;audio src=&quot;&quot;&gt;&lt;/audio&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">视频</td>
+<td style="text-align:center"><code>&lt;video src=&quot;&quot;&gt;&lt;/video&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">canvas动画(H5场景应用比较多核心原理都是js代码)</td>
+<td style="text-align:center"><code>&lt;canvas&gt;&lt;/canvas&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">标题组(里面可以放多个标题)</td>
+<td style="text-align:center"><code>&lt;hgroup&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">放img图片</td>
+<td style="text-align:center"><code>&lt;figure&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">放图片的文字内容</td>
+<td style="text-align:center"><code>&lt;figcaption&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">本地存储</td>
+<td style="text-align:center">localStore</td>
+</tr>
+</tbody>
+</table>
+<h3 id="video"><a href="#video" class="headerlink" title="video"></a>video</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--video--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">"http://download.qupai.me/qupai_res/images/qupai.mp4"</span> <span class="attr">autoplay</span>=<span class="string">"autoplay"</span>  <span class="attr">controls</span>=<span class="string">"controls"</span> <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">height</span>=<span class="string">"300px"</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">   src 视频资源的路径地址</span></span><br><span class="line"><span class="comment">   width 宽度</span></span><br><span class="line"><span class="comment">   height 高度</span></span><br><span class="line"><span class="comment">   autoplay 自动播放</span></span><br><span class="line"><span class="comment">   loop 循环播放</span></span><br><span class="line"><span class="comment">   preload 预加载</span></span><br><span class="line"><span class="comment">   controls 控制控件显示隐藏</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="audio"><a href="#audio" class="headerlink" title="audio"></a>audio</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--audio--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">src</span>=<span class="string">"http://file.ws.126.net/f2e/ent/ent_painting2016/files/sjsznh.mp3"</span> <span class="attr">loop</span>&gt;</span><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    src 音频资源的路径地址</span></span><br><span class="line"><span class="comment">    autoplay 自动播放</span></span><br><span class="line"><span class="comment">    loop 循环播放</span></span><br><span class="line"><span class="comment">    preload 预加载</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="H5新增表单类型"><a href="#H5新增表单类型" class="headerlink" title="H5新增表单类型"></a>H5新增表单类型</h2><ul>
+<li><code>type</code>属性</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">作用</th>
+<th style="text-align:center"><code>&lt;input&gt;</code>元素<code>type</code>属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">日历控件</td>
+<td style="text-align:center"><code>&lt;input type=&quot;date&quot;/&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">颜色面板</td>
+<td style="text-align:center"><code>&lt;input type=&quot;color&quot;/&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">进度条控件</td>
+<td style="text-align:center"><code>&lt;input type=&quot;range&quot;/&gt; &lt;br/&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">链接</td>
+<td style="text-align:center"><code>&lt;input type=&quot;url&quot;/&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">search搜索标签</td>
+<td style="text-align:center"><code>&lt;input type=&quot;search&quot;/&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">number数字&amp;数值标签</td>
+<td style="text-align:center"><code>&lt;input type=&quot;number&quot;/&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">color颜色&amp;色值选择标签</td>
+<td style="text-align:center"><code>&lt;input type=&quot;color&quot;/&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">email 邮件类型输入框</td>
+<td style="text-align:center"><code>&lt;input type=&quot;email&quot;/&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">telephone电话号码输入标签</td>
+<td style="text-align:center"><code>&lt;input type=&quot;tel&quot;/&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align:center">time时钟标签</td>
+<td style="text-align:center"><code>&lt;input type=&quot;time&quot;/&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>placeholder</code>属性：<code>input框</code>默认显示的文本的内容，当你输入内容，显示文本内容就消失</li>
+<li><code>autofocus</code>: 页面加载的时候，<code>input框</code>自动获取焦点</li>
+<li><code>required</code>: 必填项</li>
+<li><code>pattern</code>: 验证输入的格式（正则），如：<code>pattern=&quot;[A-z]{4}&quot;</code></li>
+</ul>
+<h3 id="输入框事件"><a href="#输入框事件" class="headerlink" title="输入框事件"></a>输入框事件</h3><p><code>oninput</code>：事件在用户输入时触发，当元素的值发生改变的时候触发<br><code>onchange</code> : 当文本框中内容发生改变触发的事件<br><code>onfocus</code> : 文本框获取鼠标焦点执行该方法<br><code>onblur</code> :文本框失去焦点的事件</p>
+<h2 id="HTML5新增标签的兼容处理"><a href="#HTML5新增标签的兼容处理" class="headerlink" title="HTML5新增标签的兼容处理"></a>HTML5新增标签的兼容处理</h2><p>处理ie9以下标签的兼容性问题(在<code>head</code>中引入)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--[if lt IE 9]--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"html5.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--[endif]--&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="本地存储"><a href="#本地存储" class="headerlink" title="本地存储"></a>本地存储</h2><h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><p>本地存储</p>
+<ul>
+<li><code>setItem</code> : 往localStorage存储属性和属性值</li>
+<li><code>getItem</code> : 获取localStorage 这个里面某个属性的值</li>
+<li><code>removeItem</code> :获取localStorage中的属性</li>
+</ul>
+<h3 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h3><p>信息的会话存储，会话窗口信息存在，<code>sessionStorage</code>就有相应的信息，会话窗口关闭，信息也没了</p>
+<blockquote>
+<p><code>cookie</code>：把信息存储到客户端的浏览器中，（服务器也是可以获取cookie）<br><code>session</code>：把信息存储到服务器上（ 服务器存储）</p>
+</blockquote>
+<h2 id="视口的概念-viewport"><a href="#视口的概念-viewport" class="headerlink" title="视口的概念 viewport"></a>视口的概念 viewport</h2><p>移动端常说的视口(viewport)：指浏览器显示页面内容的屏幕区域。</p>
+<p>快捷键：meta:vp+Tab键（放head 标签里面）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>width=device-width</code></td>
+<td style="text-align:center">宽度等于设备的宽度</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>height=devic-height</code></td>
+<td style="text-align:center">高度等于设备的高度</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>user-scalable=no</code></td>
+<td style="text-align:center">用户是否可以手动缩放页</td>
+<td>面 yes</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>initial-scale=1.0</code></td>
+<td style="text-align:center">初始的缩放比例是 1.0</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>maximum-scale=1.0</code></td>
+<td style="text-align:center">最大的缩放比例是 1.0</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>minimum-scale=1.0</code></td>
+<td style="text-align:center">最小的缩放比例是 1.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性名</th>
+<th style="text-align:center">取值</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">width</td>
+<td style="text-align:center">正整数或device-width</td>
+<td style="text-align:center">定义视口的宽度，单位为像素</td>
+</tr>
+<tr>
+<td style="text-align:center">height</td>
+<td style="text-align:center">正整数或device-height</td>
+<td style="text-align:center">定义视口的高度，单位为像素,一般不用</td>
+</tr>
+<tr>
+<td style="text-align:center">initial-scale</td>
+<td style="text-align:center">[0-10]</td>
+<td style="text-align:center">定义初始缩放值</td>
+</tr>
+<tr>
+<td style="text-align:center">mininum-scale</td>
+<td style="text-align:center">[0-10]</td>
+<td style="text-align:center">定义缩小最小比例,它必须小于或等于maxinum-scale设置</td>
+</tr>
+<tr>
+<td style="text-align:center">maxinum-scale</td>
+<td style="text-align:center">[0-10]</td>
+<td style="text-align:center">定义放大最大比例,它必须大于或等于mininum-scale设置</td>
+</tr>
+<tr>
+<td style="text-align:center">user-scalable</td>
+<td style="text-align:center">yes/no</td>
+<td style="text-align:center">定义是否允许用户手动缩放页面，默认值yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常见viewport数值：-980-1024"><a href="#常见viewport数值：-980-1024" class="headerlink" title="常见viewport数值：(980~1024)"></a>常见viewport数值：(980~1024)</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">viewport数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">iphone</td>
+<td style="text-align:center">980</td>
+</tr>
+<tr>
+<td style="text-align:center">iPad</td>
+<td style="text-align:center">1024</td>
+</tr>
+<tr>
+<td style="text-align:center">Android</td>
+<td style="text-align:center">980</td>
+</tr>
+<tr>
+<td style="text-align:center">WinPhone</td>
+<td style="text-align:center">1024</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>浏览器会判断当前是移动端还是PC端，进行不同的处理<br>980是浏览器默认移动的可视窗口宽度</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML/" rel="tag"># HTML</a>
+          
+            <a href="/tags/html/" rel="tag"># html</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/06/HTML基础/" rel="next" title="HTML知识点">
+                <i class="fa fa-chevron-left"></i> HTML知识点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/12/css基础/" rel="prev" title="CSS基础">
+                CSS基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘心怡</p>
+              <p class="site-description motion-element" itemprop="description">Tomorrow will be better than today</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML5新增标签"><span class="nav-number">1.</span> <span class="nav-text">HTML5新增标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#video"><span class="nav-number">1.1.</span> <span class="nav-text">video</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#audio"><span class="nav-number">1.2.</span> <span class="nav-text">audio</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H5新增表单类型"><span class="nav-number">2.</span> <span class="nav-text">H5新增表单类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入框事件"><span class="nav-number">2.1.</span> <span class="nav-text">输入框事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML5新增标签的兼容处理"><span class="nav-number">3.</span> <span class="nav-text">HTML5新增标签的兼容处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地存储"><span class="nav-number">4.</span> <span class="nav-text">本地存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#localStorage"><span class="nav-number">4.1.</span> <span class="nav-text">localStorage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sessionStorage"><span class="nav-number">4.2.</span> <span class="nav-text">sessionStorage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视口的概念-viewport"><span class="nav-number">5.</span> <span class="nav-text">视口的概念 viewport</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见viewport数值：-980-1024"><span class="nav-number">5.1.</span> <span class="nav-text">常见viewport数值：(980~1024)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘心怡</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

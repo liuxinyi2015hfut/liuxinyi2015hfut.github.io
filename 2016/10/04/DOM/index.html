@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,web,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="刘心怡" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="浏览器中的javascript引擎使JS代码有调用DOM接口和CSSOM接口的能力">
+<meta name="keywords" content="JavaScript,web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM">
+<meta property="og:url" content="http://yoursite.com/2016/10/04/DOM/index.html">
+<meta property="og:site_name" content="刘心怡">
+<meta property="og:description" content="浏览器中的javascript引擎使JS代码有调用DOM接口和CSSOM接口的能力">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-03T01:41:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM">
+<meta name="twitter:description" content="浏览器中的javascript引擎使JS代码有调用DOM接口和CSSOM接口的能力">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/04/DOM/">
+
+
+
+
+
+  <title>DOM | 刘心怡</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘心怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Tomorrow will be better than today!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/04/DOM/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘心怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘心怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DOM</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-04T16:28:00+08:00">
+                2016-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>浏览器中的javascript引擎使JS代码有调用DOM接口和CSSOM接口的能力</p>
+<a id="more"></a>
+<h2 id="DOM的映射"><a href="#DOM的映射" class="headerlink" title="DOM的映射"></a>DOM的映射</h2><p> 映射：在js中，操作元素集合，元素集合中的每一项和页面中DOM结构的元素是一一对应的；</p>
+<blockquote>
+<p>只能当页面结构中的元素改变时，元素集合类数组（）中的项才会改变（如顺序，数据等）<br>全局只需获取一次，当页面结构中元素增删时，获取的元素集合类数组中的相应项一样会增删</p>
+</blockquote>
+<h2 id="DOM的回流机制"><a href="#DOM的回流机制" class="headerlink" title="DOM的回流机制"></a>DOM的回流机制</h2><p>页面中删除元素，新增元素，元素换位置，浏览器都要对页面DOM的结构进行重新的计算，非常消耗性能。</p>
+<h2 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h2><p>在JS中，改变元素的样式（css），浏览器需要对元素进行重新的渲染，这就叫重绘</p>
+<h2 id="表格元素获取"><a href="#表格元素获取" class="headerlink" title="表格元素获取"></a>表格元素获取</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oTab=<span class="built_in">document</span>.getElementById(<span class="string">"tab"</span>);</span><br><span class="line"><span class="keyword">var</span> tHead=oTab.tHead;<span class="comment">//获取表头（唯一）</span></span><br><span class="line"><span class="keyword">var</span> oThs=tHead.rows[<span class="number">0</span>].cells;<span class="comment">//获取表头中第一行的所有列（类数组）</span></span><br><span class="line"><span class="keyword">var</span> tBody=oTab.tBodies[<span class="number">0</span>];<span class="comment">//</span></span><br><span class="line"><span class="keyword">var</span> rows=tBody.rows;<span class="comment">//第一个body中所有行（类数组）</span></span><br></pre></td></tr></table></figure>
+<p><code>tHead</code>：获取表头<br><code>rows</code>：获取行<br><code>cells</code>：获取表格中某一行的列<br><code>tBodies[0]</code>：获取表格中的第一个body</p>
+<h2 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h2><h3 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  str = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;data.length;i++)&#123;</span><br><span class="line">    str += <span class="string">"&lt;li&gt;"</span> +data[i]+<span class="string">"&lt;/li&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line">oUl.innerHTML += str;</span><br></pre></td></tr></table></figure>
+<h3 id="添加节点"><a href="#添加节点" class="headerlink" title="添加节点"></a>添加节点</h3><p>缺点：添加多个节点引发多次回流，消耗性能</p>
+<h3 id="文档碎片"><a href="#文档碎片" class="headerlink" title="文档碎片"></a>文档碎片</h3><p>优点 ： 引发一次回流</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> frg = <span class="built_in">document</span>.createDocumentFragment();<span class="comment">// 创建一个文档碎片</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;data.length;i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> li =<span class="built_in">document</span>.createElement(<span class="string">"li"</span>);</span><br><span class="line">        li.innerHTML = data[i];<span class="comment">// 绑定数据</span></span><br><span class="line">        frg.appendChild(li);</span><br><span class="line">    &#125;</span><br><span class="line">    oUl.appendChild(frg);</span><br><span class="line">    frg = <span class="literal">null</span>;<span class="comment">//手动释放内存</span></span><br></pre></td></tr></table></figure>
+<h2 id="JS盒模型（只读属性，不可以设置-）"><a href="#JS盒模型（只读属性，不可以设置-）" class="headerlink" title="JS盒模型（只读属性，不可以设置 ）"></a>JS盒模型（只读属性，不可以设置 ）</h2><ul>
+<li><code>clientWidth/clientHeight</code>：padding+内容</li>
+<li><code>clientTop/clientLeft</code>：border-top/border-left</li>
+<li><code>offsetWidth/offsetHeight</code>：<code>clientWidth/clientHeight</code>+border左右/上下</li>
+<li><code>scrollWidth/scrollHeight</code><ul>
+<li>在内容没有溢出的情况下：<code>scrollWidth/scrollHeight</code>=<code>clientWidth/clientHeight</code></li>
+<li>有溢出的情况下： <code>scrollWidth/scrollHeight</code>=溢出内容的宽/高+<code>clientWidth/clientHeight</code>(=padding-left/top+正式内容宽高)</li>
+</ul>
+</li>
+</ul>
+<h2 id="偏移量"><a href="#偏移量" class="headerlink" title="偏移量"></a>偏移量</h2><p><strong>偏移量</strong>：当前元素的边框<strong>外</strong>边缘距离父级参照物的边框<strong>内</strong>边缘的距离</p>
+<blockquote>
+<p>在xp系统的IE8浏览器中，偏移量是当前元素的边框<strong>外</strong>边缘距离父级参照物的边框<strong>外</strong>边缘的距离</p>
+</blockquote>
+<p><strong>参照物</strong>：<code>offsetParent</code>（父级参照物）<br>如果不做任何处理的情况下，元素对象对应的父级参照物默认都是<code>body</code></p>
+<blockquote>
+<p>在IE7下，如果给body的子元素加上定位，那么当前元素的父级参照物就是HTML，如果不加定位，那么还是body</p>
+</blockquote>
+<h3 id="offsetLeft-offsetTop：左偏移-上偏移（只读属性）"><a href="#offsetLeft-offsetTop：左偏移-上偏移（只读属性）" class="headerlink" title="offsetLeft/offsetTop：左偏移/上偏移（只读属性）"></a><code>offsetLeft/offsetTop</code>：左偏移/上偏移（只读属性）</h3><p>当前元素（左/上）边框距离父级参照物的距离<br>修改父级参照物：想让谁成为其他元素的父级参照物，，就在它的css属性中加上<code>position</code>属性</p>
+<h3 id="scrollTop-scrollLeft（读写属性，可以修改设置）"><a href="#scrollTop-scrollLeft（读写属性，可以修改设置）" class="headerlink" title="scrollTop/scrollLeft（读写属性，可以修改设置）"></a>scrollTop/scrollLeft（读写属性，可以修改设置）</h3><p><code>scrollTop</code>：是滚动条卷去的高度<br><code>scrollLeft</code>：是滚动条卷去的宽度</p>
+<blockquote>
+<p>documentElement/body 不同浏览器识别不同，都要写</p>
+</blockquote>
+<h2 id="获取元素自定义属性"><a href="#获取元素自定义属性" class="headerlink" title="获取元素自定义属性"></a>获取元素自定义属性</h2><h3 id="getAttribute"><a href="#getAttribute" class="headerlink" title="getAttribute"></a>getAttribute</h3><p>通过名称获取属性的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curEle.getAttribute(<span class="string">"自定义属性名"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="js中获取样式（只读）"><a href="#js中获取样式（只读）" class="headerlink" title="js中获取样式（只读）"></a>js中获取样式（只读）</h2><p><code>oDiv.style.attr</code>：只针对行内样式</p>
+<blockquote>
+<p>弊端：只能获取行内式中<code>&lt;style&gt;</code>样式，无法获得css中样式</p>
+</blockquote>
+<h3 id="getComputedStyle"><a href="#getComputedStyle" class="headerlink" title="getComputedStyle"></a>getComputedStyle</h3><p><code>window.getComputedStyle(元素对象)[&quot;属性名&quot;]</code>：获取浏览器计算的样式</p>
+<blockquote>
+<p>不兼容IE6，7，8</p>
+</blockquote>
+<h3 id="currentStyle-只兼容IE"><a href="#currentStyle-只兼容IE" class="headerlink" title="currentStyle(只兼容IE)"></a>currentStyle(只兼容IE)</h3><p><code>元素对象.currentStyle[&quot;属性名&quot;]</code></p>
+<h3 id="onload"><a href="#onload" class="headerlink" title="onload"></a>onload</h3><p>加载成功时执行方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">imgNew.onload=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  img.src=trueAddress;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>事件 ： 浏览器天生给元素提供了一些事件</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">事件</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>onclick</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>onmouseover</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>onmouseout</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>onmouseenter</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>onmouseleave</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>onmousemove</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>onload</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>onscroll</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>onmousewheel</code></td>
+<td style="text-align:center">鼠标滚轮滚动出发</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>onfocus</code></td>
+<td style="text-align:center">获取鼠标焦点</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>onblur</code></td>
+<td style="text-align:center">失去鼠标焦点</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>onresize</code></td>
+<td style="text-align:center">改变窗口大小</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>onmousedown</code></td>
+<td style="text-align:center">鼠标按下</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>onmouseup</code></td>
+<td style="text-align:center">鼠标抬起</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>onkeydown</code></td>
+<td style="text-align:center">键盘按下</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>onkeyup</code></td>
+<td style="text-align:center">键盘抬起</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>如果没有绑定任何方法，那么事件是执行了，只是什么都没做</p>
+</blockquote>
+<h3 id="DOM0级事件"><a href="#DOM0级事件" class="headerlink" title="DOM0级事件"></a>DOM0级事件</h3><p><code>onclick</code>、<code>onmouserover</code>、<code>onmousemove</code>…这些方法绑定到当前的元素上，只能给元素对象的一个事件行为绑定一个方法，第二次绑定会把第一次绑定的覆盖掉</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">oBox.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line">oBox.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//结果只输出2</span></span><br></pre></td></tr></table></figure>
+<h3 id="DOM2级事件"><a href="#DOM2级事件" class="headerlink" title="DOM2级事件"></a>DOM2级事件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">oBox.addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;,<span class="literal">false</span>)</span><br><span class="line">oBox.addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;,<span class="literal">false</span>)</span><br><span class="line"><span class="comment">//结果输出1 2</span></span><br></pre></td></tr></table></figure>
+<p>元素通过原型链找到EVentTarget 这个类的原型上的<code>addEventListener</code>方法，可以给一个行为绑定多个方法</p>
+<ul>
+<li>参数 ：<ul>
+<li>第一个： 事件的行为，这个参数前面不带“on”</li>
+<li>第二个 ： 要给事件绑定的方法</li>
+<li>true / false<ul>
+<li>false：事件进行冒泡传播时进行操控的</li>
+<li>true：是在事件捕获阶段进行操控的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>先捕获，然后在冒泡传播</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=<span class="string">"outer"</span>&gt;</span><br><span class="line">    &lt;div id=<span class="string">"inner"</span>&gt;</span><br><span class="line">        &lt;div id=<span class="string">"center"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">    var outer = document.getElementById("</span>outer<span class="string">")</span></span><br><span class="line"><span class="string">    var inner = document.getElementById("</span>inner<span class="string">")</span></span><br><span class="line"><span class="string">    var center = document.getElementById("</span>center<span class="string">")</span></span><br><span class="line"><span class="string">    var body =document.body;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    body.addEventListener("</span>click<span class="string">",function () &#123;</span></span><br><span class="line"><span class="string">            console.log("</span>body<span class="string">","</span>冒泡<span class="string">")</span></span><br><span class="line"><span class="string">    &#125;,false)</span></span><br><span class="line"><span class="string">    body.addEventListener("</span>click<span class="string">",function () &#123;</span></span><br><span class="line"><span class="string">        console.log("</span>body<span class="string">","</span>捕获<span class="string">")</span></span><br><span class="line"><span class="string">    &#125;,true)</span></span><br><span class="line"><span class="string">    outer.addEventListener("</span>click<span class="string">",function () &#123;</span></span><br><span class="line"><span class="string">        console.log("</span>outer<span class="string">","</span>冒泡<span class="string">")</span></span><br><span class="line"><span class="string">    &#125;,false);</span></span><br><span class="line"><span class="string">    outer.addEventListener("</span>click<span class="string">",function () &#123;</span></span><br><span class="line"><span class="string">        console.log("</span>outer<span class="string">","</span>捕获<span class="string">")</span></span><br><span class="line"><span class="string">    &#125;,true)</span></span><br><span class="line"><span class="string">    inner.addEventListener("</span>click<span class="string">",function () &#123;</span></span><br><span class="line"><span class="string">        console.log("</span>inner<span class="string">","</span>冒泡<span class="string">")</span></span><br><span class="line"><span class="string">    &#125;,false)</span></span><br><span class="line"><span class="string">    inner.addEventListener("</span>click<span class="string">",function () &#123;</span></span><br><span class="line"><span class="string">        console.log("</span>inner<span class="string">","</span>捕获<span class="string">")</span></span><br><span class="line"><span class="string">    &#125;,true)</span></span><br><span class="line"><span class="string">    center.addEventListener("</span>click<span class="string">",function () &#123;</span></span><br><span class="line"><span class="string">        console.log("</span>center<span class="string">","</span>冒泡<span class="string">")</span></span><br><span class="line"><span class="string">    &#125;,false);</span></span><br><span class="line"><span class="string">    center.addEventListener("</span>click<span class="string">",function () &#123;</span></span><br><span class="line"><span class="string">        console.log("</span>center<span class="string">","</span>捕获<span class="string">")</span></span><br><span class="line"><span class="string">    &#125;,true)</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">//body 捕获 -&gt; outer 捕获 -&gt; inner 捕获 -&gt; center 冒泡 -&gt; center 捕获 -&gt; inner 冒泡 -&gt; outer 冒泡 -&gt; body 冒泡</span></span><br></pre></td></tr></table></figure>
+<p><code>removeListener</code>：给一个行为解绑方法</p>
+<blockquote>
+<p>IE678 下不兼容</p>
+</blockquote>
+<h4 id="兼容IE6，7，8浏览器的2级事件绑定方法"><a href="#兼容IE6，7，8浏览器的2级事件绑定方法" class="headerlink" title="兼容IE6，7，8浏览器的2级事件绑定方法"></a>兼容IE6，7，8浏览器的2级事件绑定方法</h4><p>绑定方法：<code>attachEvent</code><br>移除绑定：<code>detachEvent</code></p>
+<ul>
+<li>参数：<ul>
+<li>第一个参数： 加”on”</li>
+<li>第二个：要绑定或解绑的方法</li>
+</ul>
+</li>
+</ul>
+<h4 id="DOM2级兼容问题"><a href="#DOM2级兼容问题" class="headerlink" title="DOM2级兼容问题"></a>DOM2级兼容问题</h4><ul>
+<li><strong>顺序</strong>： 标准浏览器中，给一个元素的一个事件行为绑定多个方法，方法执行的顺序和绑定顺序是一致的，但是IE678 是乱序的</li>
+<li><strong>this</strong>： 标准浏览器方法中的this指向当前被绑定的元素，但是iE678this指向window</li>
+<li><strong>重复</strong>： 标准浏览器对一个元素的一个事件行为绑定多次同一个的方法（空间地址相同），浏览器会把重复的过滤掉，但是IE678是不进行过滤处理的，绑定了重复的方法也都会执行</li>
+</ul>
+<h3 id="事件对象e"><a href="#事件对象e" class="headerlink" title="事件对象e"></a>事件对象e</h3><p><strong>事件对象</strong>：在绑定事件的时候，浏览器会默认给当前绑定方法传进一个参数（这个参数一般用e来接收）,这个参数是一个对象数据类型的值，里面包含了当前点击的一些信息</p>
+<blockquote>
+<p>在IE678下，事件对象没有在绑定的这个方法的参数中，而是放在全局下的<code>window</code>的一个属性上 ，属性名是<code>event</code></p>
+</blockquote>
+<h4 id="事件源e-target"><a href="#事件源e-target" class="headerlink" title="事件源e.target"></a>事件源<code>e.target</code></h4><p>事件绑定在哪个元素对象上，那么元素对象就是当前事件的事件源——<code>e.target</code></p>
+<blockquote>
+<p>在IE678 不兼容的，事件源是<code>window.event.srcElement</code></p>
+</blockquote>
+<h4 id="鼠标点击位置"><a href="#鼠标点击位置" class="headerlink" title="鼠标点击位置"></a>鼠标点击位置</h4><ul>
+<li><code>clientX</code> : 当前鼠标点击的位置，距离浏览器窗口左边的距离</li>
+<li><code>clientY</code>： 当前鼠标点击的位置，距离浏览器窗口上边的距离</li>
+<li><code>pageX</code>: 当前鼠标点击的位置，距离页面左边或者是body 的左边的距离<strong>(在IE678 下不存在)</strong></li>
+<li><code>pageY</code>: 当前鼠标点击的位置，距离页面顶部或者是body 的顶端的距离<strong>(在IE678 下不存在)</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">e = e || <span class="built_in">window</span>.event;</span><br><span class="line">e.target=e.target||e.srcElement;</span><br><span class="line">e.pageX = e.pageX || (e.clientX + (<span class="built_in">document</span>.documentElement.scrollLeft || <span class="built_in">document</span>.body.scrollLeft));</span><br><span class="line">e.pageY = e.pageY || (e.clientY + (<span class="built_in">document</span>.documentElement.scrollTop|| <span class="built_in">document</span>.body.scrollTop));</span><br></pre></td></tr></table></figure>
+<h3 id="事件默认行为"><a href="#事件默认行为" class="headerlink" title="事件默认行为"></a>事件默认行为</h3><p><code>&lt;a&gt;</code>标签点击，实现连接自动跳转，这是<code>&lt;a&gt;</code>的默认的事件行为</p>
+<h4 id="组织事件默认行为"><a href="#组织事件默认行为" class="headerlink" title="组织事件默认行为"></a>组织事件默认行为</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">e = e || <span class="built_in">window</span>.event;</span><br><span class="line">e.preventDefault? e.preventDefault():e.returnValue=<span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
+<p>或者<code>return false</code></p>
+<blockquote>
+<p>在IE678 下面不存在preventDefault 这个方法，但是存在returnValue这个属性</p>
+</blockquote>
+<h3 id="事件传播机制"><a href="#事件传播机制" class="headerlink" title="事件传播机制"></a>事件传播机制</h3><p><strong>事件的冒泡传播机制</strong>：当触发center的click事件时，父级的click事件也会跟着触发，依次向上，依次触发</p>
+<blockquote>
+<p>先捕获，然后在冒泡传播</p>
+</blockquote>
+<h4 id="阻止事件的冒泡传播"><a href="#阻止事件的冒泡传播" class="headerlink" title="阻止事件的冒泡传播"></a>阻止事件的冒泡传播</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">e = e||<span class="built_in">window</span>.event;</span><br><span class="line">e.stopPropagation ? e.stopPropagation() : e.cancelBubble = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="onmouseenter和onmouseover"><a href="#onmouseenter和onmouseover" class="headerlink" title="onmouseenter和onmouseover"></a><code>onmouseenter</code>和<code>onmouseover</code></h4><ul>
+<li><code>onmouseenter</code>会默认阻止事件的冒泡传播机制</li>
+<li><code>onmouseover</code> 不会默认阻止事件的冒泡传播机制</li>
+</ul>
+<h4 id="onmouseout和onmouseleave"><a href="#onmouseout和onmouseleave" class="headerlink" title="onmouseout和onmouseleave"></a><code>onmouseout</code>和<code>onmouseleave</code></h4><ul>
+<li><code>onmouseleave</code>会默认阻止事件的冒泡传播机制</li>
+<li><code>onmouseout</code>不会默认阻止事件的冒泡传播机制</li>
+</ul>
+<h3 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h3><p>事件委托的原理： 利用事件冒泡传播的机制，给最外层的元素的某个行为绑定相应的方法，当里面元素的行为触发的时候，外层的对应的行为也会跟着触发，只要对当前事件源进行判断，进行不同的处理，实现相应的功能</p>
+<h3 id="鼠标丢失解决"><a href="#鼠标丢失解决" class="headerlink" title="鼠标丢失解决"></a>鼠标丢失解决</h3><ul>
+<li>问题：当鼠标移动过快，盒子跟不上鼠标的速度，导致鼠标丢失，当鼠标抬起时，并没有执行标题的鼠标抬起事件，当下次再次划入这个标题时，会继续执行move这个方法</li>
+<li>解决：<ul>
+<li>在IE和火狐浏览器下，有个setCapture 这个方法，会把鼠标和元素绑定在一起</li>
+<li>在谷歌浏览器中，鼠标永远在document这个里面，由于事件冒泡传播的机制，所以给document绑定onmousemove onmouseup</li>
+</ul>
+</li>
+</ul>
+<h3 id="window-onload"><a href="#window-onload" class="headerlink" title="window.onload"></a><code>window.onload</code></h3><p>只有页面中HTML结构，图片、文字等所有资源加载完成才会执行这个方法，在页面中只能执行一次</p>
+<h3 id="jQuery中-document-ready"><a href="#jQuery中-document-ready" class="headerlink" title="jQuery中$(document).ready()"></a>jQuery中<code>$(document).ready()</code></h3><p>只要页面中HTML结构加载完成，就会执行这个操作（一个页面可以使用多次）</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/04/ES5深入/" rel="next" title="ES5深入">
+                <i class="fa fa-chevron-left"></i> ES5深入
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/06/git基础/" rel="prev" title="git基础">
+                git基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘心怡</p>
+              <p class="site-description motion-element" itemprop="description">Tomorrow will be better than today</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM的映射"><span class="nav-number">1.</span> <span class="nav-text">DOM的映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM的回流机制"><span class="nav-number">2.</span> <span class="nav-text">DOM的回流机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重绘"><span class="nav-number">3.</span> <span class="nav-text">重绘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格元素获取"><span class="nav-number">4.</span> <span class="nav-text">表格元素获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据绑定"><span class="nav-number">5.</span> <span class="nav-text">数据绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串拼接"><span class="nav-number">5.1.</span> <span class="nav-text">字符串拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加节点"><span class="nav-number">5.2.</span> <span class="nav-text">添加节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档碎片"><span class="nav-number">5.3.</span> <span class="nav-text">文档碎片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS盒模型（只读属性，不可以设置-）"><span class="nav-number">6.</span> <span class="nav-text">JS盒模型（只读属性，不可以设置 ）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#偏移量"><span class="nav-number">7.</span> <span class="nav-text">偏移量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#offsetLeft-offsetTop：左偏移-上偏移（只读属性）"><span class="nav-number">7.1.</span> <span class="nav-text">offsetLeft/offsetTop：左偏移/上偏移（只读属性）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scrollTop-scrollLeft（读写属性，可以修改设置）"><span class="nav-number">7.2.</span> <span class="nav-text">scrollTop/scrollLeft（读写属性，可以修改设置）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取元素自定义属性"><span class="nav-number">8.</span> <span class="nav-text">获取元素自定义属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#getAttribute"><span class="nav-number">8.1.</span> <span class="nav-text">getAttribute</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js中获取样式（只读）"><span class="nav-number">9.</span> <span class="nav-text">js中获取样式（只读）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#getComputedStyle"><span class="nav-number">9.1.</span> <span class="nav-text">getComputedStyle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#currentStyle-只兼容IE"><span class="nav-number">9.2.</span> <span class="nav-text">currentStyle(只兼容IE)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onload"><span class="nav-number">9.3.</span> <span class="nav-text">onload</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-number">10.</span> <span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM0级事件"><span class="nav-number">10.1.</span> <span class="nav-text">DOM0级事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM2级事件"><span class="nav-number">10.2.</span> <span class="nav-text">DOM2级事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#兼容IE6，7，8浏览器的2级事件绑定方法"><span class="nav-number">10.2.1.</span> <span class="nav-text">兼容IE6，7，8浏览器的2级事件绑定方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOM2级兼容问题"><span class="nav-number">10.2.2.</span> <span class="nav-text">DOM2级兼容问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件对象e"><span class="nav-number">10.3.</span> <span class="nav-text">事件对象e</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事件源e-target"><span class="nav-number">10.3.1.</span> <span class="nav-text">事件源e.target</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#鼠标点击位置"><span class="nav-number">10.3.2.</span> <span class="nav-text">鼠标点击位置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件默认行为"><span class="nav-number">10.4.</span> <span class="nav-text">事件默认行为</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#组织事件默认行为"><span class="nav-number">10.4.1.</span> <span class="nav-text">组织事件默认行为</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件传播机制"><span class="nav-number">10.5.</span> <span class="nav-text">事件传播机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#阻止事件的冒泡传播"><span class="nav-number">10.5.1.</span> <span class="nav-text">阻止事件的冒泡传播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#onmouseenter和onmouseover"><span class="nav-number">10.5.2.</span> <span class="nav-text">onmouseenter和onmouseover</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#onmouseout和onmouseleave"><span class="nav-number">10.5.3.</span> <span class="nav-text">onmouseout和onmouseleave</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件委托"><span class="nav-number">10.6.</span> <span class="nav-text">事件委托</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鼠标丢失解决"><span class="nav-number">10.7.</span> <span class="nav-text">鼠标丢失解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window-onload"><span class="nav-number">10.8.</span> <span class="nav-text">window.onload</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery中-document-ready"><span class="nav-number">10.9.</span> <span class="nav-text">jQuery中$(document).ready()</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘心怡</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

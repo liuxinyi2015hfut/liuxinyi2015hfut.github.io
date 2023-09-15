@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,Redux,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="刘心怡" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="redux-actions是redux的中间件，用于简化使用redux的写法">
+<meta name="keywords" content="JavaScript,Redux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redux-actions">
+<meta property="og:url" content="http://yoursite.com/2019/07/03/redux-actions/index.html">
+<meta property="og:site_name" content="刘心怡">
+<meta property="og:description" content="redux-actions是redux的中间件，用于简化使用redux的写法">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-10T07:22:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redux-actions">
+<meta name="twitter:description" content="redux-actions是redux的中间件，用于简化使用redux的写法">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/03/redux-actions/">
+
+
+
+
+
+  <title>redux-actions | 刘心怡</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘心怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Tomorrow will be better than today!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/03/redux-actions/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘心怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘心怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">redux-actions</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-03T17:15:00+08:00">
+                2019-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/Redux/" itemprop="url" rel="index">
+                    <span itemprop="name">Redux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>redux-actions是redux的中间件，用于简化使用redux的写法<br><a id="more"></a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>npm install --save redux-actions</code></p>
+<h2 id="createAction-s"><a href="#createAction-s" class="headerlink" title="createAction(s)"></a>createAction(s)</h2><p>用于创建action</p>
+<h3 id="createAction创建单个actionCreator"><a href="#createAction创建单个actionCreator" class="headerlink" title="createAction创建单个actionCreator"></a>createAction创建单个actionCreator</h3><p><code>createAction(actionType, payloadCreator, metaCreator)</code>，返回值为function类型（actionCreator），actionCreator执行返回<code>{type,payload,meta,error}</code>（action）。</p>
+<p>参数解释如下</p>
+<ul>
+<li>actionType：必须是字符串类型，并且是唯一一个必要参数</li>
+<li>payloadCreator：必须是null、undefined、function，返回值为action的payload属性值，参数为actionCreator的参数</li>
+<li>metaCreator：payloadCreator：必须是null、undefined、function，返回值为action的meta属性值，参数为actionCreator的参数</li>
+</ul>
+<blockquote>
+<p><code>payload</code>属性为<code>Error</code>对象时，<code>error</code>属性自动为<code>true</code></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> increment = createAction(<span class="string">'INCREMENT'</span>);</span><br><span class="line">increment(); <span class="comment">// &#123; type: 'INCREMENT' &#125;</span></span><br><span class="line">increment([<span class="number">1</span>, <span class="number">42</span>]); <span class="comment">// &#123; type: 'INCREMENT', payload: [1, 42]  &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> updateAdminUser = createAction(</span><br><span class="line">  <span class="string">'UPDATE_ADMIN_USER'</span>,</span><br><span class="line">  updates =&gt; (-updates),</span><br><span class="line">  (updates) =&gt; (&#123; <span class="attr">admin</span>:updates&gt;<span class="number">-1</span> &#125;)</span><br><span class="line">);</span><br><span class="line">updateAdminUser(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   type: 'UPDATE_ADMIN_USER',</span></span><br><span class="line"><span class="comment">//   payload: -1,</span></span><br><span class="line"><span class="comment">//   meta: &#123; admin: true &#125;,</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> noop = createAction(<span class="string">'NOOP'</span>);</span><br><span class="line"><span class="keyword">const</span> error = <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'not a number'</span>);</span><br><span class="line">noop(error);</span><br><span class="line"><span class="comment">//&#123;</span></span><br><span class="line"><span class="comment">//  type: 'NOOP',</span></span><br><span class="line"><span class="comment">//  payload: error,</span></span><br><span class="line"><span class="comment">//  error: true</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="createActions创建多个actionCreator"><a href="#createActions创建多个actionCreator" class="headerlink" title="createActions创建多个actionCreator"></a>createActions创建多个actionCreator</h3><p><code>createActions(actionMap, ...actionTypes, options)</code>，返回值<code>{[key:actionType]:actionCreator}</code>格式的对象，key符合驼峰命名。</p>
+<p>参数解释如下</p>
+<ul>
+<li>actionMap：对象类型，可以是递归数据结构，key为actionType，值可以为如下几种<ul>
+<li>payloadCreator函数</li>
+<li>payloadCreator和metaCreator组成的数组，metaCreator必须有</li>
+<li>actionMap对象</li>
+</ul>
+</li>
+<li>actionTypes：字符串</li>
+<li>options，可以为actiontype添加前缀<ul>
+<li>prefix: 前缀</li>
+<li>namespace: 分隔符</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">createActions(&#123;&#125;, <span class="string">'INCREMENT'</span>, &#123;</span><br><span class="line">  prefix: <span class="string">'counter'</span>,</span><br><span class="line">  namespace: <span class="string">'--'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// counter--INCREMENT</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> actionCreators = createActions(</span><br><span class="line">  &#123;</span><br><span class="line">    APP: &#123;</span><br><span class="line">      COUNTER: &#123;</span><br><span class="line">        INCREMENT: [</span><br><span class="line">          amount =&gt; (&#123; amount &#125;),</span><br><span class="line">          amount =&gt; (&#123; <span class="attr">key</span>: <span class="string">'value'</span>, amount &#125;)</span><br><span class="line">        ],</span><br><span class="line">        DECREMENT: <span class="function"><span class="params">amount</span> =&gt;</span> (&#123; <span class="attr">amount</span>: -amount &#125;),</span><br><span class="line">      &#125;,</span><br><span class="line">      NOTIFY: [</span><br><span class="line">        (username, message) =&gt; (&#123; <span class="attr">message</span>: <span class="string">`<span class="subst">$&#123;username&#125;</span>: <span class="subst">$&#123;message&#125;</span>`</span> &#125;),</span><br><span class="line">        (username, message) =&gt; (&#123; username, message &#125;)</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">'ACTION_THREE'</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">actionCreators.app.counter.increment(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   type: 'APP/COUNTER/INCREMENT',</span></span><br><span class="line"><span class="comment">//   payload: &#123; amount: 1 &#125;,</span></span><br><span class="line"><span class="comment">//   meta: &#123; key: 'value', amount: 1 &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line">actionCreators.app.notify(<span class="string">'yangmillstheory'</span>, <span class="string">'Hello World'</span>);</span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   type: 'APP/NOTIFY',</span></span><br><span class="line"><span class="comment">//   payload: &#123; message: 'yangmillstheory: Hello World' &#125;,</span></span><br><span class="line"><span class="comment">//   meta: &#123; username: 'yangmillstheory', message: 'Hello World' &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line">actionCreators.actionThree(<span class="number">3</span>);</span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   type: 'ACTION_THREE',</span></span><br><span class="line"><span class="comment">//   payload: 3</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="handleAction-s"><a href="#handleAction-s" class="headerlink" title="handleAction(s)"></a>handleAction(s)</h2><p>reducer</p>
+<h3 id="handleAction创建单个action的reducer"><a href="#handleAction创建单个action的reducer" class="headerlink" title="handleAction创建单个action的reducer"></a>handleAction创建单个action的reducer</h3><p><code>handleAction(type, reducer | reducerMap = Identity, defaultState)</code></p>
+<p>参数解释如下</p>
+<ul>
+<li>type：字符串类型</li>
+<li>reducer：function，处理action</li>
+<li>reducerMap：<code>{next(){},throw(){}}</code>，分别处理正确的action和错误的action</li>
+<li>defaultState：初始state，必须传</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">handleAction(</span><br><span class="line">  <span class="string">'APP/COUNTER/INCREMENT'</span>,</span><br><span class="line">  (state, action) =&gt; (&#123;</span><br><span class="line">    counter: state.counter + action.payload.amount</span><br><span class="line">  &#125;),</span><br><span class="line">  defaultState</span><br><span class="line">);</span><br><span class="line">handleAction(<span class="string">'FETCH_DATA'</span>, &#123;</span><br><span class="line">  next(state, action) &#123;...&#125;,</span><br><span class="line">  <span class="keyword">throw</span>(state, action) &#123;...&#125;,</span><br><span class="line">&#125;, defaultState);</span><br></pre></td></tr></table></figure>
+<h3 id="handleActions创建多个action的reducer"><a href="#handleActions创建多个action的reducer" class="headerlink" title="handleActions创建多个action的reducer"></a>handleActions创建多个action的reducer</h3><p><code>handleActions(reducerMap, defaultState, options);</code>，运用<code>redux-reducers</code></p>
+<blockquote>
+<p><code>combineReducers(...reducers)</code>和<code>reduceReducers(...reducers)</code>的区别</p>
+<ul>
+<li><code>combineReducers</code>，每个reducer维护自己的state</li>
+<li><code>reduceReducers</code>， 每个reducer维护同一个state</li>
+</ul>
+</blockquote>
+<p>参数解释如下</p>
+<ul>
+<li>reducerMap：对象或数组类型</li>
+<li>defaultState：初始state，必须传</li>
+<li>options，对应createActions的options参数<ul>
+<li>prefix: 前缀</li>
+<li>namespace: 分隔符</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> increment = createAction(INCREMENT);</span><br><span class="line"><span class="keyword">const</span> decrement = createAction(DECREMENT);</span><br><span class="line"></span><br><span class="line"><span class="comment">// reducerMap 方式1</span></span><br><span class="line"><span class="keyword">const</span> reducer = handleActions(</span><br><span class="line">  &#123;</span><br><span class="line">    INCREMENT: <span class="function">(<span class="params">state, action</span>) =&gt;</span> (&#123;</span><br><span class="line">      counter: state.counter + action.payload</span><br><span class="line">    &#125;),</span><br><span class="line"></span><br><span class="line">    DECREMENT: <span class="function">(<span class="params">state, action</span>) =&gt;</span> (&#123;</span><br><span class="line">      counter: state.counter - action.payload</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123; <span class="attr">counter</span>: <span class="number">0</span> &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// reducerMap 方式2</span></span><br><span class="line"><span class="keyword">const</span> reducer = handleActions(</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Map</span>([</span><br><span class="line">    [</span><br><span class="line">      INCREMENT,</span><br><span class="line">      (state, action) =&gt; (&#123;</span><br><span class="line">        counter: state.counter + action.payload</span><br><span class="line">      &#125;)</span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    [</span><br><span class="line">      DECREMENT,</span><br><span class="line">      (state, action) =&gt; (&#123;</span><br><span class="line">        counter: state.counter - action.payload</span><br><span class="line">      &#125;)</span><br><span class="line">    ]</span><br><span class="line">  ]),</span><br><span class="line">  &#123; <span class="attr">counter</span>: <span class="number">0</span> &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// reducerMap 方式3</span></span><br><span class="line"><span class="keyword">const</span> reducer = handleActions(</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Map</span>([</span><br><span class="line">    [</span><br><span class="line">      increment,</span><br><span class="line">      (state, action) =&gt; (&#123;</span><br><span class="line">        counter: state.counter + action.payload</span><br><span class="line">      &#125;)</span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    [</span><br><span class="line">      decrement,</span><br><span class="line">      (state, action) =&gt; (&#123;</span><br><span class="line">        counter: state.counter - action.payload</span><br><span class="line">      &#125;)</span><br><span class="line">    ]</span><br><span class="line">  ]),</span><br><span class="line">  &#123; <span class="attr">counter</span>: <span class="number">0</span> &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// options</span></span><br><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">  prefix: <span class="string">'counter'</span>,</span><br><span class="line">  namespace: <span class="string">'--'</span></span><br><span class="line">&#125;</span><br><span class="line">createActions(&#123; ... &#125;, <span class="string">'INCREMENT'</span>, options)</span><br><span class="line">handleActions(&#123; ... &#125;, defaultState, options)</span><br></pre></td></tr></table></figure>
+<h2 id="combineActions"><a href="#combineActions" class="headerlink" title="combineActions"></a>combineActions</h2><p><code>combineActions(...types);</code>，types可以是字符串，symbol类型，actionCreator</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; increment, decrement &#125; = createActions(&#123;</span><br><span class="line">  INCREMENT: <span class="function"><span class="params">amount</span> =&gt;</span> (&#123; amount &#125;),</span><br><span class="line">  DECREMENT: <span class="function"><span class="params">amount</span> =&gt;</span> (&#123; <span class="attr">amount</span>: -amount &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> reducer = handleActions(</span><br><span class="line">  &#123;</span><br><span class="line">    [combineActions(increment, decrement)]: (</span><br><span class="line">      state,</span><br><span class="line">      &#123; <span class="attr">payload</span>: &#123; amount &#125; &#125;</span><br><span class="line">    ) =&gt; &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123; ...state, <span class="attr">counter</span>: state.counter + amount &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123; <span class="attr">counter</span>: <span class="number">10</span> &#125;</span><br><span class="line">);</span><br><span class="line">reducer(&#123; <span class="attr">counter</span>: <span class="number">5</span> &#125;, increment(<span class="number">5</span>));</span><br><span class="line"><span class="comment">//&#123; counter: 10 &#125;</span></span><br><span class="line">reducer(&#123; <span class="attr">counter</span>: <span class="number">5</span> &#125;, decrement(<span class="number">5</span>));</span><br><span class="line"><span class="comment">// &#123; counter: 0 &#125;</span></span><br><span class="line">reducer(&#123; <span class="attr">counter</span>: <span class="number">5</span> &#125;, &#123; <span class="attr">type</span>: <span class="string">'NOT_TYPE'</span>, <span class="attr">payload</span>: <span class="number">1000</span> &#125;);</span><br><span class="line"><span class="comment">// &#123; counter: 5 &#125;</span></span><br><span class="line">reducer(<span class="literal">undefined</span>, increment(<span class="number">5</span>));</span><br><span class="line"><span class="comment">// &#123; counter: 15 &#125;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/Redux/" rel="tag"># Redux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/28/Typescript/" rel="next" title="Typescript">
+                <i class="fa fa-chevron-left"></i> Typescript
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/10/redux-saga/" rel="prev" title="redux-saga">
+                redux-saga <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘心怡</p>
+              <p class="site-description motion-element" itemprop="description">Tomorrow will be better than today</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#createAction-s"><span class="nav-number">2.</span> <span class="nav-text">createAction(s)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#createAction创建单个actionCreator"><span class="nav-number">2.1.</span> <span class="nav-text">createAction创建单个actionCreator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createActions创建多个actionCreator"><span class="nav-number">2.2.</span> <span class="nav-text">createActions创建多个actionCreator</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#handleAction-s"><span class="nav-number">3.</span> <span class="nav-text">handleAction(s)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#handleAction创建单个action的reducer"><span class="nav-number">3.1.</span> <span class="nav-text">handleAction创建单个action的reducer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#handleActions创建多个action的reducer"><span class="nav-number">3.2.</span> <span class="nav-text">handleActions创建多个action的reducer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#combineActions"><span class="nav-number">4.</span> <span class="nav-text">combineActions</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘心怡</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

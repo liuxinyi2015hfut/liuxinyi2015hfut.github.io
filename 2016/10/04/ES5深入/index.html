@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,ES,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="刘心怡" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="内存、预解释、作用域、面向对象、正则、JSON数据、DOM机制、JS盒模型、DOM0级事件、DOM2级事件">
+<meta name="keywords" content="JavaScript,ES">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES5深入">
+<meta property="og:url" content="http://yoursite.com/2016/10/04/ES5深入/index.html">
+<meta property="og:site_name" content="刘心怡">
+<meta property="og:description" content="内存、预解释、作用域、面向对象、正则、JSON数据、DOM机制、JS盒模型、DOM0级事件、DOM2级事件">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-03T01:41:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES5深入">
+<meta name="twitter:description" content="内存、预解释、作用域、面向对象、正则、JSON数据、DOM机制、JS盒模型、DOM0级事件、DOM2级事件">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/04/ES5深入/">
+
+
+
+
+
+  <title>ES5深入 | 刘心怡</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘心怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Tomorrow will be better than today!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/04/ES5深入/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘心怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘心怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES5深入</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-04T16:28:00+08:00">
+                2016-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/ES/" itemprop="url" rel="index">
+                    <span itemprop="name">ES</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>内存、预解释、作用域、面向对象、正则、JSON数据、DOM机制、JS盒模型、DOM0级事件、DOM2级事件<br><a id="more"></a></p>
+<h2 id="编程语言分类"><a href="#编程语言分类" class="headerlink" title="编程语言分类"></a>编程语言分类</h2><h3 id="强类型编程语言"><a href="#强类型编程语言" class="headerlink" title="强类型编程语言"></a>强类型编程语言</h3><p>变量类型固定，内存空间大小固定，不能改变<br>如java、c++等语言</p>
+<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><h3 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h3><p>存储对象数据类型</p>
+<ul>
+<li>把对象数据类型的属性值属性名存进去</li>
+<li>把function里面的代码当作字符串存进去</li>
+</ul>
+<h3 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h3><p>存储基本数据类型</p>
+<h3 id="内存释放"><a href="#内存释放" class="headerlink" title="内存释放"></a>内存释放</h3><h4 id="堆内存释放"><a href="#堆内存释放" class="headerlink" title="堆内存释放"></a>堆内存释放</h4><p>存储对象数据类型，对象把属性名和属性值存储进去，函数把函数代码当作字符串存进去</p>
+<ul>
+<li>谷歌：每隔一段时间，检查当前这个堆内存是否被外界占用，如果被占用，不进行处理；如果没有被占用，则浏览区会对内存进行回收释放</li>
+<li>IE和火狐：每当一个东西占用这个堆内存，那么浏览器会进行计数，每多一个占用则+1，占用结束则-1，当减到0，浏览器对这个堆内存进行回收释放</li>
+</ul>
+<blockquote>
+<p>优化：在代码中，手动清空对象，赋值null，那么相当于清空内存了</p>
+</blockquote>
+<h4 id="栈内存释放"><a href="#栈内存释放" class="headerlink" title="栈内存释放"></a>栈内存释放</h4><p>全局作用域和私有作用域，存储基本数据类型</p>
+<ul>
+<li>全局作用域在页面打开的时候形成，只有当页面关闭的时候，栈内存才会回收</li>
+<li>私有作用域：在函数执行的时候，形成私有作用域，执行完成后，当前的私有作用域才销毁</li>
+</ul>
+<blockquote>
+<p>函数执行不止一次时，每完成一遍，该次的私有作用域销毁，下次执行时，形成新的私有作用域<br>当函数执行return的结果为引用数据类型的，且被外界变量接收，则该私有作用域不能被销毁</p>
+</blockquote>
+<h2 id="预解释和作用域"><a href="#预解释和作用域" class="headerlink" title="预解释和作用域"></a>预解释和作用域</h2><ul>
+<li>当HTML加载页面时，整个js代码执行前，会形成一个<strong>全局作用域</strong>，会把全局作用域下的带var和function关键字的进行提前声明——预解释<ul>
+<li>declear（声明）：给变量开一个内存空间</li>
+<li>define（定义，俗称赋值）：给数据开一个内存空间，并让变量和数据关联起来。<ul>
+<li>var：在预解释的时候，只进行提前的声明，没有定义（只声明不定义时，变量的值为undefined）</li>
+<li>function：在预解释的时候，不仅进行声明，还进行了定义（赋值）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在全局作用域下，如果没有被var或function，那么相当于给window新增一项属性，属性名是“=”左边的值，属性值是“=”右边的值</li>
+</ul>
+<h3 id="window"><a href="#window" class="headerlink" title="window"></a>window</h3><p>window是个对象</p>
+<ul>
+<li>在全局作用域下定义的变量，相当于给window增加了一个属性（包含属性名和属性值）（window可以省）</li>
+<li>在私有作用域下定义的变量，和全局没有任何的关系</li>
+</ul>
+<h3 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h3><p>当HTML加载页面时，整个js代码执行前，会形成一个<strong>全局作用域</strong></p>
+<h3 id="私有作用域（闭包）"><a href="#私有作用域（闭包）" class="headerlink" title="私有作用域（闭包）"></a>私有作用域（闭包）</h3><ul>
+<li>只有当函数执行时才会形成，并且执行时先对该作用域下的var和function进行预解释</li>
+<li>在私有作用域下形成的私有变量，函数保护了私有变量不受外界的干扰，函数的这种机制就叫做——<strong>闭包</strong></li>
+<li>在私有作用域中如果变量不是私有的，它的值往上一级作用域查找，直到找到window为止，如果window也没有，则报错。<ul>
+<li>首先看是不是形参</li>
+<li>再看有没有被声明过</li>
+</ul>
+</li>
+</ul>
+<h3 id="函数执行的过程"><a href="#函数执行的过程" class="headerlink" title="函数执行的过程"></a>函数执行的过程</h3><ul>
+<li>①形成一个私有的作用域</li>
+<li>②形参赋值（形参也是私有变量）</li>
+<li>③预解释</li>
+<li>④代码从上到下执行</li>
+</ul>
+<h3 id="查找上级作用域"><a href="#查找上级作用域" class="headerlink" title="查找上级作用域"></a>查找上级作用域</h3><ul>
+<li>上级作用域：只需要看当前函数是在哪个作用域下定义的，和在哪执行没有关系</li>
+<li>查找上级作用域，一级一级向上查找，形成了作用域链</li>
+</ul>
+<h3 id="预解释的特殊情况"><a href="#预解释的特殊情况" class="headerlink" title="预解释的特殊情况"></a>预解释的特殊情况</h3><ul>
+<li>条件中的预解释<ul>
+<li>不管条件成立不成立，都要进行预解释</li>
+<li>预解释时function只声明不定义（新版本浏览器）</li>
+<li>预解释时function声明并定义（旧版本浏览器）</li>
+</ul>
+</li>
+<li>预解释只发生在“=”左边，右边不进行预解释<ul>
+<li><code>var fn=function (){}</code>fn预解释，function不进行预解释</li>
+</ul>
+</li>
+<li>函数中return的内容不进行预解释，但是return后面的代码需要进行预解释</li>
+<li>匿名函数不进行预解释</li>
+<li>自执行函数本身不进行预解释，定义和执行一块完成，但是里面的代码进行预解释</li>
+<li>预解释的时候，如果变量名字重复，不再声明，但是要重新定义</li>
+</ul>
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p>this是关键字，当前行为发生的主体，和执行的范围（context）没有任何关系，和函数在哪定义的也没有关系<br>this 常用几种情况：</p>
+<ul>
+<li>全局下this指向window</li>
+<li>看当前方法执行前面有没有”.”，如果有，“.”的前面的就是this指向的，如果没有，则是window</li>
+<li>自执行函数中的this永远指向window</li>
+<li>如果给元素绑定方法时，方法中的this就是指当前被绑定的这个元素</li>
+<li>定时器里的this指向window</li>
+<li>在构造函数中出现的this.xxx=xxx中的this都是当前类的实例,而某一个属性值(方法),方法中的this需要看方法执行的时候,前面是否有”.”才能知道this是谁</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.x = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">this</span>.y =<span class="number">200</span>;</span><br><span class="line">        <span class="keyword">this</span>.getX = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Fn.prototype = &#123;</span><br><span class="line">        y : <span class="number">300</span>,</span><br><span class="line">        getX : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</span><br><span class="line">        &#125;,</span><br><span class="line">        getY : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.y)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> f = <span class="keyword">new</span> Fn;</span><br><span class="line">    f.getX();<span class="comment">//100</span></span><br><span class="line">    f.getY();<span class="comment">//200</span></span><br><span class="line">    f.__proto__.getY();<span class="comment">//300  f.__proto__是Fn.prototype</span></span><br></pre></td></tr></table></figure>
+<h2 id="面向对象：基于对象"><a href="#面向对象：基于对象" class="headerlink" title="面向对象：基于对象"></a>面向对象：基于对象</h2><p>面向对象（OOP）的三大特性：封装、继承、多态</p>
+<ul>
+<li>对象：万物皆对象，泛指（大体的指向）<ul>
+<li>Function</li>
+<li>类：是对象的一个细分<ul>
+<li>实例：是类的一个具体的个体</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>js中内置的类：<ul>
+<li>Number、Boolean、String、Null、Undefined</li>
+<li>Array、Object（基类）、RegExp、Date…</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Math不是类，类都是对象</p>
+</blockquote>
+<h3 id="Function-内置类"><a href="#Function-内置类" class="headerlink" title="Function  : 内置类"></a>Function  : 内置类</h3><ul>
+<li>所有的函数（普通函数、类（内置类，自定义类））都是函数类型的，都是Function这个类的一个实例,Function是所有函数的基类</li>
+<li>所有的对象数据类型的（对象，实例，prototype），都是Object的一个实例</li>
+<li>所有的实例是对象数据类型的</li>
+<li>Object 和Function互为指向</li>
+<li>Object 的原型上没有<strong>proto</strong> 这个属性</li>
+</ul>
+<h4 id="call"><a href="#call" class="headerlink" title="call"></a>call</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">num1,num2</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(num1,num2)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>)<span class="comment">//fn2</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;;</span><br><span class="line">fn1.call([<span class="number">1</span>,<span class="number">5</span>,<span class="number">7</span>],<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);<span class="comment">//3,4 [1,5,7]</span></span><br><span class="line">fn1.call.call(fn2);<span class="comment">//2 window</span></span><br><span class="line"><span class="comment">//相当于让fn2();</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>call方法执行的时候，先通过<code>__proto__</code>找到Function原型上的call方法，并让call方法执行；</li>
+<li>call方法执行时，首先把call中this的this变为call第一个传入的参数，然后让call中的this执行</li>
+<li>传参数是用逗号隔开， 除了第一个参数以外，剩下的参数作为实参</li>
+</ul>
+<blockquote>
+<p>两个call及两个以上call执行，都是让参数执行</p>
+</blockquote>
+<h5 id="严格模式和非严格模式下的call"><a href="#严格模式和非严格模式下的call" class="headerlink" title="严格模式和非严格模式下的call"></a>严格模式和非严格模式下的call</h5><ul>
+<li>在非严格模式下，如果call方法中不传参数，或者传null/undefined，那么fn1函数的this指向window</li>
+<li>在严格模式下，如果call方法中不传参数或者传undefined，那么fn1函数的this指向undefined；如果call方法中传null，那么fn1函数的this指向null。</li>
+</ul>
+<h4 id="apply方法"><a href="#apply方法" class="headerlink" title="apply方法"></a>apply方法</h4><ul>
+<li>Function的原型上有一个apply方法</li>
+<li>函数数据类型的可以用apply方法</li>
+<li>apply 也是改变方法this关键字的<ul>
+<li>执行的时候，apply方法执行，首先让apply前面的方法中this，变成apply方法传进的第一个参数，并且让apply前面的方法执行</li>
+</ul>
+</li>
+<li>在非严格模式下，如果apply方法中不传参数，或者传null/undefined，那么函数的this指向window</li>
+<li>除了第一个参数以外，剩下的参数要把他放在一个数组中传入，然后用数组中的每一项给形参赋值</li>
+</ul>
+<blockquote>
+<p>作用：可以实现将数组中的每一项作为实参传给指定函数</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">num1,num2</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(num1);</span><br><span class="line">    <span class="built_in">console</span>.log(num2);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f=fn.apply(fn2);<span class="comment">//fn执行</span></span><br><span class="line">f();<span class="comment">//报错，f不是函数</span></span><br><span class="line"><span class="built_in">console</span>.log(f)<span class="comment">//f为函数fn1的返回值3</span></span><br><span class="line">fn.apply([<span class="literal">null</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>]);<span class="comment">//1 3 [null,2,3]</span></span><br></pre></td></tr></table></figure>
+<h4 id="apply和call的区别"><a href="#apply和call的区别" class="headerlink" title="apply和call的区别"></a>apply和call的区别</h4><p>传参数方式不一样。<br>call方法传参数——<code>,</code>隔开，一个个传进去<br>apply 方法传参数——除了第一个参数以外，剩下的参数要把他放在一个数组中传入，然后用数组中的每一项给形参赋值（apply的参数只有两个，第二个必须为数组）</p>
+<h4 id="apply运用（获取数组中的最大最小值）"><a href="#apply运用（获取数组中的最大最小值）" class="headerlink" title="apply运用（获取数组中的最大最小值）"></a>apply运用（获取数组中的最大最小值）</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ary=[<span class="number">1</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">88</span>,<span class="number">66</span>,<span class="number">37</span>,<span class="number">29</span>];</span><br><span class="line"><span class="built_in">Math</span>.min.apply(<span class="literal">null</span>,ary);</span><br><span class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>,ary);</span><br></pre></td></tr></table></figure>
+<h4 id="call和apply运用（类数组转数组方法）"><a href="#call和apply运用（类数组转数组方法）" class="headerlink" title="call和apply运用（类数组转数组方法）"></a>call和apply运用（类数组转数组方法）</h4><p>数组和类数组的区别：类数组不能调用数组的方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ary =[];</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">  ary=<span class="built_in">Array</span>.prototype.slice.call(类数组)<span class="comment">//IE8，7，6下不兼容</span></span><br><span class="line">&#125;<span class="keyword">catch</span>()&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;类数组.length;i++)&#123;</span><br><span class="line">    ary[ary.length] = 类数组[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="bind方法"><a href="#bind方法" class="headerlink" title="bind方法"></a>bind方法</h4><p>也是定义在Function上的一个方法<br><code>fn1.bind(fn2);</code><br>this的预处理：第一步，只是改变了this，bind执行，让fn1中的this变成bind传进去的第一个参数，将改进的fn1以返回值返回。（实际没有执行）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f=fn1.bind(fn2);<span class="comment">//fn1不执行</span></span><br><span class="line">f();<span class="comment">//this为fn2</span></span><br><span class="line">fn1();<span class="comment">//this为window</span></span><br><span class="line"><span class="built_in">console</span>.log(f)<span class="comment">//f为函数fn1</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>bind 在IE678 下是不兼容的<br>(1,2,34,4,53,23,4)只会取最后一个值</p>
+</blockquote>
+<h3 id="创建实例的方式"><a href="#创建实例的方式" class="headerlink" title="创建实例的方式"></a>创建实例的方式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ary=[];<span class="comment">//字面量方式创建</span></span><br><span class="line"><span class="keyword">var</span> ary=<span class="keyword">new</span> <span class="built_in">Array</span>()<span class="comment">//实例创建</span></span><br></pre></td></tr></table></figure>
+<h4 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=[];</span><br><span class="line"><span class="built_in">console</span>.log(a <span class="keyword">instanceof</span> <span class="built_in">Array</span>);<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>基本数据类型的值，如果用字面量方式创建，用instanceof判断的时候，返回一个false，如果用实例创建，返回true</li>
+<li>对象数据类型，两种方式创建，用instanceof判断都返回true</li>
+</ul>
+<blockquote>
+<p>所有后台语言，都是面向对象开发的，比如Java，php，c++，.net</p>
+</blockquote>
+<h4 id="new-Array"><a href="#new-Array" class="headerlink" title="new Array"></a>new Array</h4><p>只有一个参数并且是数字的话，代表当前实例（数组）length的属性值，如果用逗号隔开，那么会把参数当做数组的每项传进去</p>
+<h3 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h3><h4 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h4><p>在JS中把描述同一事物的属性或者方法，放在同一个空间下面，起到了一个分组作用，即使属性名相同，他们相互之间也不冲突，那么这种分组的模式——单例模式</p>
+<h4 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h4><p>把实现同一功能的代码放在函数中，通过传递参数的形式，获取或者修改相应的信息——函数的封装<br>优点：减少代码的冗余——函数特点“低耦合高内聚”</p>
+<h4 id="构造函数模式（构造函数）"><a href="#构造函数模式（构造函数）" class="headerlink" title="构造函数模式（构造函数）"></a>构造函数模式（构造函数）</h4><p>1、方法名前面有new，那么当前的方法就是一个类<br>2、构造函数模式创建一个类，把类实例联系起来，实例与实例之间的方法或者属性都是各自私有的</p>
+<ul>
+<li>构造函数中，如果不需要传入参数，那么小括号可以省去的</li>
+<li>构造函数中的<code>this</code>指向当前创建的这个实例，类中的function中的<code>this</code>要看具体情况</li>
+<li>类中的私有变量和创建的实例没有任何关系</li>
+<li>如果属性名发生重复，后面的会把前面的覆盖</li>
+<li>在类中如果return出一个<strong>基本数据类型</strong>值，那么当前类的返回值还是那个实例；如果return出一个<strong>引用数据类型</strong>值，那么当前类的返回值就是return的那个对象</li>
+<li>instanceof判断实例是否属于某个类、</li>
+<li>通过new创建实例，实例和实例之间的方法或属性，是不相等的（私有属性）</li>
+<li><code>hasOwnProperty</code> 检测某个属性是不是私有的<ul>
+<li>如果是私有的，返回true，如果不是返回false</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Fn;</span><br><span class="line"><span class="built_in">console</span>.log(f1.hasOwnProperty(<span class="string">"getX"</span>))<span class="comment">//如果true，则getX是f1的私有属性</span></span><br></pre></td></tr></table></figure>
+<h5 id="构造函数模式和普通函数区别"><a href="#构造函数模式和普通函数区别" class="headerlink" title="构造函数模式和普通函数区别"></a>构造函数模式和普通函数区别</h5><ul>
+<li>相同：首先形成一个私有作用域，形参赋值–&gt;预解释–&gt;代码从上向下执行</li>
+<li>不同点：<ul>
+<li>返回值：普通函数中没有return，返回值undefined；构造函数模式会返回一个实例</li>
+<li>函数执行时：<ul>
+<li>普通函数：执行代码从上到下执行</li>
+<li>构造函数：首先浏览器会默认创建一个对象，用于接收函数中的新增的属性，最后把创建的这个对象默认返回，返回当前类的一个实例</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="原型模式（原型）"><a href="#原型模式（原型）" class="headerlink" title="原型模式（原型）"></a>原型模式（原型）</h4><p>原型模式 ： 解决了方法的公有的问题</p>
+<ul>
+<li>每一个函数数据类型（函数、类）都天生自带一个<code>prototype</code>的属性。<code>prototype</code>是对象数据类型的</li>
+<li><code>prototype</code>天生自带一个<code>constructor</code>属性，<code>constructor</code>这个属性的属性值指向当前<code>prototype</code>这个原型对应的类</li>
+<li>每一个对象数据类型也天生自带一个<code>__proto__</code>的属性，属性值是指向当前实例所属类的原型</li>
+</ul>
+<blockquote>
+<p>基类<code>Object.prototype</code>没有<code>__proto__</code>属性<br>IE浏览器怕你通过<code>__proto__</code>把公有的修改，禁止使用<code>__proto__</code></p>
+</blockquote>
+<h5 id="原型链模式"><a href="#原型链模式" class="headerlink" title="原型链模式"></a>原型链模式</h5><p>这样一级一级向上查找属性的方法，形成了原型链</p>
+<ul>
+<li>首先查找私有的属性或者方法，如果是私有的，直接这个方法或者属性</li>
+<li>如果私有中没有这个方法，那么实例会通过<code>__proto__</code>去查找，当前实例所属类的原型中的这个方法，如果有，就可以执行</li>
+<li>如果当前实例所属类的原型也没有这个方法，那么会通过<code>__proto__</code>继续向上查找，直到找到<code>Object</code>为止</li>
+</ul>
+<h3 id="类的继承和多态"><a href="#类的继承和多态" class="headerlink" title="类的继承和多态"></a>类的继承和多态</h3><h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><p>多态：同一操作作用于不同的对象，可以有不同的解释，产生不同的执行结果（由继承而产生了相关的不同的类，对同一个方法可以有不同的响应）。包括重载和重写</p>
+<p>比如 Cat 和 Dog 都继承自 Animal，但是分别实现了自己的 eat 方法。此时针对某一个实例，我们无需了解它是 Cat 还是 Dog，就可以直接调用 eat 方法，程序会自动判断出来应该如何执行 eat</p>
+<ul>
+<li>JS没有多态的概念，但JS可以通过参数判断实现多态</li>
+<li>重写：子类可以继承父类的方法，也可以对父类的方法进行修改</li>
+</ul>
+<h4 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h4><p>子类继承父类的方法或者属性</p>
+<blockquote>
+<p>改变父类的原型，如果想让B的实例上面有A原型上的方法，那么让A的原型空间地址赋值给类B</p>
+</blockquote>
+<h5 id="原型继承"><a href="#原型继承" class="headerlink" title="原型继承"></a>原型继承</h5><p>原型继承：类A的私有属性和公有属性都继承为类B的公有属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = <span class="number">100</span>;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">"珠峰"</span></span><br><span class="line">&#125;;</span><br><span class="line">A.prototype.getX = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age = <span class="number">18</span>;</span><br><span class="line">&#125;;</span><br><span class="line">B.prototype = <span class="keyword">new</span> A;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> B;</span><br><span class="line"><span class="built_in">console</span>.log(f)</span><br><span class="line">f.getX()<span class="comment">//100</span></span><br></pre></td></tr></table></figure>
+<h5 id="call继承"><a href="#call继承" class="headerlink" title="call继承"></a>call继承</h5><p>call继承：继承私有属性，不能继承公有属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = <span class="number">100</span></span><br><span class="line">&#125;;</span><br><span class="line">A.prototype.getX = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  A.call(<span class="keyword">this</span>) <span class="comment">// 普通函数A 执行，改变A方法中this指向，指向B 的实例</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> B;</span><br><span class="line"><span class="built_in">console</span>.log(f.x)<span class="comment">//100</span></span><br></pre></td></tr></table></figure>
+<h5 id="混合继承"><a href="#混合继承" class="headerlink" title="混合继承"></a>混合继承</h5><p>混合继承：call继承 + 原型继承</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x =<span class="number">100</span>;</span><br><span class="line">&#125;;</span><br><span class="line">A.prototype.getX = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  A.call(<span class="keyword">this</span>)<span class="comment">// 继承A 的私有属性</span></span><br><span class="line">&#125;;</span><br><span class="line">B.prototype = <span class="keyword">new</span> A;<span class="comment">//原型继承的时候私有公有属性都继承</span></span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> B;</span><br></pre></td></tr></table></figure>
+<h5 id="冒充对象继承"><a href="#冒充对象继承" class="headerlink" title="冒充对象继承"></a>冒充对象继承</h5><p>冒充对象继承 ： 类A的私有属性和公有属性都继承为类B的私有属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x =<span class="number">100</span>;</span><br><span class="line">&#125;;</span><br><span class="line">A.prototype.getX = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> temp = <span class="keyword">new</span> A;<span class="comment">// 对象</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> temp)&#123;<span class="comment">//for in 遍历私有属性和公有属性</span></span><br><span class="line">    <span class="keyword">this</span>[key] = temp[key];</span><br><span class="line">  &#125;;</span><br><span class="line">  temp =<span class="literal">null</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="中间类继承"><a href="#中间类继承" class="headerlink" title="中间类继承"></a>中间类继承</h5><p>中间类继承：通过<code>__proto__</code>这个属性改变当前对象的指向,在IE下不兼容，只继承公有属性<br><code>arguments.__proto__ = Array.prototype</code></p>
+<h3 id="可枚举的和不可枚举属性"><a href="#可枚举的和不可枚举属性" class="headerlink" title="可枚举的和不可枚举属性"></a>可枚举的和不可枚举属性</h3><p>内置类原型上的内置的方法，通过<code>for in</code>遍历不到，但是内置类原型上新增的（自定义的方法）是可枚举的，私有的属性或方法是可枚举的</p>
+<ul>
+<li>可枚举 ：对象的私有属性 、原型上新增的属性</li>
+<li>不可枚举 ： 内置类上内置的属性</li>
+</ul>
+<h2 id="正则RegExp"><a href="#正则RegExp" class="headerlink" title="正则RegExp"></a>正则RegExp</h2><h3 id="创建正则"><a href="#创建正则" class="headerlink" title="创建正则"></a>创建正则</h3><ul>
+<li>字面量方法创建<code>var reg=/\d/g;</code><ul>
+<li>在字面量方式创建的正则中，用字符串拼接变量的值，是不被识别的（无法引入变量）</li>
+</ul>
+</li>
+<li>实例创建<code>var reg=new RegExp(&quot;\\d&quot;,&quot;g&quot;);</code>得<code>/\d/</code><ul>
+<li>在实例创建的正则中，可以对变量进行识别</li>
+<li>把有意义的字符再次转义之后才是正则中的有意义的字符</li>
+</ul>
+</li>
+</ul>
+<h3 id="正则中的组成"><a href="#正则中的组成" class="headerlink" title="正则中的组成"></a>正则中的组成</h3><p><code>/^\d$/</code>：意思以0~9数字开头和结尾（即是一个0~9之间的数字）<br>正则都是由元字符和修饰符组成的</p>
+<h4 id="元字符：在-之间有意义的字符"><a href="#元字符：在-之间有意义的字符" class="headerlink" title="元字符：在//之间有意义的字符"></a>元字符：在<code>//</code>之间有意义的字符</h4><p><code>\</code>：转译字符，把在正则中有特殊意义的转化成自己本身的含义<br><code>^</code>：以某一个元字符开头<br><code>$</code>：以某一个元字符结尾<br><code>\n</code>：匹配一个换行符<br><code>.</code>：除了<code>\n</code>以外任意单个字符</p>
+<h4 id="量词元字符"><a href="#量词元字符" class="headerlink" title="量词元字符"></a>量词元字符</h4><p><code>*</code>：出现零次到多次<br><code>+</code>：出现一次或多次<br><code>?</code>：出现零次或者一次<br><code>{n}</code>：n是一个非负整数，匹配子表达式出现n次<br><code>{n,}</code>：n是一个非负整数，出现n到多次<br><code>{n,m}</code>：n，m是非负整数，出现n到m次<br><code>x|y</code>：x或y中的一个</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^<span class="number">1</span>|<span class="number">2</span>&amp;<span class="regexp">/ /</span><span class="regexp">/以1开头或者以2结尾的</span></span><br></pre></td></tr></table></figure>
+<p><code>[xyz]</code>：x或y或z<br><code>[^xyz]</code>：除了x，y，z之外的任意字符<br><code>[a-z]</code>：小写a到z之间的任意字符<br><code>[^a-z]</code>：除了小写a到z之间字符之外的任意字符<br><code>\d</code> : 一个0-9之间的数字<br><code>\D</code> : 除了0-9之间的一个任意字符<br><code>\b</code> : 匹配一个边界字符<br><code>\w</code> : 数字 、字母、下划线 中的任意一个字符<br><code>\s</code> : 匹配一个空白字符、空格、制表符、换页符</p>
+<h4 id="作用"><a href="#作用" class="headerlink" title="[]作用"></a><code>[]</code>作用</h4><ul>
+<li><code>[]</code>在中括号中，所有字符都代表本身意思的字符</li>
+<li><code>[]</code>在中括号中，不识别两位数</li>
+</ul>
+<h4 id="作用-1"><a href="#作用-1" class="headerlink" title="()作用"></a><code>()</code>作用</h4><p> <code>/(小正则)(小正则)/</code>将大正则分解成几个小正则</p>
+<ul>
+<li>改变优先级</li>
+<li>分组的引用<ul>
+<li><code>/(\w)\1(\w)\2/</code>（匹配<code>&quot;rrtt&quot;</code>得true）</li>
+<li><code>\1</code>：代表和第一个分组出现一模一样的内容<ul>
+<li><code>\2</code>：代表和第二个分组出现一模一样的内容</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分组的捕获<ul>
+<li>捕获的时候，不仅把大正则内容捕获到，还可以把小正则内容捕获到</li>
+<li><code>?:</code>在小括号中（头部），只匹配不捕获</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg=<span class="regexp">/^[\u4e00-\u9fa5]&#123;2,4&#125;&amp;/</span>;<span class="comment">//中国汉字的姓名 2-4汉字</span></span><br><span class="line"><span class="keyword">var</span> reg=<span class="regexp">/^[\w-]+@[0-9A-Za-z]+(\.[A-Za-z]&#123;2,4&#125;)&#123;1,2&#125;$/</span>;<span class="comment">//邮箱正则</span></span><br></pre></td></tr></table></figure>
+<h4 id="正则修饰符（用于修饰整个正则）"><a href="#正则修饰符（用于修饰整个正则）" class="headerlink" title="正则修饰符（用于修饰整个正则）"></a>正则修饰符（用于修饰整个正则）</h4><ul>
+<li>global——<code>g</code>：全局捕获</li>
+<li>ignoreCase——<code>i</code>：忽略大小写</li>
+<li>multiLine——<code>m</code>：多行匹配</li>
+</ul>
+<h3 id="test——匹配"><a href="#test——匹配" class="headerlink" title="test——匹配"></a>test——匹配</h3><p>正则上的方法<br>判断当前字符串是否符合我们制定的规则<br>语法：<code>reg.test(str)</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg=<span class="regexp">/\d/</span>;<span class="comment">//表示包含一个0~9之间的数字</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">"珠峰123zhufeng"</span>));得<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="捕获"><a href="#捕获" class="headerlink" title="捕获"></a>捕获</h3><p>正则每次捕获之前都要先进行匹配，如果没有匹配成功的，则返回null，如果匹配成功，则返回一个数组</p>
+<h4 id="正则捕获的特点"><a href="#正则捕获的特点" class="headerlink" title="正则捕获的特点"></a>正则捕获的特点</h4><h5 id="懒惰性"><a href="#懒惰性" class="headerlink" title="懒惰性"></a>懒惰性</h5><p>正则每一次捕获，只捕获第一个匹配的内容，如果不进行任何处理的情况下，捕获还是第一次匹配的内容；（原因是每次都是从索引0开始匹配的）</p>
+<ul>
+<li>解决办法</li>
+</ul>
+<p><code>var reg=/\d+/g;</code><br><strong>原理</strong>：加上修饰符<code>g</code>，正则每一次捕获结束后，属性<code>lastIndex</code>都会发生改变，当下一次再捕获的时候，会从新的索引位置开始捕获</p>
+<h5 id="贪婪性"><a href="#贪婪性" class="headerlink" title="贪婪性"></a>贪婪性</h5><p>正则每次捕获的时候，会按照匹配最想的结果捕获（2符合我们的正则，2017也符合，默认捕获2017）</p>
+<ul>
+<li>解决办法</li>
+</ul>
+<p><code>var reg=/\d+?/g;</code><br><code>?</code>放在<strong>量词后面</strong>，解决捕获的贪婪性</p>
+<h4 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h4><p>正则上的方法<br>把字符串中符合我们规则的内容捕获到</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg=<span class="regexp">/\d/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(<span class="string">"zhufeng"</span>));<span class="comment">//得null</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(<span class="string">"zhufeng123"</span>).index);<span class="comment">//得["1",index:7,input:"zhufeng123"]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>第一项：捕获到的内容</li>
+<li>第2~n项：小正则捕获内容</li>
+<li>index属性：捕获内容在当前字符串中的索引</li>
+<li>input属性：是要进行捕获的字符串</li>
+</ul>
+<h4 id="match"><a href="#match" class="headerlink" title="match"></a>match</h4><p>字符串上的方法</p>
+<blockquote>
+<p>只捕获大正则内容，小正则中内容不捕获</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg =<span class="regexp">/zhufeng(\d+)/g</span>;</span><br><span class="line"><span class="keyword">var</span> str =<span class="string">"zhufeng123zhufeng234zhufeng345"</span>;</span><br><span class="line"><span class="keyword">var</span> ary=str.match(reg);<span class="comment">//默认返回数组，并且把捕获到的内容，每一项放进数组中</span></span><br><span class="line"><span class="built_in">console</span>.log(ary)；<span class="comment">//得["zhufeng123", "zhufeng234", "zhufeng345"]</span></span><br></pre></td></tr></table></figure>
+<h2 id="JS中的捕获异常"><a href="#JS中的捕获异常" class="headerlink" title="JS中的捕获异常"></a>JS中的捕获异常</h2><p>捕获异常：当js代码报错的时候，捕捉到，并且能把异常信息抓取到<br>try         catch        finally（不常用）<br>e.message可以看到具体的错误信息</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> num2=<span class="number">12</span>;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(num1);</span><br><span class="line">&#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e.message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>try 代码报错，才会走catch里面的代码；如果try不报错，catch中代码不执行<br>如果catch里面也有错误，需要看try中的代码，try有错误，那么catch中也报错，try没错，则代码正常。</p>
+<blockquote>
+<p>catch的参数不能省</p>
+</blockquote>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>JSON不是一种数据类型，只是一种数据格式<br>给对象的属性名加上双引号，就变成了JSON格式的对象<br><code>{&quot;name&quot;:&quot;zhufeng&quot;,&quot;age&quot;:8}</code>——JSON格式的对象<br><code>&#39;{&quot;name&quot;:&quot;zhufeng&quot;,&quot;age&quot;:8}&#39;</code>——JSON格式的字符串<br><code>JSON.parse()</code>——把JSON格式的字符串转化为JSON格式的对象<br><code>JSON.stringify()</code>——把JSON格式的对象转化为JSON格式的字符串</p>
+<blockquote>
+<p><code>JSON.stringify()</code>不识别函数，<code>JSON.parse(JSON.stringify([function(){})</code>会转化为null</p>
+</blockquote>
+<h3 id="JSON兼容问题"><a href="#JSON兼容问题" class="headerlink" title="JSON兼容问题"></a>JSON兼容问题</h3><p>JSON在IE6/7 不兼容<br>解决办法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> strObj=<span class="string">'&#123;"name":"zhufeng","age":8&#125;'</span>;</span><br><span class="line"><span class="keyword">var</span> utlis=&#123;</span><br><span class="line">  toJSON:<span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newObj=<span class="literal">null</span>;</span><br><span class="line">    <span class="string">"JSON"</span> <span class="keyword">in</span> <span class="built_in">window</span> ? newObj=<span class="built_in">JSON</span>.parse(str):newObj=<span class="built_in">eval</span>(<span class="string">"("</span>+str+<span class="string">")"</span>);<span class="comment">//eval("("+str+")")制将str转化为对象，而不是作为语句来执行（&#123;&#125;作为语句时表示JavaScript代码块的开始和结束标记，而不是对象的语法标识）</span></span><br><span class="line">    <span class="keyword">return</span> newObj</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">utlis.toJSON(strObj);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>eval</code>字符串转化成真正的表达式执行</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/ES/" rel="tag"># ES</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/22/ES5基础/" rel="next" title="ES5基础">
+                <i class="fa fa-chevron-left"></i> ES5基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/04/DOM/" rel="prev" title="DOM">
+                DOM <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘心怡</p>
+              <p class="site-description motion-element" itemprop="description">Tomorrow will be better than today</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编程语言分类"><span class="nav-number">1.</span> <span class="nav-text">编程语言分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#强类型编程语言"><span class="nav-number">1.1.</span> <span class="nav-text">强类型编程语言</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存"><span class="nav-number">2.</span> <span class="nav-text">内存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#堆内存"><span class="nav-number">2.1.</span> <span class="nav-text">堆内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈内存"><span class="nav-number">2.2.</span> <span class="nav-text">栈内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存释放"><span class="nav-number">2.3.</span> <span class="nav-text">内存释放</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#堆内存释放"><span class="nav-number">2.3.1.</span> <span class="nav-text">堆内存释放</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#栈内存释放"><span class="nav-number">2.3.2.</span> <span class="nav-text">栈内存释放</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预解释和作用域"><span class="nav-number">3.</span> <span class="nav-text">预解释和作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#window"><span class="nav-number">3.1.</span> <span class="nav-text">window</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局作用域"><span class="nav-number">3.2.</span> <span class="nav-text">全局作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#私有作用域（闭包）"><span class="nav-number">3.3.</span> <span class="nav-text">私有作用域（闭包）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数执行的过程"><span class="nav-number">3.4.</span> <span class="nav-text">函数执行的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找上级作用域"><span class="nav-number">3.5.</span> <span class="nav-text">查找上级作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预解释的特殊情况"><span class="nav-number">3.6.</span> <span class="nav-text">预解释的特殊情况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this"><span class="nav-number">4.</span> <span class="nav-text">this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象：基于对象"><span class="nav-number">5.</span> <span class="nav-text">面向对象：基于对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Function-内置类"><span class="nav-number">5.1.</span> <span class="nav-text">Function  : 内置类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#call"><span class="nav-number">5.1.1.</span> <span class="nav-text">call</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#严格模式和非严格模式下的call"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">严格模式和非严格模式下的call</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#apply方法"><span class="nav-number">5.1.2.</span> <span class="nav-text">apply方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#apply和call的区别"><span class="nav-number">5.1.3.</span> <span class="nav-text">apply和call的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#apply运用（获取数组中的最大最小值）"><span class="nav-number">5.1.4.</span> <span class="nav-text">apply运用（获取数组中的最大最小值）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#call和apply运用（类数组转数组方法）"><span class="nav-number">5.1.5.</span> <span class="nav-text">call和apply运用（类数组转数组方法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bind方法"><span class="nav-number">5.1.6.</span> <span class="nav-text">bind方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建实例的方式"><span class="nav-number">5.2.</span> <span class="nav-text">创建实例的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#instanceof"><span class="nav-number">5.2.1.</span> <span class="nav-text">instanceof</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#new-Array"><span class="nav-number">5.2.2.</span> <span class="nav-text">new Array</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计模式"><span class="nav-number">5.3.</span> <span class="nav-text">设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单例模式"><span class="nav-number">5.3.1.</span> <span class="nav-text">单例模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工厂模式"><span class="nav-number">5.3.2.</span> <span class="nav-text">工厂模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数模式（构造函数）"><span class="nav-number">5.3.3.</span> <span class="nav-text">构造函数模式（构造函数）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#构造函数模式和普通函数区别"><span class="nav-number">5.3.3.1.</span> <span class="nav-text">构造函数模式和普通函数区别</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原型模式（原型）"><span class="nav-number">5.3.4.</span> <span class="nav-text">原型模式（原型）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#原型链模式"><span class="nav-number">5.3.4.1.</span> <span class="nav-text">原型链模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类的继承和多态"><span class="nav-number">5.4.</span> <span class="nav-text">类的继承和多态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多态"><span class="nav-number">5.4.1.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类的继承"><span class="nav-number">5.4.2.</span> <span class="nav-text">类的继承</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#原型继承"><span class="nav-number">5.4.2.1.</span> <span class="nav-text">原型继承</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#call继承"><span class="nav-number">5.4.2.2.</span> <span class="nav-text">call继承</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#混合继承"><span class="nav-number">5.4.2.3.</span> <span class="nav-text">混合继承</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#冒充对象继承"><span class="nav-number">5.4.2.4.</span> <span class="nav-text">冒充对象继承</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中间类继承"><span class="nav-number">5.4.2.5.</span> <span class="nav-text">中间类继承</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可枚举的和不可枚举属性"><span class="nav-number">5.5.</span> <span class="nav-text">可枚举的和不可枚举属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则RegExp"><span class="nav-number">6.</span> <span class="nav-text">正则RegExp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建正则"><span class="nav-number">6.1.</span> <span class="nav-text">创建正则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则中的组成"><span class="nav-number">6.2.</span> <span class="nav-text">正则中的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符：在-之间有意义的字符"><span class="nav-number">6.2.1.</span> <span class="nav-text">元字符：在//之间有意义的字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#量词元字符"><span class="nav-number">6.2.2.</span> <span class="nav-text">量词元字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作用"><span class="nav-number">6.2.3.</span> <span class="nav-text">[]作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作用-1"><span class="nav-number">6.2.4.</span> <span class="nav-text">()作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则修饰符（用于修饰整个正则）"><span class="nav-number">6.2.5.</span> <span class="nav-text">正则修饰符（用于修饰整个正则）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test——匹配"><span class="nav-number">6.3.</span> <span class="nav-text">test——匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#捕获"><span class="nav-number">6.4.</span> <span class="nav-text">捕获</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正则捕获的特点"><span class="nav-number">6.4.1.</span> <span class="nav-text">正则捕获的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#懒惰性"><span class="nav-number">6.4.1.1.</span> <span class="nav-text">懒惰性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#贪婪性"><span class="nav-number">6.4.1.2.</span> <span class="nav-text">贪婪性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exec"><span class="nav-number">6.4.2.</span> <span class="nav-text">exec</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#match"><span class="nav-number">6.4.3.</span> <span class="nav-text">match</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS中的捕获异常"><span class="nav-number">7.</span> <span class="nav-text">JS中的捕获异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON"><span class="nav-number">8.</span> <span class="nav-text">JSON</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON兼容问题"><span class="nav-number">8.1.</span> <span class="nav-text">JSON兼容问题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘心怡</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

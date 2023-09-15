@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="3D,webGL,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="刘心怡" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="WebGL是OpenGL的一个分支，在网页中模拟三维空间">
+<meta name="keywords" content="3D,webGL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webGL">
+<meta property="og:url" content="http://yoursite.com/2018/10/06/webGL/index.html">
+<meta property="og:site_name" content="刘心怡">
+<meta property="og:description" content="WebGL是OpenGL的一个分支，在网页中模拟三维空间">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-22T08:32:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webGL">
+<meta name="twitter:description" content="WebGL是OpenGL的一个分支，在网页中模拟三维空间">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/06/webGL/">
+
+
+
+
+
+  <title>webGL | 刘心怡</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘心怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Tomorrow will be better than today!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/06/webGL/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘心怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘心怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">webGL</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-06T14:33:00+08:00">
+                2018-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/3D/" itemprop="url" rel="index">
+                    <span itemprop="name">3D</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/3D/webGL/" itemprop="url" rel="index">
+                    <span itemprop="name">webGL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>WebGL是OpenGL的一个分支，在网页中模拟三维空间<br><a id="more"></a></p>
+<h2 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h2><p>跟浏览器无关的部分，WebGL也有执行不了的情况。因为WebGL的标准还没有完全统一，所以硬件，OS，浏览器兼容性，以及这些东西结合之后都会对WebGL产生影响。</p>
+<h2 id="webGL和传统网页的区别"><a href="#webGL和传统网页的区别" class="headerlink" title="webGL和传统网页的区别"></a>webGL和传统网页的区别</h2><ul>
+<li>普通网页组成成分：<code>HTML</code>、<code>JavaScript</code>；</li>
+<li>WebGL网页组成成分：<code>HTML5</code>、<code>JavaScript</code>和<code>GLSL ES</code>(着色器语言 <code>OpenGL ES</code>)；<ul>
+<li><code>canvas</code>元素定义绘图区域</li>
+<li><code>JavaScript</code>内嵌<code>GLSL ES</code>绘制三维图形</li>
+</ul>
+</li>
+</ul>
+<h2 id="webGL坐标变换"><a href="#webGL坐标变换" class="headerlink" title="webGL坐标变换"></a>webGL坐标变换</h2><ul>
+<li>从三维到二维的变换等基本的，</li>
+<li><code>WebGL</code>是<code>OpenGL</code>的一个分支，使用右手坐标系。</li>
+<li>坐标变换，将三维的情报向二维进行变换，如照相机。由深度决定的前后关系，根据远近进行放大和缩小，都必须提前进行运算。利用<code>WebGL</code>可以模拟三维空间。坐标变换大致可以分为三种<ul>
+<li>模型变换：程序中的三维空间里定义了基准点，就是原点。从这个原点出发，为了知道参照物的相对位置，就需要进行必要的坐标变换。</li>
+<li>视图变换：为了决定镜头的位置和角度所进行的坐标变换就叫做视图变换。</li>
+<li>投影变换：定义三维空间的摄影区域。比如横向还是纵向，最远多远等。程序无法模拟无限大的空间，所以，拍摄必须有一个明确的范围。投影变幻，通过远近法则，近大远小对物体进行描画。</li>
+</ul>
+</li>
+</ul>
+<h2 id="渲染准备"><a href="#渲染准备" class="headerlink" title="渲染准备"></a>渲染准备</h2><h3 id="canvas定义区域"><a href="#canvas定义区域" class="headerlink" title="canvas定义区域"></a>canvas定义区域</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"200px"</span> <span class="attr">height</span>=<span class="string">"200px"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="准备顶点着色器和片段着色器"><a href="#准备顶点着色器和片段着色器" class="headerlink" title="准备顶点着色器和片段着色器"></a>准备顶点着色器和片段着色器</h3><ul>
+<li>固定渲染管线：3D渲染所进行的一连串的计算流程。在固定渲染管线中不需要理解细节，模型，视图，投影的坐标变换都会替我们计算好。<ul>
+<li>缺点就是<strong>自由度低</strong>，不能做一些特殊处理。</li>
+<li><code>WebGL</code>中，不存在固定渲染管线</li>
+</ul>
+</li>
+<li>可编辑渲染管线：可以由程序员控制的坐标变换机制</li>
+<li>着色器(Shader)：记述坐标变换的机制。WebGL中坐标变换全部由自己来做。着色器类型：<ul>
+<li>顶点着色器：处理几何图形顶点，相关处理就是坐标变换</li>
+<li>片段着色器：处理像素，颜色处理。</li>
+</ul>
+</li>
+</ul>
+<h3 id="着色器的处理方法"><a href="#着色器的处理方法" class="headerlink" title="着色器的处理方法"></a>着色器的处理方法</h3><p>着色器的代码就是简单的字符串，添加有多种做法，只要把这个着色器字符串传给程序就可以。<br>最简单的方法：把着色器记录在<br><code>HTML</code>中，利用<code>HTML</code>的<code>script</code>标签。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">id</span>=<span class="string">"vshader"</span> <span class="attr">type</span>=<span class="string">"x-shader/x-vertex"</span>&gt;</span><span class="undefined">  </span></span><br><span class="line"><span class="xml">   <span class="comment">&lt;!--顶点着色器--&gt;</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">id</span>=<span class="string">"fshader"</span> <span class="attr">type</span>=<span class="string">"x-shader/x-fragment"</span>&gt;</span><span class="undefined">  </span></span><br><span class="line"><span class="xml">    <span class="comment">&lt;!--片段着色器--&gt;</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="矩阵基础知识"><a href="#矩阵基础知识" class="headerlink" title="矩阵基础知识"></a>矩阵基础知识</h2><ul>
+<li>矩阵(Matrix)：矩阵的计算效率很高，而且及其便利。矩阵与矩阵相乘根据相乘的顺序得出的结果是不同的</li>
+<li>3D渲染使用的是4x4的矩阵，行和列都是4个元素组成</li>
+<li>可以在矩阵中完成模型，视图，投影的所有坐标变换处理。矩阵可以坐标变换保存起来<ul>
+<li>模型变换矩阵：3D模型的位置，扩大缩小，以及旋转等</li>
+<li>视图变换矩阵：镜头的位置，镜头的方向，以及镜头对准了哪个点（注视点）等</li>
+<li>投影变换矩阵，显示的横竖比例和视角等</li>
+</ul>
+</li>
+<li>各种坐标变换的矩阵相乘。将最终得到的矩阵传给WebGL的顶点着色器。顶点着色器从中获取模型坐标，显示出来。<strong>操作坐标变换的矩阵，可以决定模型在画面上如何绘制</strong></li>
+</ul>
+<blockquote>
+<p>矩阵相乘的顺序非常的重要</p>
+</blockquote>
+<h2 id="顶点和多边形"><a href="#顶点和多边形" class="headerlink" title="顶点和多边形"></a>顶点和多边形</h2><p><code>WebGL</code>中最基本的图形：点、线、三角形。<br>非常逼真的3D模型，都是用无数的三角形构造的，三角形越多，视觉效果越好</p>
+<h3 id="顶点连接顺序和遮挡剔除"><a href="#顶点连接顺序和遮挡剔除" class="headerlink" title="顶点连接顺序和遮挡剔除"></a>顶点连接顺序和遮挡剔除</h3><p>顺时针连接或是逆时针顺序连接<br>3D渲染里，看不到的东西不绘制是减轻负担的最普通的方法。里面的东西不绘制的机制，叫做<strong>遮挡剔除</strong>。OpenGL和WebGL如果设定了遮挡剔除，只会绘制外侧的多边形，内侧的所有多边形都不绘制。而多边形在内侧还是外侧的判断通过顶点的连接顺序决定，顺时针连接顶点的多边形是在外侧，而逆时针连接的多边形在内侧。</p>
+<h2 id="context的初始化"><a href="#context的初始化" class="headerlink" title="context的初始化"></a>context的初始化</h2><h3 id="cavans标签"><a href="#cavans标签" class="headerlink" title="cavans标签"></a>cavans标签</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="获取context"><a href="#获取context" class="headerlink" title="获取context"></a>获取context</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>);<span class="comment">//获取canvas元素</span></span><br><span class="line">c.width = <span class="number">500</span>; <span class="comment">//设置宽高</span></span><br><span class="line">c.height = <span class="number">300</span>;</span><br><span class="line"><span class="keyword">var</span> gl=c.getContext(<span class="string">'webgl'</span>)||c.getContext(<span class="string">'experimental-webgl'</span>);<span class="comment">//获取context对象</span></span><br></pre></td></tr></table></figure>
+<h3 id="画面初始化"><a href="#画面初始化" class="headerlink" title="画面初始化"></a>画面初始化</h3><ul>
+<li><code>gl.clear(gl.COLOR_BUFFER_BIT);</code></li>
+</ul>
+<blockquote>
+<p><code>COLOR_BUFFER_BIT</code>这个常量是为了使用canvas里面指定的颜色来清空画面而定义的。</p>
+</blockquote>
+<ul>
+<li><code>gl.clearColor(0.0, 0.0, 0.0, 1.0);</code>——使用指定颜色清空画面（rgba格式）</li>
+</ul>
+<h2 id="着色器的说明和基础"><a href="#着色器的说明和基础" class="headerlink" title="着色器的说明和基础"></a>着色器的说明和基础</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>WebGL里有顶点着色器和片段着色器两种着色器。相互依赖的，缺一不可，并且首先被调用的是顶点着色器。都可以使用GLSL来编写</p>
+<ul>
+<li>顶点着色器：跟顶点相关的所有情报都可以传给顶点着色器</li>
+<li>片段着色器(fragment)：片段着色器操作的是颜色，决定了画面的颜色输出。像素是画面上的最小的断片(fragment)</li>
+</ul>
+<h3 id="GLSL的编写基础"><a href="#GLSL的编写基础" class="headerlink" title="GLSL的编写基础"></a>GLSL的编写基础</h3><p>要从WebGL一侧向着色器传递数据的时候，需要用到一些特殊的修饰符所定义的变量。</p>
+<ul>
+<li>顶点作色器部分</li>
+</ul>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">attribute</span> <span class="type">vec3</span> position;<span class="comment">//attribute修饰符用于声明变量position，向顶点着色器传递各个顶点的不同的信息</span></span><br><span class="line"><span class="keyword">uniform</span> <span class="type">mat4</span> mvpMatrix;<span class="comment">//uniform修饰符向顶点着色器传递对所有顶点来说都一样的信息，如坐标变换矩阵</span></span><br><span class="line"><span class="keyword">attribute</span> <span class="type">vec4</span> color;</span><br><span class="line"><span class="keyword">varying</span> <span class="type">vec4</span> vColor<span class="comment">//varying修饰符，是顶点着色器和片段着色器之间的桥梁。从顶点着色器向片段着色器传递数据</span></span><br><span class="line"><span class="type">void</span> main(<span class="type">void</span>) &#123;  </span><br><span class="line">    <span class="built_in">gl_Position</span> = mvpMatrix * position; <span class="comment">//把顶点信息传给顶点着色器，必须传给变量gl_Position（必须赋值）。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>片段着色器部分</li>
+</ul>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">varying</span> <span class="type">vec4</span> vColor;<span class="comment">//从顶点着色器将数据传到片段着色器</span></span><br><span class="line"><span class="type">void</span> main(<span class="type">void</span>)  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="built_in">gl_FragColor</span> = vColor;<span class="comment">//片段着色器要把数据传给变量gl_FragColor(虽然不是必须赋值的，但是一般情况下都会赋值)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>GLSL变量类型</p>
+<ul>
+<li><code>vec*</code>表示的是向量，<code>*</code>的部分是一个2～4的数字，<code>vec2</code>就代表一个2维的向量。</li>
+<li><code>mat*</code>表示的是方阵，和向量一样，可以指定的范围也是2～4，如果是<code>mat3</code>的话，就表示一个3x3的方阵。</li>
+<li>另外，<code>int</code>是整型，<code>float</code>是浮点型，<code>bool</code>是布尔型，这些都跟C语言中是一个意思。<code>vec*</code>和<code>mat*</code>中的元素，都是浮点型。</li>
+</ul>
+</blockquote>
+<h2 id="顶点缓存的基础"><a href="#顶点缓存的基础" class="headerlink" title="顶点缓存的基础"></a>顶点缓存的基础</h2><p>局部坐标就是模型的各个顶点相对于原点（x，y，z都为0）的坐标。<br>这些顶点的局部坐标，必须在WebGL程序中进行变换，然后传给顶点着色器。在WebGL中，为了处理这些顶点的信息，并将这些顶点信息保存，则需要使用顶点缓存，WebGL中的顶点缓存叫做VBO（vertex buffer object）。WebGL中还有帧缓存，索引缓存等各种缓存</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/3D/" rel="tag"># 3D</a>
+          
+            <a href="/tags/webGL/" rel="tag"># webGL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/23/Leaflet/" rel="next" title="leaflet">
+                <i class="fa fa-chevron-left"></i> leaflet
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/08/模块化/" rel="prev" title="模块化">
+                模块化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘心怡</p>
+              <p class="site-description motion-element" itemprop="description">Tomorrow will be better than today</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器支持"><span class="nav-number">1.</span> <span class="nav-text">浏览器支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webGL和传统网页的区别"><span class="nav-number">2.</span> <span class="nav-text">webGL和传统网页的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webGL坐标变换"><span class="nav-number">3.</span> <span class="nav-text">webGL坐标变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渲染准备"><span class="nav-number">4.</span> <span class="nav-text">渲染准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas定义区域"><span class="nav-number">4.1.</span> <span class="nav-text">canvas定义区域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备顶点着色器和片段着色器"><span class="nav-number">4.2.</span> <span class="nav-text">准备顶点着色器和片段着色器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#着色器的处理方法"><span class="nav-number">4.3.</span> <span class="nav-text">着色器的处理方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵基础知识"><span class="nav-number">5.</span> <span class="nav-text">矩阵基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顶点和多边形"><span class="nav-number">6.</span> <span class="nav-text">顶点和多边形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#顶点连接顺序和遮挡剔除"><span class="nav-number">6.1.</span> <span class="nav-text">顶点连接顺序和遮挡剔除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#context的初始化"><span class="nav-number">7.</span> <span class="nav-text">context的初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cavans标签"><span class="nav-number">7.1.</span> <span class="nav-text">cavans标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取context"><span class="nav-number">7.2.</span> <span class="nav-text">获取context</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画面初始化"><span class="nav-number">7.3.</span> <span class="nav-text">画面初始化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#着色器的说明和基础"><span class="nav-number">8.</span> <span class="nav-text">着色器的说明和基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">8.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GLSL的编写基础"><span class="nav-number">8.2.</span> <span class="nav-text">GLSL的编写基础</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顶点缓存的基础"><span class="nav-number">9.</span> <span class="nav-text">顶点缓存的基础</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘心怡</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

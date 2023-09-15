@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CSS,css,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="刘心怡" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="CSS3 新增内容，媒体查询、怪异盒模型、background新增属性，box-radius、渐变、css3动画、css3选择器">
+<meta name="keywords" content="CSS,css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3">
+<meta property="og:url" content="http://yoursite.com/2016/09/19/CSS3/index.html">
+<meta property="og:site_name" content="刘心怡">
+<meta property="og:description" content="CSS3 新增内容，媒体查询、怪异盒模型、background新增属性，box-radius、渐变、css3动画、css3选择器">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2016/09/19/CSS3/CSS3-20180901-14-29-24.png">
+<meta property="og:updated_time" content="2016-09-21T14:12:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS3">
+<meta name="twitter:description" content="CSS3 新增内容，媒体查询、怪异盒模型、background新增属性，box-radius、渐变、css3动画、css3选择器">
+<meta name="twitter:image" content="http://yoursite.com/2016/09/19/CSS3/CSS3-20180901-14-29-24.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/19/CSS3/">
+
+
+
+
+
+  <title>CSS3 | 刘心怡</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘心怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Tomorrow will be better than today!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/19/CSS3/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘心怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘心怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-19T09:10:00+08:00">
+                2016-09-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CSS3 新增内容，媒体查询、怪异盒模型、background新增属性，box-radius、渐变、css3动画、css3选择器</p>
+<a id="more"></a>
+<h2 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h2><p>作用：用于为不同的媒介类型规定不同的样式。</p>
+<blockquote>
+<p>注意：css样式的就近原则，写在下面的代码会把上面的代码覆盖掉，<strong>所以媒体查询写在后面</strong></p>
+</blockquote>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p><code>@media screen and (判断条件) and (判断条件){css样式代码}</code></p>
+<blockquote>
+<p>注意点：单词之间空格隔开</p>
+</blockquote>
+<h4 id="1、-media-媒体-媒介"><a href="#1、-media-媒体-媒介" class="headerlink" title="1、@media 媒体 媒介"></a>1、@media 媒体 媒介</h4><h4 id="2、-媒体类型（常用）"><a href="#2、-媒体类型（常用）" class="headerlink" title="2、 媒体类型（常用）"></a>2、 媒体类型（常用）</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">值</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">screen</td>
+<td style="text-align:center">计算机屏幕（默认值）</td>
+</tr>
+<tr>
+<td style="text-align:center">print</td>
+<td style="text-align:center">打印预览模式 / 打印页</td>
+</tr>
+<tr>
+<td style="text-align:center">all</td>
+<td style="text-align:center">适合所有设备</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3、连接符"><a href="#3、连接符" class="headerlink" title="3、连接符"></a>3、连接符</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">值</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">and</td>
+<td style="text-align:center">和</td>
+</tr>
+<tr>
+<td style="text-align:center">only</td>
+<td style="text-align:center">仅仅/唯一</td>
+</tr>
+<tr>
+<td style="text-align:center">not</td>
+<td style="text-align:center">排除</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4、判断条件"><a href="#4、判断条件" class="headerlink" title="4、判断条件  ()"></a>4、判断条件  ()</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">值</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">max-width</td>
+<td style="text-align:center">最大宽度，当小于等于设置的值时</td>
+</tr>
+<tr>
+<td style="text-align:center">min-width</td>
+<td style="text-align:center">最小宽度375，当大于等于设置的值时</td>
+</tr>
+<tr>
+<td style="text-align:center">device-height</td>
+<td style="text-align:center">设备高度</td>
+</tr>
+<tr>
+<td style="text-align:center">device-width</td>
+<td style="text-align:center">设备宽度</td>
+</tr>
+<tr>
+<td style="text-align:center">-webkit-device-pixel-ratio</td>
+<td style="text-align:center">设备的像素比例，即dpr</td>
+</tr>
+</tbody>
+</table>
+<p>device：设备<br>pixel：picture element 像素<br>ratio：比率，比例</p>
+<h4 id="5、样式"><a href="#5、样式" class="headerlink" title="5、样式{}"></a>5、样式{}</h4><p>{<br>  css样式代码（选择器{属性名:属性值;}）<br>}</p>
+<h2 id="css3属性"><a href="#css3属性" class="headerlink" title="css3属性"></a>css3属性</h2><p>css3属性写两行代码<br>-webkit-css3属性名:s属性值;<br>css3属性名:属性值;</p>
+<h3 id="border-radius-顺时针方向"><a href="#border-radius-顺时针方向" class="headerlink" title="border-radius:(顺时针方向)"></a>border-radius:(顺时针方向)</h3><p>默认值：0   默认不能继承</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">值</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">length</td>
+<td style="text-align:center">设置圆角半径值</td>
+</tr>
+<tr>
+<td style="text-align:center">%</td>
+<td style="text-align:center">以元素height和width值的百分比设置圆角垂直和水平向半径</td>
+</tr>
+</tbody>
+</table>
+<p>四个值：左上、右上、右下、左下<br>三个值：左上、右上/左下、右下<br>两个值：左上/右下、右上/左下<br>一个值：四角同值</p>
+<p>椭圆：单改宽或者高的数值</p>
+<blockquote>
+<p>圆角项目中的用：焦点图/banner/轮播图、小圆点（分页器）、标签等</p>
+</blockquote>
+<h3 id="box-sizing-怪异盒模型"><a href="#box-sizing-怪异盒模型" class="headerlink" title="box-sizing 怪异盒模型"></a>box-sizing 怪异盒模型</h3><p>默认值：content-box 默认不能继承</p>
+<h4 id="border-box"><a href="#border-box" class="headerlink" title="border-box"></a>border-box</h4><p>padding和border 算在width里面</p>
+<ul>
+<li>宽度和高度分别应用到元素的内容框。</li>
+<li>在宽度和高度之外绘制元素的内边距和边框。</li>
+</ul>
+<h4 id="content-box"><a href="#content-box" class="headerlink" title="content-box"></a>content-box</h4><p>padding和border   不算在width里面</p>
+<ul>
+<li>为元素设定的宽度和高度决定了元素的边框盒。</li>
+<li>为元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制。</li>
+<li>通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度。</li>
+</ul>
+<h3 id="box-shadow-盒子阴影"><a href="#box-shadow-盒子阴影" class="headerlink" title="box-shadow 盒子阴影"></a>box-shadow 盒子阴影</h3><p><code>box-shadow: 10px 10px 10px 10px #000 inset;</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">值</th>
+<th style="text-align:center">作用</th>
+<th style="text-align:center">值类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">none</td>
+<td style="text-align:center">无阴影</td>
+</tr>
+<tr>
+<td style="text-align:center">第1个长度值</td>
+<td style="text-align:center">水平（x轴）方向的偏移量（值）</td>
+<td style="text-align:center">正数(向右)负数(向左)</td>
+</tr>
+<tr>
+<td style="text-align:center">第2个长度值</td>
+<td style="text-align:center">垂直（y轴）方向的偏移量（值）</td>
+<td style="text-align:center">正数(向下)负数(向上)</td>
+</tr>
+<tr>
+<td style="text-align:center">第3个长度值</td>
+<td style="text-align:center">则用来设置对象的阴影模糊值，模糊半径</td>
+<td style="text-align:center"><strong>不允许负值</strong>，越大越模糊</td>
+</tr>
+<tr>
+<td style="text-align:center">第4个长度值</td>
+<td style="text-align:center">则用来设置对象的阴影外延值，模糊半径的深度</td>
+<td style="text-align:center">可以为负值，值越大深度越大</td>
+</tr>
+<tr>
+<td style="text-align:center">第5个值</td>
+<td style="text-align:center">设置对象的阴影的颜色</td>
+</tr>
+<tr>
+<td style="text-align:center">第6个值</td>
+<td style="text-align:center">inset:设置对象的阴影类型为内阴影</td>
+<td style="text-align:center">该值为空时，则对象的阴影类型为外阴影</td>
+</tr>
+</tbody>
+</table>
+<h3 id="background新增属性"><a href="#background新增属性" class="headerlink" title="background新增属性"></a>background新增属性</h3><h4 id="background-attachment背景连接方式"><a href="#background-attachment背景连接方式" class="headerlink" title="background-attachment背景连接方式"></a>background-attachment背景连接方式</h4><ul>
+<li><code>background-attachment:fixed;</code> 不随着滚动条的滚动而滚动</li>
+<li><code>background-attachment:scroll;</code> 随着滚动条的滚动而滚动</li>
+</ul>
+<h5 id="background-origin背景显示的起点位置"><a href="#background-origin背景显示的起点位置" class="headerlink" title="background-origin背景显示的起点位置"></a>background-origin背景显示的起点位置</h5><ul>
+<li><code>background-origin:border-box;</code> 从边框border的位置开始显示图片  (包含边框border)</li>
+<li><code>background-origin:padding-box;</code> 从内边距padding开始显示图片  (包含内边距padding)</li>
+<li><code>background-origin:conten-box;</code> 从内容congten开始显示图片</li>
+</ul>
+<h5 id="background-clip背景被裁剪的位置"><a href="#background-clip背景被裁剪的位置" class="headerlink" title="background-clip背景被裁剪的位置"></a>background-clip背景被裁剪的位置</h5><ul>
+<li><code>background-clip:border-box;</code> 从边框border开始裁剪图片  (不包含边框border)</li>
+<li><code>background-clip:padding-box;</code> 从内边距padding开始裁剪图片  (不包含内边距padding)</li>
+<li><code>background-clip:content-box ;</code> 从内容 content开始裁剪图片</li>
+</ul>
+<h3 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h3><h4 id="linear-gradient线性渐变"><a href="#linear-gradient线性渐变" class="headerlink" title="linear-gradient线性渐变"></a>linear-gradient线性渐变</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">header</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">80px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(right,#2b7dd1,#c71b1b,#2791d0,#ffff00 50%);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>angle用角度值指定渐变的方向,如：30deg</li>
+<li>用关键字来设置:<ul>
+<li>to left:设置渐变为从右到左。相当于: 270deg</li>
+<li>to right:设置渐变从左到右。相当于: 90deg</li>
+<li>to top:设置渐变从下到上。相当于: 0deg</li>
+<li>to bottom:设置渐变从上到下。相当于: 180deg</li>
+</ul>
+</li>
+<li>渐变颜色的起止颜色<ul>
+<li>color 颜色/长度length或者百分比percentage指定起止色<strong>位置</strong>(不允许负值)</li>
+</ul>
+</li>
+</ul>
+<h4 id="radial-gradient径向渐变"><a href="#radial-gradient径向渐变" class="headerlink" title="radial-gradient径向渐变"></a>radial-gradient径向渐变</h4><ul>
+<li>shape 确定圆的类型<ul>
+<li>circle——指定圆形的径向渐变;</li>
+<li>ellipse——指定椭圆形的径向渐变;</li>
+</ul>
+</li>
+<li>size 圆的类型的范围<ul>
+<li>closest-side——指定径向渐变的半径长度为从圆心到离圆心最近的边</li>
+<li>closest-corner——指定径向渐变的半径长度为从圆心到离圆心最近的角</li>
+<li>farthest-side——指定径向渐变的半径长度为从圆心到离圆心最远的边</li>
+<li>farthest-corner——指定径向渐变的半径长度为从圆心到离圆心最远的角</li>
+</ul>
+</li>
+<li>at position 确定圆心的位置<ul>
+<li>如果提供2个参数，第一个表示横坐标,第二个表示纵坐标;</li>
+<li>如果只有提供一个,第二个默认为50%,即center;</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>【参数一】<br>用百分比或者长度值指定径向渐变圆心的横坐标值,可以为负值;<br>left(左边)/center(中间)/right(右边) 为径向渐变的横坐标值;<br>【参数二】<br>用百分比或者长度值指定径向渐变圆心的纵坐标值,可以为负值;<br>top(顶部)/center(中间)/bottom(顶部) 为径向渐变的纵坐标值;</p>
+</blockquote>
+<h3 id="filter滤镜效果"><a href="#filter滤镜效果" class="headerlink" title="filter滤镜效果"></a>filter滤镜效果</h3><p><code>-webkit-filter:none | blur(px) | brightness() | contrast() | grayscale() | hue-rotate(deg) | invert() | opacity() | saturate() | sepia() | drop-shadow( radius )| url()</code></p>
+<ul>
+<li>-webkit-filter:blur();——设置对象的模糊效果。</li>
+<li>-webkit-filter:brightness();——亮度，取值范围0-1</li>
+<li>-webkit-filter:contrast(2);——对比度，取值范围0 ~ *, 0为无对比度（灰色），1为原图，值越高对比度越大</li>
+<li>-webkit-filter: grayscale(1);——灰度，取值范围0-1</li>
+<li>-webkit-filter: hue-rotate(30deg);——色相（按照色相环进行旋转，顺时针方向，红-橙-黄-黄绿-绿-蓝绿-蓝-蓝紫-紫-紫红-红）此处为叠加黄色滤镜</li>
+<li>-webkit-filter: invert(1);——反色，取值范围0-1, 0为原图，1为彻底反色之后</li>
+<li>-webkit-filter: opacity(0.8); ——透明度，取值范围0 ~ 1, 0为全透明，1为原图</li>
+<li>-webkit-filter: saturate(4); ——饱和度，取值范围0 ~ *, 0为无饱和度，1为原图，值越高饱和度越大</li>
+<li>-webkit-filter: sepia(0.5); ——褐色程度，取值范围0-1</li>
+<li>-webkit-filter: drop-shadow(0 0 20px red); ——阴影</li>
+</ul>
+<h2 id="css3动画"><a href="#css3动画" class="headerlink" title="css3动画"></a>css3动画</h2><h3 id="1、规定好动画状态"><a href="#1、规定好动画状态" class="headerlink" title="1、规定好动画状态"></a>1、规定好动画状态</h3><h4 id="指定关键帧动画-keyframes"><a href="#指定关键帧动画-keyframes" class="headerlink" title="指定关键帧动画 @keyframes"></a>指定关键帧动画 @keyframes</h4><ul>
+<li>动画的名称 是自定义（我们自己命名）</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">keyframes</span> 动画的名称&#123;</span><br><span class="line">  0%&#123;</span><br><span class="line">    <span class="attribute">-webkit-transform</span>:<span class="built_in">scale</span>(1);</span><br><span class="line">    <span class="attribute">transform</span>:<span class="built_in">scale</span>(1);</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">……</span><br><span class="line">  100%&#123;</span><br><span class="line">    <span class="attribute">-webkit-transform</span>:<span class="built_in">scale</span>(2);</span><br><span class="line">    <span class="attribute">transform</span>:<span class="built_in">scale</span>(2);</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>大括号{} 规定动画划分为多少块，0%——动画开始位置、100%——动画结束位置</li>
+</ul>
+<blockquote>
+<p>用<code>animation</code>调用规定好的动画</p>
+</blockquote>
+<h4 id="transfrom变换"><a href="#transfrom变换" class="headerlink" title="transfrom变换"></a>transfrom变换</h4><p>可以控制：</p>
+<ul>
+<li>坐标值translate</li>
+<li>角度rotate(45deg)</li>
+<li>放大缩小scale()</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-tag">-webkit-transform</span>: <span class="selector-tag">translate</span>(300<span class="selector-tag">px</span>,100<span class="selector-tag">px</span>) <span class="selector-tag">rotateZ</span>(30<span class="selector-tag">deg</span>) <span class="selector-tag">skew</span>(30<span class="selector-tag">deg</span>);</span><br><span class="line"><span class="selector-tag">-moz-transform</span>: <span class="selector-tag">translate</span>(300<span class="selector-tag">px</span>,100<span class="selector-tag">px</span>) <span class="selector-tag">rotate</span>(360<span class="selector-tag">deg</span>) <span class="selector-tag">skew</span>(30<span class="selector-tag">deg</span>);</span><br><span class="line"><span class="selector-tag">-ms-transform</span>: <span class="selector-tag">translate</span>(300<span class="selector-tag">px</span>,100<span class="selector-tag">px</span>) <span class="selector-tag">rotate</span>(360<span class="selector-tag">deg</span>) <span class="selector-tag">skew</span>(30<span class="selector-tag">deg</span>);</span><br><span class="line"><span class="selector-tag">-o-transform</span>: <span class="selector-tag">translate</span>(300<span class="selector-tag">px</span>,100<span class="selector-tag">px</span>) <span class="selector-tag">rotate</span>(360<span class="selector-tag">deg</span>) <span class="selector-tag">skew</span>(30<span class="selector-tag">deg</span>);</span><br><span class="line"><span class="selector-tag">transform</span><span class="selector-pseudo">:translate(300px</span>,100<span class="selector-tag">px</span>) <span class="selector-tag">rotateZ</span>(30<span class="selector-tag">deg</span>) <span class="selector-tag">skew</span>(30<span class="selector-tag">deg</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="2、给指定元素调用动画效果"><a href="#2、给指定元素调用动画效果" class="headerlink" title="2、给指定元素调用动画效果"></a>2、给指定元素调用动画效果</h3><h4 id="animation（8个属性值-前5个比较常用）"><a href="#animation（8个属性值-前5个比较常用）" class="headerlink" title="animation（8个属性值  前5个比较常用）"></a>animation（8个属性值  前5个比较常用）</h4><p>指定元素调用关键帧动画（<code>@keyframes</code> 规定的动画）的动画效果</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-animation</span><span class="selector-pseudo">:myRotate</span> 3<span class="selector-tag">s</span> <span class="selector-tag">linear</span> 1<span class="selector-tag">s</span> <span class="selector-tag">infinite</span> <span class="selector-tag">normal</span> <span class="selector-tag">running</span>;</span><br><span class="line"><span class="selector-tag">-o-animation</span><span class="selector-pseudo">:myRotate</span> 3<span class="selector-tag">s</span> <span class="selector-tag">linear</span> 1<span class="selector-tag">s</span> <span class="selector-tag">infinite</span> <span class="selector-tag">normal</span> <span class="selector-tag">running</span>;</span><br><span class="line"><span class="selector-tag">animation</span><span class="selector-pseudo">:myRotate</span> 3<span class="selector-tag">s</span> <span class="selector-tag">linear</span> 1<span class="selector-tag">s</span> <span class="selector-tag">infinite</span> <span class="selector-tag">normal</span> <span class="selector-tag">running</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>1、动画名称（animation-name）<ul>
+<li>值是关键帧动画 <code>@keyframes</code>后自定义的名称</li>
+</ul>
+</li>
+<li>2、单次持续时间（animation-duration）</li>
+<li>3、动画运行的曲线（animation-timing-function）<ul>
+<li>ease 平滑过渡</li>
+<li>linear 线性过渡</li>
+<li>ease-in 由慢到快过度</li>
+<li>ease-out 由快到慢过渡</li>
+<li>css3高级动画：steps(动画分割为几步，start/end)<ul>
+<li>第一个参数指函数划分为几步</li>
+<li>第二个参数表示的是指定每一步发生变化的时间点，默认end<ul>
+<li>start：忽略开始的第一帧</li>
+<li>end：忽略结束的最后一帧</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>4、动画延迟的时间（animation-delay）</li>
+<li>5、动画重复次数（animation-iteration-count）（infinite 无限次）</li>
+<li>6、动画运动的方向（animation-direction）<ul>
+<li>normal：正常方向</li>
+<li>reverse： 反向</li>
+<li>alternate：动画先正常运行再反方向运行，并持续交替运行</li>
+<li>alternate-reverse：动画先反运行再正方向运行，并持续交替运行</li>
+</ul>
+</li>
+<li>7、动画运行的状态（animation-play-state）<ul>
+<li>运动 running</li>
+<li>暂停 paused</li>
+</ul>
+</li>
+<li>8、 动画时间之外的状态（animation-fill-mode）<ul>
+<li>both ：保留动画关键帧中，开始的一帧（0%）或结束的一帧（100%）（开始或结束状态）</li>
+<li>backwards：保留动画关键帧中，开始的一帧（0%）（开始状态）</li>
+<li>forwards：保留动画关键帧中，结束的一帧（100%）（结束状态）</li>
+</ul>
+</li>
+</ul>
+<h4 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h4><p>指定元素某属性改变时调用的动画效果</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-transition</span><span class="selector-pseudo">:all</span> 2<span class="selector-tag">s</span> <span class="selector-tag">linear</span> 1<span class="selector-tag">s</span>;</span><br><span class="line"><span class="selector-tag">-moz-transition</span><span class="selector-pseudo">:all</span> 2<span class="selector-tag">s</span> <span class="selector-tag">linear</span> 1<span class="selector-tag">s</span>;</span><br><span class="line"><span class="selector-tag">-ms-transition</span> : <span class="selector-tag">all</span> 2<span class="selector-tag">s</span> <span class="selector-tag">linear</span> 1<span class="selector-tag">s</span>;</span><br><span class="line"><span class="selector-tag">-o-transition</span>:  <span class="selector-tag">all</span> 2<span class="selector-tag">s</span> <span class="selector-tag">linear</span> 1<span class="selector-tag">s</span>;</span><br><span class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">all</span> 2<span class="selector-tag">s</span> <span class="selector-tag">linear</span> 1<span class="selector-tag">s</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>1、执行动画的属性（transition-property）<ul>
+<li>all：所有属性</li>
+</ul>
+</li>
+<li>2、过渡时间（transition-duration ）</li>
+<li>3、动画时间函数（transition-timing-function ）<ul>
+<li>linear：线性函数</li>
+<li>ease-in</li>
+<li>ease-out</li>
+<li>ease-in-out</li>
+</ul>
+</li>
+<li>4、延迟时间（transition-delay）</li>
+</ul>
+<h3 id="动画库"><a href="#动画库" class="headerlink" title="动画库"></a>动画库</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">bounceInDown</td>
+<td style="text-align:center">从下往上</td>
+</tr>
+<tr>
+<td style="text-align:center">bounceInLeft</td>
+<td style="text-align:center">从左往右</td>
+</tr>
+<tr>
+<td style="text-align:center">bounceInRight</td>
+<td style="text-align:center">从右往左</td>
+</tr>
+<tr>
+<td style="text-align:center">bounceInUp</td>
+<td style="text-align:center">从上往下</td>
+</tr>
+</tbody>
+</table>
+<p>插件 swier-slide</p>
+<h2 id="css3选择器"><a href="#css3选择器" class="headerlink" title="css3选择器"></a>css3选择器</h2><h3 id="关系选择器"><a href="#关系选择器" class="headerlink" title="关系选择器"></a>关系选择器</h3><h4 id="兄弟选择器"><a href="#兄弟选择器" class="headerlink" title="兄弟选择器"></a>兄弟选择器</h4><p>语法：选择器A~选择器F{声明}<br>作用：选择在A之后<strong>所有的同级元素</strong>F</p>
+<h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><h4 id="属性名-”val”-声明"><a href="#属性名-”val”-声明" class="headerlink" title="[属性名^=”val”]  { 声明}"></a>[属性名^=”val”]  { 声明}</h4><p>选择具有某属性且属性值为以val开头的字符串的元素。</p>
+<h4 id="属性名-”val”-声明-1"><a href="#属性名-”val”-声明-1" class="headerlink" title="[属性名$=”val”] { 声明}"></a>[属性名$=”val”] { 声明}</h4><p>选择具有某属性且属性值为以val结尾的字符串的元素。</p>
+<h4 id="属性名-”val”-声明-2"><a href="#属性名-”val”-声明-2" class="headerlink" title="[属性名*=”val”] { 声明}"></a>[属性名*=”val”] { 声明}</h4><p>选择具有某属性且属性值为包含val的字符串的元素。</p>
+<h3 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h3><h4 id="选择器B-not-选择器A"><a href="#选择器B-not-选择器A" class="headerlink" title="选择器B:not(选择器A)"></a>选择器B:not(选择器A)</h4><p>匹配选择器B中不包含在选择器A的元素（差集）</p>
+<h4 id="root"><a href="#root" class="headerlink" title=":root"></a>:root</h4><p>匹配元素在文档的根元素。在HTML中，根元素永远是<strong>HTML元素</strong></p>
+<h4 id="选择器A-last-child"><a href="#选择器A-last-child" class="headerlink" title="选择器A:last-child"></a>选择器A:last-child</h4><p>匹配选择器A的父元素的最后一个子元素</p>
+<h4 id="选择器A-only-child"><a href="#选择器A-only-child" class="headerlink" title="选择器A:only-child"></a>选择器A:only-child</h4><p>匹配选择器A的父元素仅有的一个子元素</p>
+<h4 id="E-nth-child-n"><a href="#E-nth-child-n" class="headerlink" title="E:nth-child(n)"></a>E:nth-child(n)</h4><p>匹配父元素的第n个子元素E，假设该子元素不是E，则选择符无效。（n为自然数）</p>
+<blockquote>
+<p>选中所有的偶数子元素E，那么选择符可以写成：E:nth-child(2n)<br>选中所有的奇数子元素E，那么选择符可以写成：E:nth-child(2n+1)</p>
+</blockquote>
+<h4 id="E-nth-last-child-n"><a href="#E-nth-last-child-n" class="headerlink" title="E:nth-last-child(n)"></a>E:nth-last-child(n)</h4><p>匹配父元素的倒数第n个子元素E，假设该子元素不是E，则选择符无效。</p>
+<h4 id="E-first-of-type"><a href="#E-first-of-type" class="headerlink" title="E:first-of-type"></a>E:first-of-type</h4><p>匹配同类型中的第一个同级兄弟元素E</p>
+<h4 id="E-last-of-type"><a href="#E-last-of-type" class="headerlink" title="E:last-of-type"></a>E:last-of-type</h4><p>匹配同类型中的最后一个同级兄弟元素E。</p>
+<h4 id="E-only-of-type"><a href="#E-only-of-type" class="headerlink" title="E:only-of-type"></a>E:only-of-type</h4><p>匹配同类型中的唯一的一个同级兄弟元素E。</p>
+<h4 id="E-nth-of-type-n"><a href="#E-nth-of-type-n" class="headerlink" title="E:nth-of-type(n)"></a>E:nth-of-type(n)</h4><p>匹配同类型中的第n个同级兄弟元素E。</p>
+<h4 id="E-nth-last-of-type-n"><a href="#E-nth-last-of-type-n" class="headerlink" title="E:nth-last-of-type(n)"></a>E:nth-last-of-type(n)</h4><p>匹配同类型中的倒数第n个同级兄弟元素E。</p>
+<h4 id="E-empty"><a href="#E-empty" class="headerlink" title="E:empty"></a>E:empty</h4><p>匹配没有任何子元素（包括text节点）的元素E。</p>
+<h4 id="E-checked"><a href="#E-checked" class="headerlink" title="E:checked"></a>E:checked</h4><p>匹配用户界面上处于选中状态的元素E</p>
+<h4 id="E-enabled"><a href="#E-enabled" class="headerlink" title="E:enabled"></a>E:enabled</h4><p>匹配用户界面上处于可用状态的元素E。</p>
+<h4 id="E-disabled"><a href="#E-disabled" class="headerlink" title="E:disabled"></a>E:disabled</h4><p>匹配用户界面上处于禁用状态的元素E。</p>
+<h4 id="E-target"><a href="#E-target" class="headerlink" title="E:target"></a>E:target</h4><p>匹配相关URL指向的E元素。<br>解释：URL后面跟锚点#，指向文档内某个具体的元素。这个被链接的元素就是目标元素(target element)，:target选择器用于选取当前活动的目标元素。</p>
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span></span><br><span class="line"><span class="xml">  :target&#123;</span></span><br><span class="line"><span class="xml">    width :300px;</span></span><br><span class="line"><span class="xml">    height:300px;</span></span><br><span class="line"><span class="xml">    font-size: 20px;</span></span><br><span class="line"><span class="xml">    text-align: center;</span></span><br><span class="line"><span class="xml">    line-height: 300px;</span></span><br><span class="line"><span class="xml">    color :red;</span></span><br><span class="line"><span class="xml">    background: #9cff80;</span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#div1"</span>&gt;</span>div1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#div2"</span>&gt;</span>div2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span>div1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div2"</span>&gt;</span>div2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p><code>href</code>后面跟一个#id,指向当前文档某个具体的元素，这个被连接的元素就是目标元素<br><code>:target</code>选择器：可用于当前活动的目标元素</p>
+<h3 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h3><p><img src="/2016/09/19/CSS3/CSS3-20180901-14-29-24.png" alt="伪类选择器"></p>
+<h4 id="E-placeholder"><a href="#E-placeholder" class="headerlink" title="E::placeholder"></a>E::placeholder</h4><p>设置对象文字占位符的样式。</p>
+<blockquote>
+<p>需要注意的是，除了Firefox是 ::[prefix]placeholder，其他浏览器都是使用 ::[prefix]input-placeholder</p>
+</blockquote>
+<p>Firefox支持该伪元素使用text-overflow属性来处理溢出问题。</p>
+<h4 id="E-selection"><a href="#E-selection" class="headerlink" title="E::selection"></a>E::selection</h4><p>设置对象被选择时的样式。</p>
+<blockquote>
+<p>::selection只能定义被选择时的background-color，color及text-shadow(IE11尚不支持定义该属性)</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/16/CSS规范及注意事项/" rel="next" title="CSS规范及注意事项">
+                <i class="fa fa-chevron-left"></i> CSS规范及注意事项
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/20/移动端特性/" rel="prev" title="移动端特性">
+                移动端特性 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘心怡</p>
+              <p class="site-description motion-element" itemprop="description">Tomorrow will be better than today</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#媒体查询"><span class="nav-number">1.</span> <span class="nav-text">媒体查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">1.1.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、-media-媒体-媒介"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、@media 媒体 媒介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、-媒体类型（常用）"><span class="nav-number">1.1.2.</span> <span class="nav-text">2、 媒体类型（常用）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、连接符"><span class="nav-number">1.1.3.</span> <span class="nav-text">3、连接符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、判断条件"><span class="nav-number">1.1.4.</span> <span class="nav-text">4、判断条件  ()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、样式"><span class="nav-number">1.1.5.</span> <span class="nav-text">5、样式{}</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css3属性"><span class="nav-number">2.</span> <span class="nav-text">css3属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#border-radius-顺时针方向"><span class="nav-number">2.1.</span> <span class="nav-text">border-radius:(顺时针方向)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#box-sizing-怪异盒模型"><span class="nav-number">2.2.</span> <span class="nav-text">box-sizing 怪异盒模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#border-box"><span class="nav-number">2.2.1.</span> <span class="nav-text">border-box</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#content-box"><span class="nav-number">2.2.2.</span> <span class="nav-text">content-box</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#box-shadow-盒子阴影"><span class="nav-number">2.3.</span> <span class="nav-text">box-shadow 盒子阴影</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#background新增属性"><span class="nav-number">2.4.</span> <span class="nav-text">background新增属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#background-attachment背景连接方式"><span class="nav-number">2.4.1.</span> <span class="nav-text">background-attachment背景连接方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#background-origin背景显示的起点位置"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">background-origin背景显示的起点位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#background-clip背景被裁剪的位置"><span class="nav-number">2.4.1.2.</span> <span class="nav-text">background-clip背景被裁剪的位置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渐变"><span class="nav-number">2.5.</span> <span class="nav-text">渐变</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#linear-gradient线性渐变"><span class="nav-number">2.5.1.</span> <span class="nav-text">linear-gradient线性渐变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#radial-gradient径向渐变"><span class="nav-number">2.5.2.</span> <span class="nav-text">radial-gradient径向渐变</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#filter滤镜效果"><span class="nav-number">2.6.</span> <span class="nav-text">filter滤镜效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css3动画"><span class="nav-number">3.</span> <span class="nav-text">css3动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、规定好动画状态"><span class="nav-number">3.1.</span> <span class="nav-text">1、规定好动画状态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指定关键帧动画-keyframes"><span class="nav-number">3.1.1.</span> <span class="nav-text">指定关键帧动画 @keyframes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transfrom变换"><span class="nav-number">3.1.2.</span> <span class="nav-text">transfrom变换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、给指定元素调用动画效果"><span class="nav-number">3.2.</span> <span class="nav-text">2、给指定元素调用动画效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#animation（8个属性值-前5个比较常用）"><span class="nav-number">3.2.1.</span> <span class="nav-text">animation（8个属性值  前5个比较常用）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#transition"><span class="nav-number">3.2.2.</span> <span class="nav-text">transition</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动画库"><span class="nav-number">3.3.</span> <span class="nav-text">动画库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css3选择器"><span class="nav-number">4.</span> <span class="nav-text">css3选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关系选择器"><span class="nav-number">4.1.</span> <span class="nav-text">关系选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#兄弟选择器"><span class="nav-number">4.1.1.</span> <span class="nav-text">兄弟选择器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性选择器"><span class="nav-number">4.2.</span> <span class="nav-text">属性选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#属性名-”val”-声明"><span class="nav-number">4.2.1.</span> <span class="nav-text">[属性名^=”val”]  { 声明}</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性名-”val”-声明-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">[属性名$=”val”] { 声明}</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性名-”val”-声明-2"><span class="nav-number">4.2.3.</span> <span class="nav-text">[属性名*=”val”] { 声明}</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪类选择器"><span class="nav-number">4.3.</span> <span class="nav-text">伪类选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#选择器B-not-选择器A"><span class="nav-number">4.3.1.</span> <span class="nav-text">选择器B:not(选择器A)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#root"><span class="nav-number">4.3.2.</span> <span class="nav-text">:root</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择器A-last-child"><span class="nav-number">4.3.3.</span> <span class="nav-text">选择器A:last-child</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择器A-only-child"><span class="nav-number">4.3.4.</span> <span class="nav-text">选择器A:only-child</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E-nth-child-n"><span class="nav-number">4.3.5.</span> <span class="nav-text">E:nth-child(n)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E-nth-last-child-n"><span class="nav-number">4.3.6.</span> <span class="nav-text">E:nth-last-child(n)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E-first-of-type"><span class="nav-number">4.3.7.</span> <span class="nav-text">E:first-of-type</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E-last-of-type"><span class="nav-number">4.3.8.</span> <span class="nav-text">E:last-of-type</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E-only-of-type"><span class="nav-number">4.3.9.</span> <span class="nav-text">E:only-of-type</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E-nth-of-type-n"><span class="nav-number">4.3.10.</span> <span class="nav-text">E:nth-of-type(n)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E-nth-last-of-type-n"><span class="nav-number">4.3.11.</span> <span class="nav-text">E:nth-last-of-type(n)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E-empty"><span class="nav-number">4.3.12.</span> <span class="nav-text">E:empty</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E-checked"><span class="nav-number">4.3.13.</span> <span class="nav-text">E:checked</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E-enabled"><span class="nav-number">4.3.14.</span> <span class="nav-text">E:enabled</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E-disabled"><span class="nav-number">4.3.15.</span> <span class="nav-text">E:disabled</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E-target"><span class="nav-number">4.3.16.</span> <span class="nav-text">E:target</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪元素"><span class="nav-number">4.4.</span> <span class="nav-text">伪元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#E-placeholder"><span class="nav-number">4.4.1.</span> <span class="nav-text">E::placeholder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E-selection"><span class="nav-number">4.4.2.</span> <span class="nav-text">E::selection</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘心怡</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

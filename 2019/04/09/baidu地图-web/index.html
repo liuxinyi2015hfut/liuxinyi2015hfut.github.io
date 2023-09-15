@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="utils,map,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="刘心怡" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="百度地图 JavaScript API v3.0  免费，接口无使用次数限制 兼容IE 6.0+，Android和iPhone">
+<meta name="keywords" content="utils,map">
+<meta property="og:type" content="article">
+<meta property="og:title" content="baidu地图-web">
+<meta property="og:url" content="http://yoursite.com/2019/04/09/baidu地图-web/index.html">
+<meta property="og:site_name" content="刘心怡">
+<meta property="og:description" content="百度地图 JavaScript API v3.0  免费，接口无使用次数限制 兼容IE 6.0+，Android和iPhone">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/baidu地图-web/baidu地图-web-20190409-13-52-55.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/baidu地图-web/baidu地图-web-20190412-14-25-42.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/baidu地图-web/baidu地图-web-20190409-15-58-42.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/baidu地图-web/baidu地图-web-20190410-09-24-59.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/baidu地图-web/baidu地图-web-20190410-09-20-24.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/baidu地图-web/baidu地图-web-20190412-14-10-42.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/baidu地图-web/baidu地图-web-20190409-15-25-36.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/baidu地图-web/baidu地图-web-20190409-15-31-39.png">
+<meta property="og:updated_time" content="2019-06-17T05:56:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="baidu地图-web">
+<meta name="twitter:description" content="百度地图 JavaScript API v3.0  免费，接口无使用次数限制 兼容IE 6.0+，Android和iPhone">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/09/baidu地图-web/baidu地图-web-20190409-13-52-55.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/09/baidu地图-web/">
+
+
+
+
+
+  <title>baidu地图-web | 刘心怡</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘心怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Tomorrow will be better than today!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/09/baidu地图-web/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘心怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘心怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">baidu地图-web</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-09T13:32:00+08:00">
+                2019-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/utils/" itemprop="url" rel="index">
+                    <span itemprop="name">utils</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/utils/map/" itemprop="url" rel="index">
+                    <span itemprop="name">map</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>百度地图 JavaScript API v3.0</p>
+<ul>
+<li>免费，接口无使用次数限制</li>
+<li>兼容IE 6.0+，Android和iPhone</li>
+</ul>
+<a id="more"></a>
+<p> 所有类都在<code>BMap</code>这个对象上，如：<code>BMap.Map</code>、<code>BMap.Control</code>、<code>BMap.Overlay</code>。</p>
+<h2 id="密钥"><a href="#密钥" class="headerlink" title="密钥"></a>密钥</h2><p>只支持浏览器类型的ak。<br><img src="/2019/04/09/baidu地图-web/baidu地图-web-20190409-13-52-55.png" alt="ak申请"></p>
+<h2 id="异步加载"><a href="#异步加载" class="headerlink" title="异步加载"></a>异步加载</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initialize</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">  <span class="keyword">var</span> mp = <span class="keyword">new</span> BMap.Map(<span class="string">'map'</span>);  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">  <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">  <span class="comment">// 在引用脚本的时候添加callback参数，当脚本加载完成后callback函数会被立刻调用</span></span><br><span class="line">  script.src = <span class="string">"http://api.map.baidu.com/api?v=3.0&amp;ak=您的密钥&amp;callback=initialize"</span>;</span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(script);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="基础类"><a href="#基础类" class="headerlink" title="基础类"></a>基础类</h2><h3 id="地理坐标点Point"><a href="#地理坐标点Point" class="headerlink" title="地理坐标点Point"></a>地理坐标点Point</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point = <span class="keyword">new</span> BMap.Point(<span class="number">116.404</span><span class="comment">/*lng 纬度*/</span>, <span class="number">39.915</span><span class="comment">/*lat 经度*/</span>);</span><br><span class="line"><span class="keyword">var</span> otherPoint=<span class="keyword">new</span> BMap.Point(<span class="number">116.404</span>, <span class="number">39.915</span>);</span><br><span class="line"><span class="comment">//判断坐标点是否相等，当且仅当两点的经度和纬度均相等时返回true</span></span><br><span class="line">point.equals(otherPoint);<span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h3 id="相对左上角的像素坐标点Pixel"><a href="#相对左上角的像素坐标点Pixel" class="headerlink" title="相对左上角的像素坐标点Pixel"></a>相对左上角的像素坐标点Pixel</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pixel=<span class="keyword">new</span> BMap.Pixel(<span class="number">10</span><span class="comment">/*x坐标(px)*/</span>,<span class="number">10</span><span class="comment">/*y坐标(px)*/</span>);</span><br><span class="line"><span class="keyword">var</span> otherPixel=<span class="keyword">new</span> BMap.Pixel(<span class="number">10</span>,<span class="number">10</span>);</span><br><span class="line"><span class="comment">// 判断坐标点是否相等，当且仅当两点的x坐标和y坐标均相等时返回true</span></span><br><span class="line">pixel.equals(otherPixel);<span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h3 id="地理坐标矩形区域Bounds"><a href="#地理坐标矩形区域Bounds" class="headerlink" title="地理坐标矩形区域Bounds"></a>地理坐标矩形区域Bounds</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sw =<span class="keyword">new</span> BMap.Point(lng1<span class="comment">/*lng 纬度*/</span>, lat1<span class="comment">/*lat 经度*/</span>);</span><br><span class="line"><span class="keyword">var</span> ne=<span class="keyword">new</span> BMap.Point(lng2<span class="comment">/*lng 纬度*/</span>, lat2<span class="comment">/*lat 经度*/</span>);</span><br><span class="line"><span class="keyword">var</span> bounds=<span class="keyword">new</span> Bounds(sw<span class="comment">/*矩形区域西南角*/</span>, ne<span class="comment">/*矩形区域东北角*/</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="Bounds方法"><a href="#Bounds方法" class="headerlink" title="Bounds方法"></a>Bounds方法</h4><p><img src="/2019/04/09/baidu地图-web/baidu地图-web-20190412-14-25-42.png" alt="矩形区域Bounds的方法"></p>
+<h3 id="像素矩形区域大小Size"><a href="#像素矩形区域大小Size" class="headerlink" title="像素矩形区域大小Size"></a>像素矩形区域大小Size</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> size=<span class="keyword">new</span> BMap.Size(<span class="number">10</span><span class="comment">/*width(px)*/</span>,<span class="number">10</span><span class="comment">/*height(px)*/</span>);</span><br><span class="line"><span class="keyword">var</span> otherSize=<span class="keyword">new</span> BMap.Size(<span class="number">10</span>,<span class="number">10</span>);</span><br><span class="line">size.equals(otherSize);<span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="核心类"><a href="#核心类" class="headerlink" title="核心类"></a>核心类</h2><h3 id="地图实例Map"><a href="#地图实例Map" class="headerlink" title="地图实例Map"></a>地图实例Map</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined">  </span></span><br><span class="line"><span class="css">    <span class="selector-id">#container</span>&#123;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">height</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">width</span><span class="selector-pseudo">:100px</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--容器需要有宽高--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 参数可以是元素id，也可以是DOM元素对象</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> mapOption=&#123;&#125;;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> map = <span class="keyword">new</span> BMap.Map(<span class="string">"container"</span><span class="comment">/*id或DOM元素*/</span>,mapOption);</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> point = <span class="keyword">new</span> BMap.Point(<span class="number">116.404</span>, <span class="number">39.915</span>);</span></span><br><span class="line"><span class="javascript">  <span class="comment">// 地图初始化，未进行初始化的地图将不能进行任何操作</span></span></span><br><span class="line"><span class="javascript">  map.centerAndZoom(point<span class="comment">/*中心点坐标*/</span>, <span class="number">15</span><span class="comment">/*地图展示级别*/</span>);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>调用构造函数时，确保容器元素已经在挂载在页面上</p>
+</blockquote>
+<h4 id="mapOptions"><a href="#mapOptions" class="headerlink" title="mapOptions"></a>mapOptions</h4><p><img src="/2019/04/09/baidu地图-web/baidu地图-web-20190409-15-58-42.png" alt="mapOptions"></p>
+<h4 id="原型上的方法"><a href="#原型上的方法" class="headerlink" title="原型上的方法"></a>原型上的方法</h4><p><a href="http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html#a0b0" target="_blank" rel="noopener">原型上的方法</a></p>
+<h4 id="map上的事件"><a href="#map上的事件" class="headerlink" title="map上的事件"></a>map上的事件</h4><p><a href="http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference_3_0.html#a0b0" target="_blank" rel="noopener">地图实例的事件</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map = <span class="keyword">new</span> BMap.Map(<span class="string">"container"</span>);</span><br><span class="line">map.centerAndZoom(<span class="keyword">new</span> BMap.Point(<span class="number">116.404</span>, <span class="number">39.915</span>), <span class="number">11</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">zoomEndListener</span>(<span class="params">e<span class="regexp">/*事件参数e获取有关信息*/</span></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 获取事件发生后的地图信息，如下获取地图缩放后的级别</span></span><br><span class="line">  <span class="keyword">var</span> zoomLevel = map.getZoom();</span><br><span class="line">  alert(<span class="string">"地图缩放至："</span> + zoomLevel + <span class="string">"级"</span>);</span><br><span class="line">  <span class="comment">// 移除事件监听</span></span><br><span class="line">  map.removeEventListener(<span class="string">"zoomend"</span>, zoomEndListener);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 添加事件监听</span></span><br><span class="line">map.addEventListener(<span class="string">"zoomend"</span>,zoomEndListener);</span><br></pre></td></tr></table></figure>
+<h4 id="地图样式个性化"><a href="#地图样式个性化" class="headerlink" title="地图样式个性化"></a>地图样式个性化</h4><p>使用<a href="http://lbsyun.baidu.com/index.php?title=open/custom" target="_blank" rel="noopener">个性化地图编辑平台</a>生成地图样式json，调用原型上的<code>setMapStyleV2</code><em>(JavaScriptAPI V3.0支持)</em> 设置地图样式</p>
+<h2 id="控件类"><a href="#控件类" class="headerlink" title="控件类"></a>控件类</h2><h3 id="自定义控件Control-控制类基类"><a href="#自定义控件Control-控制类基类" class="headerlink" title="自定义控件Control(控制类基类)"></a>自定义控件Control(控制类基类)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个控件类，即function</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ZoomControl</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 设置控件默认停靠位置</span></span><br><span class="line">    <span class="keyword">this</span>.defaultAnchor = BMAP_ANCHOR_TOP_LEFT<span class="comment">/*控件定位常量*/</span>;</span><br><span class="line">    <span class="comment">// 设置控件默认偏移量</span></span><br><span class="line">    <span class="keyword">this</span>.defaultOffset = <span class="keyword">new</span> BMap.Size(<span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 通过JavaScript的prototype属性继承BMap.Control类</span></span><br><span class="line">ZoomControl.prototype = <span class="keyword">new</span> BMap.Control();</span><br><span class="line"><span class="comment">// 当调用map.addControl()方法添加自定义控件时，API会调用该对象的initialize()方法用来初始化控件，需要实现此方法</span></span><br><span class="line">ZoomControl.prototype.initialize = <span class="function"><span class="keyword">function</span>(<span class="params">map</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 创建控件所需的DOM元素</span></span><br><span class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">    <span class="comment">// 添加控件内容</span></span><br><span class="line">    div.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"放大2级"</span>));</span><br><span class="line">    <span class="comment">// 设置样式</span></span><br><span class="line">    div.style.cursor = <span class="string">"pointer"</span>;</span><br><span class="line">    div.style.border = <span class="string">"1px solid gray"</span>;</span><br><span class="line">    div.style.backgroundColor = <span class="string">"white"</span>;</span><br><span class="line">    <span class="comment">// 添加DOM事件，点击一次放大两级</span></span><br><span class="line">    div.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;  </span><br><span class="line">        map.zoomTo(map.getZoom() + <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 自定义控件中的DOM元素最终都应该添加到地图容器（即地图所在的DOM元素）中去</span></span><br><span class="line">    <span class="comment">// 地图容器可以通过map.getContainer()方法获得</span></span><br><span class="line">    map.getContainer().appendChild(div);</span><br><span class="line">    <span class="comment">// 将控件的DOM元素return</span></span><br><span class="line">    <span class="keyword">return</span> div;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 创建自定义控件实例</span></span><br><span class="line"><span class="keyword">var</span> myZoomCtrl = <span class="keyword">new</span> ZoomControl();</span><br><span class="line"><span class="comment">// 添加自定义控件</span></span><br><span class="line">map.addControl(myZoomCtrl);</span><br></pre></td></tr></table></figure>
+<h3 id="百度地图内置控件"><a href="#百度地图内置控件" class="headerlink" title="百度地图内置控件"></a>百度地图内置控件</h3><p><img src="/2019/04/09/baidu地图-web/baidu地图-web-20190410-09-24-59.png" alt="百度地图内置控件"></p>
+<h3 id="控件定位常量"><a href="#控件定位常量" class="headerlink" title="控件定位常量"></a>控件定位常量</h3><p><img src="/2019/04/09/baidu地图-web/baidu地图-web-20190410-09-20-24.png" alt="控件定位常量"></p>
+<h2 id="覆盖类"><a href="#覆盖类" class="headerlink" title="覆盖类"></a>覆盖类</h2><h3 id="覆盖类型"><a href="#覆盖类型" class="headerlink" title="覆盖类型"></a>覆盖类型</h3><p><img src="/2019/04/09/baidu地图-web/baidu地图-web-20190412-14-10-42.png" alt="覆盖类型"></p>
+<h3 id="覆盖物容器"><a href="#覆盖物容器" class="headerlink" title="覆盖物容器"></a>覆盖物容器</h3><ul>
+<li>地图提供了若干容器，供覆盖物展示，通过<code>map.getPanes</code>方法可以得到容器元素,覆盖关系从上到下，如下：<ul>
+<li><code>floatPane</code>，显示信息窗口内容</li>
+<li><code>markerMouseTarget</code>，标注点击区域层</li>
+<li><code>floatShadow</code>，信息窗口阴影层</li>
+<li><code>labelPane</code>，文本标注层</li>
+<li><code>markerPane</code>，标注层</li>
+<li><code>mapPane</code>，矢量图形层</li>
+</ul>
+</li>
+</ul>
+<h3 id="标注"><a href="#标注" class="headerlink" title="标注"></a>标注</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map=<span class="keyword">new</span> BMap.Map(<span class="string">'container'</span>);</span><br><span class="line"><span class="keyword">var</span> point=<span class="keyword">new</span> BMap.Point(<span class="number">116.404</span>, <span class="number">39.915</span>);</span><br><span class="line">map.centerAndZoom(point,<span class="number">15</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 标注点</span></span><br><span class="line"><span class="keyword">var</span> myIcon = <span class="keyword">new</span> BMap.Icon(<span class="string">"markers.png"</span>, <span class="keyword">new</span> BMap.Size(<span class="number">23</span>, <span class="number">25</span>), &#123;</span><br><span class="line">    <span class="comment">// 当标注显示在地图上时，其所指向的地理位置距离图标左上角各偏移10像素和25像素。</span></span><br><span class="line">    anchor: <span class="keyword">new</span> BMap.Size(<span class="number">10</span>, <span class="number">25</span>),</span><br><span class="line">    <span class="comment">// 当需要从一幅较大的图片中截取某部分作为标注图标时，需要指定大图的偏移位置，此做法与css sprites技术类似。</span></span><br><span class="line">    imageOffset: <span class="keyword">new</span> BMap.Size(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> marker=<span class="keyword">new</span> BMap.Marker(point,&#123;<span class="comment">/*自定义图标*/</span>icon: myIcon&#125;);</span><br><span class="line">map.addOverlayer(marker);</span><br><span class="line"><span class="comment">// 可拖拽</span></span><br><span class="line">marker.enableDragging();</span><br><span class="line"><span class="comment">// 监听拖拽</span></span><br><span class="line">marker.addEventListener(<span class="string">"dragend"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"当前位置："</span> + e.point.lng + <span class="string">", "</span> + e.point.lat);</span><br><span class="line">&#125;)  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 标注折线</span></span><br><span class="line"><span class="keyword">var</span> polyline = <span class="keyword">new</span> BMap.Polyline(</span><br><span class="line">  [</span><br><span class="line">    <span class="keyword">new</span> BMap.Point(<span class="number">116.399</span>, <span class="number">39.910</span>),</span><br><span class="line">    <span class="keyword">new</span> BMap.Point(<span class="number">116.405</span>, <span class="number">39.920</span>)</span><br><span class="line">  ],</span><br><span class="line">  &#123;<span class="attr">strokeColor</span>:<span class="string">"blue"</span>, <span class="attr">strokeWeight</span>:<span class="number">6</span>, <span class="attr">strokeOpacity</span>:<span class="number">0.5</span>&#125;</span><br><span class="line">);</span><br><span class="line">map.addOverlay(polyline);</span><br></pre></td></tr></table></figure>
+<h4 id="自定义覆盖物"><a href="#自定义覆盖物" class="headerlink" title="自定义覆盖物"></a>自定义覆盖物</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义构造函数并继承Overlay</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SquareOverlay</span>(<span class="params">center, length, color</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>._center = center;</span><br><span class="line">  <span class="keyword">this</span>._length = length;</span><br><span class="line">  <span class="keyword">this</span>._color = color;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 继承API的BMap.Overlay</span></span><br><span class="line">SquareOverlay.prototype = <span class="keyword">new</span> BMap.Overlay();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当调用map.addOverlay方法添加自定义覆盖物时，API会调用该对象的initialize方法用来初始化覆盖物</span></span><br><span class="line">SquareOverlay.prototype.initialize = <span class="function"><span class="keyword">function</span>(<span class="params">map</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 保存map对象实例</span></span><br><span class="line">  <span class="keyword">this</span>._map = map;</span><br><span class="line">  <span class="comment">// 创建div元素，作为自定义覆盖物的容器</span></span><br><span class="line">  <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">  div.style.position = <span class="string">"absolute"</span>;</span><br><span class="line">  <span class="comment">// 可以根据参数设置元素外观</span></span><br><span class="line">  div.style.width = <span class="keyword">this</span>._length + <span class="string">"px"</span>;</span><br><span class="line">  div.style.height = <span class="keyword">this</span>._length + <span class="string">"px"</span>;</span><br><span class="line">  div.style.background = <span class="keyword">this</span>._color;</span><br><span class="line">  <span class="comment">// 将div添加到覆盖物容器中</span></span><br><span class="line">  map.getPanes().markerPane.appendChild(div);</span><br><span class="line">  <span class="comment">// 保存div实例</span></span><br><span class="line">  <span class="keyword">this</span>._div = div;</span><br><span class="line">  <span class="comment">// 需要将div元素作为方法的返回值，当调用该覆盖物的show、</span></span><br><span class="line">  <span class="comment">// hide方法，或者对覆盖物进行移除时，API都将操作此元素。</span></span><br><span class="line">  <span class="keyword">return</span> div;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实现draw方法，设置覆盖物的位置，当地图移动、缩放等时，API都会调用覆盖物的draw方法，用于重新计算覆盖物的位置</span></span><br><span class="line">SquareOverlay.prototype.draw = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 通过map.pointToOverlayPixel方法将地理坐标转换到覆盖物所需的像素坐标。</span></span><br><span class="line">  <span class="keyword">var</span> position = <span class="keyword">this</span>._map.pointToOverlayPixel(<span class="keyword">this</span>._center);</span><br><span class="line">  <span class="keyword">this</span>._div.style.left = position.x - <span class="keyword">this</span>._length / <span class="number">2</span> + <span class="string">"px"</span>;</span><br><span class="line">  <span class="keyword">this</span>._div.style.top = position.y - <span class="keyword">this</span>._length / <span class="number">2</span> + <span class="string">"px"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当调用map.removeOverlay或者map.clearOverlays方法时，API会自动将initialize方法返回的DOM元素进行移除。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 显示和隐藏覆盖物</span></span><br><span class="line"><span class="comment">// 自定义覆盖物会自动继承Overlay的show和hide方法，修改由initialize方法返回的DOM元素的style.display属性。</span></span><br><span class="line"><span class="comment">// 如果自定义覆盖物元素较为复杂，您也可以自己实现show和hide方法。</span></span><br><span class="line">SquareOverlay.prototype.show = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>._div)&#123;</span><br><span class="line">    <span class="keyword">this</span>._div.style.display = <span class="string">""</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">SquareOverlay.prototype.hide = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>._div)&#123;</span><br><span class="line">    <span class="keyword">this</span>._div.style.display = <span class="string">"none"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义其他方法 通过构造函数的prototype属性，您可以添加任何自定义的方法，比如下面这个方法每调用一次就能改变覆盖物的显示状态</span></span><br><span class="line">SquareOverlay.prototype.toggle = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>._div)&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>._div.style.display == <span class="string">""</span>)&#123;</span><br><span class="line">      <span class="keyword">this</span>.hide();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.show();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加自定义覆盖物</span></span><br><span class="line"><span class="keyword">var</span> map = <span class="keyword">new</span> BMap.Map(<span class="string">"container"</span>);</span><br><span class="line"><span class="keyword">var</span> point = <span class="keyword">new</span> BMap.Point(<span class="number">116.404</span>, <span class="number">39.915</span>);</span><br><span class="line">map.centerAndZoom(point, <span class="number">15</span>);</span><br><span class="line"><span class="keyword">var</span> mySquare = <span class="keyword">new</span> SquareOverlay(map.getCenter(), <span class="number">100</span>, <span class="string">"red"</span>);</span><br><span class="line">map.addOverlay(mySquare);</span><br></pre></td></tr></table></figure>
+<h3 id="信息窗口"><a href="#信息窗口" class="headerlink" title="信息窗口"></a>信息窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> opts = &#123;</span><br><span class="line">    width : <span class="number">250</span>,     <span class="comment">// 信息窗口宽度</span></span><br><span class="line">    height: <span class="number">100</span>,     <span class="comment">// 信息窗口高度</span></span><br><span class="line">    title : <span class="string">"Hello"</span>  <span class="comment">// 信息窗口标题</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 创建信息窗口对象</span></span><br><span class="line"><span class="keyword">var</span> infoWindow = <span class="keyword">new</span> BMap.InfoWindow(<span class="string">"World"</span>, opts);</span><br><span class="line"><span class="comment">// 打开信息窗口</span></span><br><span class="line">map.openInfoWindow(infoWindow, map.getCenter());</span><br></pre></td></tr></table></figure>
+<h4 id="自定义信息窗口"><a href="#自定义信息窗口" class="headerlink" title="自定义信息窗口"></a>自定义信息窗口</h4><p> <a href="http://api.map.baidu.com/library/InfoBox/1.2/docs/symbols/BMapLib.InfoBox.html" target="_blank" rel="noopener">自定义信息窗口InfoBox</a></p>
+<h3 id="叠加图层"><a href="#叠加图层" class="headerlink" title="叠加图层"></a>叠加图层</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map = <span class="keyword">new</span> BMap.Map(<span class="string">"l-map"</span>);</span><br><span class="line"><span class="keyword">var</span> point = <span class="keyword">new</span> BMap.Point(<span class="number">116.404</span>, <span class="number">39.915</span>);</span><br><span class="line">map.centerAndZoom(point, <span class="number">15</span>);</span><br><span class="line"><span class="comment">// 创建交通流量图层实例</span></span><br><span class="line"><span class="keyword">var</span> traffic = <span class="keyword">new</span> BMap.TrafficLayer();</span><br><span class="line"><span class="comment">// 将图层添加到地图上</span></span><br><span class="line">map.addTileLayer(traffic);</span><br><span class="line"><span class="comment">// 从地图上移除图层</span></span><br><span class="line">map.removeTileLayer(traffic);</span><br></pre></td></tr></table></figure>
+<h2 id="服务类"><a href="#服务类" class="headerlink" title="服务类"></a>服务类</h2><h3 id="坐标转换Convertor"><a href="#坐标转换Convertor" class="headerlink" title="坐标转换Convertor"></a>坐标转换Convertor</h3><p>目前国内主要坐标系种类</p>
+<ul>
+<li>WGS84：大地坐标系，目前广泛使用的GPS全球卫星定位系统使用的坐标系。</li>
+<li>GCJ02：火星坐标系，是由中国国家测绘局制订的地理信息系统的坐标系统。由WGS84坐标系经加密后的坐标系。</li>
+<li>BD09：为百度坐标系，在GCJ02坐标系基础上再次加密。其中bd09ll表示百度经纬度坐标，bd09mc表示百度墨卡托米制坐标</li>
+</ul>
+<p>转百度坐标</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 未转换坐标</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">116.32715863448607</span>;</span><br><span class="line"><span class="keyword">var</span> y = <span class="number">39.990912172420714</span>;</span><br><span class="line"><span class="keyword">var</span> ggPoint = <span class="keyword">new</span> BMap.Point(x,y);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转换完成的回调函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">translateCallback</span> (<span class="params">data<span class="regexp">/*TranslateResults类*/</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(data.status<span class="comment">/*StatusCode类*/</span> === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> marker = <span class="keyword">new</span> BMap.Marker(data.points[<span class="number">0</span>]);</span><br><span class="line">      <span class="comment">// bm为地图实例</span></span><br><span class="line">      bm.addOverlay(marker);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> convertor = <span class="keyword">new</span> BMap.Convertor();</span><br><span class="line">convertor.translate(</span><br><span class="line">  [ggPoint],<span class="comment">// 需要转换的点坐标组成数组，上限100个点坐标</span></span><br><span class="line">  <span class="number">3</span><span class="comment">/*from 原坐标类型*/</span>,</span><br><span class="line">  <span class="number">5</span><span class="comment">/*to 目标坐标类型*/</span>,</span><br><span class="line">  translateCallback<span class="comment">//转换后的回调函数</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="convertor-translate坐标类型参数"><a href="#convertor-translate坐标类型参数" class="headerlink" title="convertor.translate坐标类型参数"></a><code>convertor.translate</code>坐标类型参数</h4><p><img src="/2019/04/09/baidu地图-web/baidu地图-web-20190409-15-25-36.png" alt="转换坐标类型"></p>
+<h4 id="TranslateResults类status"><a href="#TranslateResults类status" class="headerlink" title="TranslateResults类status"></a>TranslateResults类status</h4><p><img src="/2019/04/09/baidu地图-web/baidu地图-web-20190409-15-31-39.png" alt="转换坐标结果状态码"></p>
+<h2 id="全景类Panorama"><a href="#全景类Panorama" class="headerlink" title="全景类Panorama"></a>全景类Panorama</h2><p>展示某位置的全景视图，可以单独放置在一个div容器中，也可以放在Map类的容器中</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/utils/" rel="tag"># utils</a>
+          
+            <a href="/tags/map/" rel="tag"># map</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/23/vuex原理/" rel="next" title="vuex原理">
+                <i class="fa fa-chevron-left"></i> vuex原理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/17/python3.0基础/" rel="prev" title="python3.0基础">
+                python3.0基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘心怡</p>
+              <p class="site-description motion-element" itemprop="description">Tomorrow will be better than today</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#密钥"><span class="nav-number">1.</span> <span class="nav-text">密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步加载"><span class="nav-number">2.</span> <span class="nav-text">异步加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础类"><span class="nav-number">3.</span> <span class="nav-text">基础类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#地理坐标点Point"><span class="nav-number">3.1.</span> <span class="nav-text">地理坐标点Point</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相对左上角的像素坐标点Pixel"><span class="nav-number">3.2.</span> <span class="nav-text">相对左上角的像素坐标点Pixel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#地理坐标矩形区域Bounds"><span class="nav-number">3.3.</span> <span class="nav-text">地理坐标矩形区域Bounds</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bounds方法"><span class="nav-number">3.3.1.</span> <span class="nav-text">Bounds方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#像素矩形区域大小Size"><span class="nav-number">3.4.</span> <span class="nav-text">像素矩形区域大小Size</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心类"><span class="nav-number">4.</span> <span class="nav-text">核心类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#地图实例Map"><span class="nav-number">4.1.</span> <span class="nav-text">地图实例Map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mapOptions"><span class="nav-number">4.1.1.</span> <span class="nav-text">mapOptions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原型上的方法"><span class="nav-number">4.1.2.</span> <span class="nav-text">原型上的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map上的事件"><span class="nav-number">4.1.3.</span> <span class="nav-text">map上的事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#地图样式个性化"><span class="nav-number">4.1.4.</span> <span class="nav-text">地图样式个性化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控件类"><span class="nav-number">5.</span> <span class="nav-text">控件类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义控件Control-控制类基类"><span class="nav-number">5.1.</span> <span class="nav-text">自定义控件Control(控制类基类)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#百度地图内置控件"><span class="nav-number">5.2.</span> <span class="nav-text">百度地图内置控件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控件定位常量"><span class="nav-number">5.3.</span> <span class="nav-text">控件定位常量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖类"><span class="nav-number">6.</span> <span class="nav-text">覆盖类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#覆盖类型"><span class="nav-number">6.1.</span> <span class="nav-text">覆盖类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#覆盖物容器"><span class="nav-number">6.2.</span> <span class="nav-text">覆盖物容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标注"><span class="nav-number">6.3.</span> <span class="nav-text">标注</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义覆盖物"><span class="nav-number">6.3.1.</span> <span class="nav-text">自定义覆盖物</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息窗口"><span class="nav-number">6.4.</span> <span class="nav-text">信息窗口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义信息窗口"><span class="nav-number">6.4.1.</span> <span class="nav-text">自定义信息窗口</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#叠加图层"><span class="nav-number">6.5.</span> <span class="nav-text">叠加图层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务类"><span class="nav-number">7.</span> <span class="nav-text">服务类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#坐标转换Convertor"><span class="nav-number">7.1.</span> <span class="nav-text">坐标转换Convertor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#convertor-translate坐标类型参数"><span class="nav-number">7.1.1.</span> <span class="nav-text">convertor.translate坐标类型参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TranslateResults类status"><span class="nav-number">7.1.2.</span> <span class="nav-text">TranslateResults类status</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全景类Panorama"><span class="nav-number">8.</span> <span class="nav-text">全景类Panorama</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘心怡</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

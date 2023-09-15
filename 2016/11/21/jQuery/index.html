@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,jQuery,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="刘心怡" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="原生JS封装成的一个库，zepto是jQuery的移动端小型化版本">
+<meta name="keywords" content="JavaScript,jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery">
+<meta property="og:url" content="http://yoursite.com/2016/11/21/jQuery/index.html">
+<meta property="og:site_name" content="刘心怡">
+<meta property="og:description" content="原生JS封装成的一个库，zepto是jQuery的移动端小型化版本">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-12-06T08:28:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery">
+<meta name="twitter:description" content="原生JS封装成的一个库，zepto是jQuery的移动端小型化版本">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/21/jQuery/">
+
+
+
+
+
+  <title>jQuery | 刘心怡</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘心怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Tomorrow will be better than today!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/21/jQuery/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘心怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘心怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jQuery</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-21T14:28:00+08:00">
+                2016-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/jQuery/" itemprop="url" rel="index">
+                    <span itemprop="name">jQuery</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>原生JS封装成的一个库，zepto是jQuery的移动端小型化版本<br><a id="more"></a></p>
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><ul>
+<li>jquery-1.xxx （第一个版本，兼容所有浏览器）</li>
+<li>jquery-2.xxx （第二个版本，在IE6，7，8下不兼容）</li>
+<li>jquery-3.xxx （第三个版本，在IE6，7，8下不兼容）</li>
+</ul>
+<h2 id="jQuery原理"><a href="#jQuery原理" class="headerlink" title="jQuery原理"></a>jQuery原理</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jQuery = <span class="function"><span class="keyword">function</span>(<span class="params"> selector, context </span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> jQuery.fn.init( selector, context );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>selector</code> : 是个参数，选择器<br><code>context</code>: 上下文<br><code>window.jQuery = window.$ = jQuery;</code><br>jQuery 是一个方法，又是一个类<br><code>$(&quot;.first&quot;)</code> 是一个jQuery实例</p>
+<h3 id="extend扩展jQuery-方法"><a href="#extend扩展jQuery-方法" class="headerlink" title="extend扩展jQuery 方法"></a><code>extend</code>扩展jQuery 方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">jQuery.fn.extend(&#123;</span><br><span class="line">  aa:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">$(<span class="string">".first li"</span>).aa()</span><br></pre></td></tr></table></figure>
+<p>jQuery 的<code>extend</code> 方法 ，是用来扩展jQuery 的方法</p>
+<h2 id="jQuery选择器"><a href="#jQuery选择器" class="headerlink" title="jQuery选择器"></a>jQuery选择器</h2><p>DOM 是元素节点组成的</p>
+<blockquote>
+<p>原声js中获取元素对象的方式<br><code>document.getElementsByClassName(&quot;first&quot;)</code> 在IE6、7、8下不兼容<br><code>document.getElementById(&quot;div&quot;);</code>兼容IE6、7、8<br><code>document.getElementsByTagName(&quot;*&quot;)</code> （获取document下所有元素对象）兼容IE6、7、8</p>
+</blockquote>
+<h3 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&quot;#first&quot;</code></td>
+<td style="text-align:center">通过ID名来获取</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;.first&quot;</code></td>
+<td style="text-align:center">通过类名来获取</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;div&quot;</code></td>
+<td style="text-align:center">通过标签名来获取</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;#first,.oUl&quot;</code></td>
+<td style="text-align:center">并集选择</td>
+</tr>
+</tbody>
+</table>
+<h3 id="层级选择器"><a href="#层级选择器" class="headerlink" title="层级选择器"></a>层级选择器</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>#first .oUl</code></td>
+<td style="text-align:center">获取后代所有元素对象</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;#first&gt;.oUl&quot;</code></td>
+<td style="text-align:center">获取下一级的元素对象（紧邻的父子关系）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;#first+&quot;</code></td>
+<td style="text-align:center">获取同级下紧邻的弟弟元素对象</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;.first+div&quot;</code></td>
+<td style="text-align:center">获取同级下紧邻的div标签的弟弟元素对象</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;.first~ &quot;</code></td>
+<td style="text-align:center">获取同级下所有的弟弟元素对象</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;.first~div&quot;</code></td>
+<td style="text-align:center">获取同级下所有div标签的弟弟元素对象</td>
+</tr>
+</tbody>
+</table>
+<h3 id="基本筛选器"><a href="#基本筛选器" class="headerlink" title="基本筛选器"></a>基本筛选器</h3><h4 id="排除"><a href="#排除" class="headerlink" title="排除"></a>排除</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&quot;:not(selector)&quot;</code></td>
+<td style="text-align:center">去除所有与给定选择器匹配的元素</td>
+</tr>
+</tbody>
+</table>
+<h4 id="操作索引"><a href="#操作索引" class="headerlink" title="操作索引"></a>操作索引</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&quot;.first:first&quot;</code></td>
+<td style="text-align:center">第一个class名为first的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;.first:last&quot;</code></td>
+<td style="text-align:center">最后一个class名为first的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;.first:even&quot;</code></td>
+<td style="text-align:center">索引为偶数的class名为first的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;.first:odd&quot;</code></td>
+<td style="text-align:center">索引为奇数的class名为first的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;.first:eq(0)&quot;</code></td>
+<td style="text-align:center">索引为0的class名为first的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;.first:gt(2)&quot;</code></td>
+<td style="text-align:center">索引大于2的class名为first的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;.first:lt(2)&quot;</code></td>
+<td style="text-align:center">索引小于2的class名为first的元素</td>
+</tr>
+</tbody>
+</table>
+<h4 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&quot;:contains(&#39;珠峰&#39;)&quot;</code></td>
+<td style="text-align:center">获取所有元素内容包含“珠峰”的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:empty&quot;</code></td>
+<td style="text-align:center">获取所有不包含子元素或文本的空元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:parent&quot;</code></td>
+<td style="text-align:center">获取所有包含子元素或文本的非空元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:has(.first)&quot;</code></td>
+<td style="text-align:center">获取所有后代元素中包含类名为first元素的元素</td>
+</tr>
+</tbody>
+</table>
+<h4 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&quot;:hidden&quot;</code></td>
+<td style="text-align:center">获取所有不可见元素，type为hidden</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:visible&quot;</code></td>
+<td style="text-align:center">获取所有可见元素</td>
+</tr>
+</tbody>
+</table>
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&quot;[attribute]&quot;</code></td>
+<td style="text-align:center">获取带有attribute属性的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;[attribute=value]&quot;</code></td>
+<td style="text-align:center">获取attribute属性值为value的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;[attribute^=value]&quot;</code></td>
+<td style="text-align:center">获取attribute属性值以value开始的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;[attribute$=value]&quot;</code></td>
+<td style="text-align:center">获取attribute属性值以value结尾的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;[attribute*=value]“</code></td>
+<td style="text-align:center">获取attribute属性值包含value的元素</td>
+</tr>
+</tbody>
+</table>
+<h4 id="子元素"><a href="#子元素" class="headerlink" title="子元素"></a>子元素</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&quot;:first-child&quot;</code></td>
+<td style="text-align:center">查找父元素中第一个子元素是某类型的的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:first-of-type&quot;</code></td>
+<td style="text-align:center">查找父元素中第一个某类型的子元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:last-child&quot;</code></td>
+<td style="text-align:center">查找父元素中最后一个子元素是某类型的的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:last-of-type&quot;</code></td>
+<td style="text-align:center">查找父元素中最后一个某类型的子元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:nth-child&quot;</code></td>
+<td style="text-align:center">查找父元素中第n个子元素是某类型的的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:nth-of-type&quot;</code></td>
+<td style="text-align:center">查找父元素中第n个某类型的子元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:nth-last-child&quot;</code></td>
+<td style="text-align:center">查找父元素中倒数n个子元素是某类型的的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:nth-of-type&quot;</code></td>
+<td style="text-align:center">查找父元素中倒数n个某类型的子元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:only-child&quot;</code></td>
+<td style="text-align:center">查找父元素中唯一的子元素是某类型的的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:only-of-type&quot;</code></td>
+<td style="text-align:center">查找父元素中唯一的某类型的子元素</td>
+</tr>
+</tbody>
+</table>
+<h4 id="表单选择器（type属性值）"><a href="#表单选择器（type属性值）" class="headerlink" title="表单选择器（type属性值）"></a>表单选择器（type属性值）</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&quot;:input&quot;</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:text&quot;</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:password&quot;</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:password&quot;</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:radio&quot;</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:checkbox&quot;</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:submit&quot;</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:image&quot;</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:button&quot;</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:reset&quot;</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:file&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="表单过滤器选择器"><a href="#表单过滤器选择器" class="headerlink" title="表单过滤器选择器"></a>表单过滤器选择器</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&quot;:enabled&quot;</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:disabled&quot;</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:checked&quot;</code></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:selected&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&quot;:header&quot;</code></td>
+<td style="text-align:center">获取所有h1~h6的标题元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:animated&quot;</code></td>
+<td style="text-align:center">匹配所有正在执行动画效果的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:focus&quot;</code></td>
+<td style="text-align:center">匹配当前获取焦点的元素</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:image&quot;</code></td>
+<td style="text-align:center">匹配所有图像域</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;:animated&quot;</code></td>
+<td style="text-align:center">匹配所有正在执行动画效果的元素</td>
+</tr>
+</tbody>
+</table>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><h3 id="属性操作方法"><a href="#属性操作方法" class="headerlink" title="属性操作方法"></a>属性操作方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&quot;toggleClass</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;addClass</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;removeClass</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;attr</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&quot;removeAttr</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="zepto-移动端的小型的jQuery"><a href="#zepto-移动端的小型的jQuery" class="headerlink" title="zepto(移动端的小型的jQuery)"></a><code>zepto</code>(移动端的小型的<code>jQuery</code>)</h2><h3 id="zepto和jQuery的不同"><a href="#zepto和jQuery的不同" class="headerlink" title="zepto和jQuery的不同"></a><code>zepto</code>和<code>jQuery</code>的不同</h3><table>
+<thead>
+<tr>
+<th><code>jQuery</code></th>
+<th><code>zepto</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在PC端使用，里面包含了大量的对于IE低版本浏览器的兼容处理</td>
+<td>应用于移动端开发，对IE版本浏览器不支持</td>
+</tr>
+<tr>
+<td>提供了很多的选择器，以及DOM的操作方法</td>
+<td>实现了部分常用的选择器和方法</td>
+</tr>
+<tr>
+<td>动画的方法：<code>animate</code>、<code>hide</code>、<code>show</code>、<code>toggle</code>、<code>slide</code>、<code>Down</code>、<code>slideUp</code>、<code>slideToggle</code>、<code>fadeIn</code>、<code>fadeOut</code>、<code>fadeToggle</code>…</td>
+<td>只有<code>animate</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="zepto常用的事件操作"><a href="#zepto常用的事件操作" class="headerlink" title="zepto常用的事件操作"></a><code>zepto</code>常用的事件操作</h3><p><code>tap</code>、<code>singleTap</code>、<code>doubleTap</code>、<code>longTap</code>、<code>swipe</code>、<code>swipeUp</code>、<code>swipeDown</code>、<code>swipeLeft</code>、<code>swipeRight</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/jQuery/" rel="tag"># jQuery</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/17/AJAX和JSONP/" rel="next" title="AJAX和JSONP">
+                <i class="fa fa-chevron-left"></i> AJAX和JSONP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/19/flexbox/" rel="prev" title="flexbox">
+                flexbox <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘心怡</p>
+              <p class="site-description motion-element" itemprop="description">Tomorrow will be better than today</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#版本"><span class="nav-number">1.</span> <span class="nav-text">版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery原理"><span class="nav-number">2.</span> <span class="nav-text">jQuery原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#extend扩展jQuery-方法"><span class="nav-number">2.1.</span> <span class="nav-text">extend扩展jQuery 方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery选择器"><span class="nav-number">3.</span> <span class="nav-text">jQuery选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本选择器"><span class="nav-number">3.1.</span> <span class="nav-text">基本选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#层级选择器"><span class="nav-number">3.2.</span> <span class="nav-text">层级选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本筛选器"><span class="nav-number">3.3.</span> <span class="nav-text">基本筛选器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#排除"><span class="nav-number">3.3.1.</span> <span class="nav-text">排除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作索引"><span class="nav-number">3.3.2.</span> <span class="nav-text">操作索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内容"><span class="nav-number">3.3.3.</span> <span class="nav-text">内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可见性"><span class="nav-number">3.3.4.</span> <span class="nav-text">可见性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性"><span class="nav-number">3.3.5.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子元素"><span class="nav-number">3.3.6.</span> <span class="nav-text">子元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表单选择器（type属性值）"><span class="nav-number">3.3.7.</span> <span class="nav-text">表单选择器（type属性值）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表单过滤器选择器"><span class="nav-number">3.3.8.</span> <span class="nav-text">表单过滤器选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">3.3.9.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用方法"><span class="nav-number">4.</span> <span class="nav-text">常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性操作方法"><span class="nav-number">4.1.</span> <span class="nav-text">属性操作方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zepto-移动端的小型的jQuery"><span class="nav-number">5.</span> <span class="nav-text">zepto(移动端的小型的jQuery)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#zepto和jQuery的不同"><span class="nav-number">5.1.</span> <span class="nav-text">zepto和jQuery的不同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zepto常用的事件操作"><span class="nav-number">5.2.</span> <span class="nav-text">zepto常用的事件操作</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘心怡</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

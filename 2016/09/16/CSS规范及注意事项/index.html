@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CSS,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="刘心怡" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="CSS规范及注意事项">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS规范及注意事项">
+<meta property="og:url" content="http://yoursite.com/2016/09/16/CSS规范及注意事项/index.html">
+<meta property="og:site_name" content="刘心怡">
+<meta property="og:description" content="CSS规范及注意事项">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-09-16T05:11:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS规范及注意事项">
+<meta name="twitter:description" content="CSS规范及注意事项">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/16/CSS规范及注意事项/">
+
+
+
+
+
+  <title>CSS规范及注意事项 | 刘心怡</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘心怡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Tomorrow will be better than today!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/16/CSS规范及注意事项/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘心怡">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘心怡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS规范及注意事项</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-16T09:42:00+08:00">
+                2016-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/规范/" itemprop="url" rel="index">
+                    <span itemprop="name">规范</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CSS规范及注意事项<br><a id="more"></a></p>
+<h2 id="CSS命名规范"><a href="#CSS命名规范" class="headerlink" title="CSS命名规范"></a>CSS命名规范</h2><h3 id="类名-id命名规范"><a href="#类名-id命名规范" class="headerlink" title="类名/id命名规范"></a>类名/id命名规范</h3><ul>
+<li>不能是数字，也不能以数字为开头</li>
+<li>严格区分大小写</li>
+<li>遵循行业内的规范，例如 nav导航 subnav辅导航 banner 广告位  list 列表…</li>
+<li>可以使用拼音全拼 miaosha</li>
+<li>多个单词组成中间可以使用<code>_</code>或<code>-</code>进行连接</li>
+</ul>
+<blockquote>
+<p>一律小写<br>尽量用英文<br>尽量不缩写，除非一看就明白的单词</p>
+</blockquote>
+<h3 id="常用命名"><a href="#常用命名" class="headerlink" title="常用命名"></a>常用命名</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">内容</th>
+<th style="text-align:center">命名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">头</td>
+<td style="text-align:center">header</td>
+</tr>
+<tr>
+<td style="text-align:center">内容</td>
+<td style="text-align:center">content/container</td>
+</tr>
+<tr>
+<td style="text-align:center">尾</td>
+<td style="text-align:center">footer</td>
+</tr>
+<tr>
+<td style="text-align:center">导航</td>
+<td style="text-align:center">nav</td>
+</tr>
+<tr>
+<td style="text-align:center">侧栏</td>
+<td style="text-align:center">sidebar</td>
+</tr>
+<tr>
+<td style="text-align:center">栏目</td>
+<td style="text-align:center">column</td>
+</tr>
+<tr>
+<td style="text-align:center">页面外围控制整体佈局宽度</td>
+<td style="text-align:center">wrapper</td>
+</tr>
+<tr>
+<td style="text-align:center">左右中</td>
+<td style="text-align:center">left right center</td>
+</tr>
+<tr>
+<td style="text-align:center">登录条</td>
+<td style="text-align:center">loginbar</td>
+</tr>
+<tr>
+<td style="text-align:center">标志</td>
+<td style="text-align:center">logo</td>
+</tr>
+<tr>
+<td style="text-align:center">广告</td>
+<td style="text-align:center">banner</td>
+</tr>
+<tr>
+<td style="text-align:center">页面主体</td>
+<td style="text-align:center">main</td>
+</tr>
+<tr>
+<td style="text-align:center">热点</td>
+<td style="text-align:center">hot</td>
+</tr>
+<tr>
+<td style="text-align:center">新闻</td>
+<td style="text-align:center">news</td>
+</tr>
+<tr>
+<td style="text-align:center">下载</td>
+<td style="text-align:center">download</td>
+</tr>
+<tr>
+<td style="text-align:center">子导航</td>
+<td style="text-align:center">subnav</td>
+</tr>
+<tr>
+<td style="text-align:center">菜单</td>
+<td style="text-align:center">menu</td>
+</tr>
+<tr>
+<td style="text-align:center">子菜单</td>
+<td style="text-align:center">submenu</td>
+</tr>
+<tr>
+<td style="text-align:center">搜索</td>
+<td style="text-align:center">search</td>
+</tr>
+<tr>
+<td style="text-align:center">友情链接</td>
+<td style="text-align:center">friendlink / link</td>
+</tr>
+<tr>
+<td style="text-align:center">页脚</td>
+<td style="text-align:center">footer</td>
+</tr>
+<tr>
+<td style="text-align:center">版权</td>
+<td style="text-align:center">copyright</td>
+</tr>
+<tr>
+<td style="text-align:center">滚动</td>
+<td style="text-align:center">scroll</td>
+</tr>
+<tr>
+<td style="text-align:center">内容</td>
+<td style="text-align:center">content</td>
+</tr>
+<tr>
+<td style="text-align:center">标签</td>
+<td style="text-align:center">tags</td>
+</tr>
+<tr>
+<td style="text-align:center">文章列表</td>
+<td style="text-align:center">list</td>
+</tr>
+<tr>
+<td style="text-align:center">提示信息</td>
+<td style="text-align:center">msg</td>
+</tr>
+<tr>
+<td style="text-align:center">小技巧</td>
+<td style="text-align:center">tips</td>
+</tr>
+<tr>
+<td style="text-align:center">栏目标题</td>
+<td style="text-align:center">title</td>
+</tr>
+<tr>
+<td style="text-align:center">加入</td>
+<td style="text-align:center">joinus</td>
+</tr>
+<tr>
+<td style="text-align:center">指南</td>
+<td style="text-align:center">guide</td>
+</tr>
+<tr>
+<td style="text-align:center">服务</td>
+<td style="text-align:center">service</td>
+</tr>
+<tr>
+<td style="text-align:center">注册</td>
+<td style="text-align:center">regsiter</td>
+</tr>
+<tr>
+<td style="text-align:center">状态</td>
+<td style="text-align:center">status</td>
+</tr>
+<tr>
+<td style="text-align:center">投票</td>
+<td style="text-align:center">vote</td>
+</tr>
+<tr>
+<td style="text-align:center">合作伙伴</td>
+<td style="text-align:center">partner</td>
+</tr>
+</tbody>
+</table>
+<h3 id="注释的写法"><a href="#注释的写法" class="headerlink" title="注释的写法"></a>注释的写法</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Header */</span></span><br><span class="line">内容区</span><br><span class="line"><span class="comment">/* End Header */</span></span><br></pre></td></tr></table></figure>
+<h3 id="类名-id的命名"><a href="#类名-id的命名" class="headerlink" title="类名/id的命名"></a>类名/id的命名</h3><h4 id="页面结构"><a href="#页面结构" class="headerlink" title="页面结构"></a>页面结构</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">内容</th>
+<th style="text-align:center">命名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">容器</td>
+<td style="text-align:center">container</td>
+</tr>
+<tr>
+<td style="text-align:center">页头</td>
+<td style="text-align:center">header</td>
+</tr>
+<tr>
+<td style="text-align:center">内容</td>
+<td style="text-align:center">content/container</td>
+</tr>
+<tr>
+<td style="text-align:center">页面主体</td>
+<td style="text-align:center">main</td>
+</tr>
+<tr>
+<td style="text-align:center">页尾</td>
+<td style="text-align:center">footer</td>
+</tr>
+<tr>
+<td style="text-align:center">导航</td>
+<td style="text-align:center">nav</td>
+</tr>
+<tr>
+<td style="text-align:center">侧栏</td>
+<td style="text-align:center">sidebar</td>
+</tr>
+<tr>
+<td style="text-align:center">栏目</td>
+<td style="text-align:center">column</td>
+</tr>
+<tr>
+<td style="text-align:center">页面外围控制整体佈局宽度</td>
+<td style="text-align:center">wrapper</td>
+</tr>
+<tr>
+<td style="text-align:center">左右中</td>
+<td style="text-align:center">left right center</td>
+</tr>
+</tbody>
+</table>
+<h4 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">内容</th>
+<th style="text-align:center">命名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">导航</td>
+<td style="text-align:center">nav</td>
+</tr>
+<tr>
+<td style="text-align:center">主导航</td>
+<td style="text-align:center">mainnav</td>
+</tr>
+<tr>
+<td style="text-align:center">子导航</td>
+<td style="text-align:center">subnav</td>
+</tr>
+<tr>
+<td style="text-align:center">顶导航</td>
+<td style="text-align:center">topnav</td>
+</tr>
+<tr>
+<td style="text-align:center">边导航</td>
+<td style="text-align:center">sidebar</td>
+</tr>
+<tr>
+<td style="text-align:center">左导航</td>
+<td style="text-align:center">leftsidebar</td>
+</tr>
+<tr>
+<td style="text-align:center">右导航</td>
+<td style="text-align:center">rightsidebar</td>
+</tr>
+<tr>
+<td style="text-align:center">菜单</td>
+<td style="text-align:center">menu</td>
+</tr>
+<tr>
+<td style="text-align:center">子菜单</td>
+<td style="text-align:center">submenu</td>
+</tr>
+<tr>
+<td style="text-align:center">标题</td>
+<td style="text-align:center">title</td>
+</tr>
+<tr>
+<td style="text-align:center">摘要</td>
+<td style="text-align:center">summary</td>
+</tr>
+</tbody>
+</table>
+<h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">内容</th>
+<th style="text-align:center">命名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">标志</td>
+<td style="text-align:center">logo</td>
+</tr>
+<tr>
+<td style="text-align:center">广告</td>
+<td style="text-align:center">banner</td>
+</tr>
+<tr>
+<td style="text-align:center">登陆</td>
+<td style="text-align:center">login</td>
+</tr>
+<tr>
+<td style="text-align:center">登录条</td>
+<td style="text-align:center">loginbar</td>
+</tr>
+<tr>
+<td style="text-align:center">注册</td>
+<td style="text-align:center">register</td>
+</tr>
+<tr>
+<td style="text-align:center">搜索</td>
+<td style="text-align:center">search</td>
+</tr>
+<tr>
+<td style="text-align:center">功能区</td>
+<td style="text-align:center">shop</td>
+</tr>
+<tr>
+<td style="text-align:center">标题</td>
+<td style="text-align:center">title</td>
+</tr>
+<tr>
+<td style="text-align:center">加入</td>
+<td style="text-align:center">joinus</td>
+</tr>
+<tr>
+<td style="text-align:center">状态</td>
+<td style="text-align:center">status</td>
+</tr>
+<tr>
+<td style="text-align:center">按钮</td>
+<td style="text-align:center">btn</td>
+</tr>
+<tr>
+<td style="text-align:center">滚动</td>
+<td style="text-align:center">scroll</td>
+</tr>
+<tr>
+<td style="text-align:center">标籤页</td>
+<td style="text-align:center">tab</td>
+</tr>
+<tr>
+<td style="text-align:center">文章列表</td>
+<td style="text-align:center">list</td>
+</tr>
+<tr>
+<td style="text-align:center">提示信息</td>
+<td style="text-align:center">msg</td>
+</tr>
+<tr>
+<td style="text-align:center">当前的</td>
+<td style="text-align:center">current</td>
+</tr>
+<tr>
+<td style="text-align:center">小技巧</td>
+<td style="text-align:center">tips</td>
+</tr>
+<tr>
+<td style="text-align:center">图标</td>
+<td style="text-align:center">icon</td>
+</tr>
+<tr>
+<td style="text-align:center">注释</td>
+<td style="text-align:center">note</td>
+</tr>
+<tr>
+<td style="text-align:center">指南</td>
+<td style="text-align:center">guild</td>
+</tr>
+<tr>
+<td style="text-align:center">服务</td>
+<td style="text-align:center">service</td>
+</tr>
+<tr>
+<td style="text-align:center">热点</td>
+<td style="text-align:center">hot</td>
+</tr>
+<tr>
+<td style="text-align:center">新闻</td>
+<td style="text-align:center">news</td>
+</tr>
+<tr>
+<td style="text-align:center">下载</td>
+<td style="text-align:center">download</td>
+</tr>
+<tr>
+<td style="text-align:center">投票</td>
+<td style="text-align:center">vote</td>
+</tr>
+<tr>
+<td style="text-align:center">合作伙伴</td>
+<td style="text-align:center">partner</td>
+</tr>
+<tr>
+<td style="text-align:center">友情链接</td>
+<td style="text-align:center">link</td>
+</tr>
+<tr>
+<td style="text-align:center">版权</td>
+<td style="text-align:center">copyright</td>
+</tr>
+</tbody>
+</table>
+<h3 id="CSS样式表文件命名"><a href="#CSS样式表文件命名" class="headerlink" title="CSS样式表文件命名"></a>CSS样式表文件命名</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">内容</th>
+<th style="text-align:center">命名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">主要的</td>
+<td style="text-align:center">master.css</td>
+</tr>
+<tr>
+<td style="text-align:center">模块</td>
+<td style="text-align:center">module.css</td>
+</tr>
+<tr>
+<td style="text-align:center">基本共用</td>
+<td style="text-align:center">base.css</td>
+</tr>
+<tr>
+<td style="text-align:center">布局、版面</td>
+<td style="text-align:center">layout.css</td>
+</tr>
+<tr>
+<td style="text-align:center">主题</td>
+<td style="text-align:center">themes.css</td>
+</tr>
+<tr>
+<td style="text-align:center">专栏</td>
+<td style="text-align:center">columns.css</td>
+</tr>
+<tr>
+<td style="text-align:center">文字</td>
+<td style="text-align:center">font.css</td>
+</tr>
+<tr>
+<td style="text-align:center">表单</td>
+<td style="text-align:center">forms.css</td>
+</tr>
+<tr>
+<td style="text-align:center">补丁</td>
+<td style="text-align:center">mend.css</td>
+</tr>
+<tr>
+<td style="text-align:center">打印</td>
+<td style="text-align:center">print.css</td>
+</tr>
+</tbody>
+</table>
+<h2 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h2><ul>
+<li>写在css文件中的内容是间接引入到html文件中，浏览器在加载的时候，写在css中的图片是不能够被html直接调用的，后台或者前台编辑人员是不能够通过一定手段改变图片的，所以在页面上经常更换的图片，需要用img标签引入</li>
+<li>在项目中 公共文件会放在自己写的文件之前，因为那个文件要先加载</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/14/photoshop快捷键/" rel="next" title="photoshop快捷键">
+                <i class="fa fa-chevron-left"></i> photoshop快捷键
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/19/CSS3/" rel="prev" title="CSS3">
+                CSS3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">刘心怡</p>
+              <p class="site-description motion-element" itemprop="description">Tomorrow will be better than today</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS命名规范"><span class="nav-number">1.</span> <span class="nav-text">CSS命名规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类名-id命名规范"><span class="nav-number">1.1.</span> <span class="nav-text">类名/id命名规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命名"><span class="nav-number">1.2.</span> <span class="nav-text">常用命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释的写法"><span class="nav-number">1.3.</span> <span class="nav-text">注释的写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类名-id的命名"><span class="nav-number">1.4.</span> <span class="nav-text">类名/id的命名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#页面结构"><span class="nav-number">1.4.1.</span> <span class="nav-text">页面结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#导航"><span class="nav-number">1.4.2.</span> <span class="nav-text">导航</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#功能"><span class="nav-number">1.4.3.</span> <span class="nav-text">功能</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS样式表文件命名"><span class="nav-number">1.5.</span> <span class="nav-text">CSS样式表文件命名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他注意事项"><span class="nav-number">2.</span> <span class="nav-text">其他注意事项</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘心怡</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
